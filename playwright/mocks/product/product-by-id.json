@@ -1,0 +1,148 @@
+{
+	"data": {
+		"type": "product",
+		"id": "9df03d81-70d1-408e-a00d-9d78962cf306",
+		"attributes": {
+			"createdAt": "2026-02-02T07:36:53.109Z",
+			"updatedAt": "2026-02-02T07:37:44.912Z",
+			"deletedAt": null,
+			"name": "product 4",
+			"price": 4,
+			"description": "4"
+		},
+		"relationships": {
+			"categories": {
+				"data": [
+					{
+						"type": "categories",
+						"id": "7dd961e6-d94d-4ad5-89ac-42c18f027347"
+					},
+					{
+						"type": "categories",
+						"id": "dde00b00-3ae7-4af3-bb58-c5d801413216"
+					},
+					{
+						"type": "categories",
+						"id": "dec25553-f170-4a69-a593-a1ef660720f6"
+					},
+					{
+						"type": "categories",
+						"id": "e6e3db5a-bb6a-450f-b737-7eeca3cb252c"
+					},
+					{
+						"type": "categories",
+						"id": "249602c3-cef3-42c3-9f72-3b7da7381f87"
+					},
+					{
+						"type": "categories",
+						"id": "d2b553df-1a38-49e2-8f21-e2a0813e25e5"
+					},
+					{
+						"type": "categories",
+						"id": "b8c6999e-5409-4744-98b2-15542d0e0bb2"
+					}
+				],
+				"links": {
+					"self": "http://localhost:3001/api/v1/product/9df03d81-70d1-408e-a00d-9d78962cf306/relationships/categories",
+					"related": "http://localhost:3001/api/v1"
+				}
+			}
+		}
+	},
+	"links": {
+		"self": "http://localhost:3001/api/v1/product/9df03d81-70d1-408e-a00d-9d78962cf306"
+	},
+	"included": [
+		{
+			"type": "categories",
+			"id": "7dd961e6-d94d-4ad5-89ac-42c18f027347",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:26.372Z",
+				"updatedAt": "2026-01-08T00:49:26.372Z",
+				"deletedAt": null,
+				"name": "categoria 1"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/7dd961e6-d94d-4ad5-89ac-42c18f027347"
+			}
+		},
+		{
+			"type": "categories",
+			"id": "dde00b00-3ae7-4af3-bb58-c5d801413216",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:29.425Z",
+				"updatedAt": "2026-01-08T00:49:29.425Z",
+				"deletedAt": null,
+				"name": "categoria 2"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/dde00b00-3ae7-4af3-bb58-c5d801413216"
+			}
+		},
+		{
+			"type": "categories",
+			"id": "dec25553-f170-4a69-a593-a1ef660720f6",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:31.389Z",
+				"updatedAt": "2026-01-08T00:49:31.389Z",
+				"deletedAt": null,
+				"name": "categoria 3"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/dec25553-f170-4a69-a593-a1ef660720f6"
+			}
+		},
+		{
+			"type": "categories",
+			"id": "e6e3db5a-bb6a-450f-b737-7eeca3cb252c",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:33.731Z",
+				"updatedAt": "2026-01-08T00:49:33.731Z",
+				"deletedAt": null,
+				"name": "categoria 4"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/e6e3db5a-bb6a-450f-b737-7eeca3cb252c"
+			}
+		},
+		{
+			"type": "categories",
+			"id": "249602c3-cef3-42c3-9f72-3b7da7381f87",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:35.925Z",
+				"updatedAt": "2026-01-08T00:49:35.925Z",
+				"deletedAt": null,
+				"name": "categoria 5"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/249602c3-cef3-42c3-9f72-3b7da7381f87"
+			}
+		},
+		{
+			"type": "categories",
+			"id": "d2b553df-1a38-49e2-8f21-e2a0813e25e5",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:39.094Z",
+				"updatedAt": "2026-01-08T00:49:39.094Z",
+				"deletedAt": null,
+				"name": "categoria 6"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/d2b553df-1a38-49e2-8f21-e2a0813e25e5"
+			}
+		},
+		{
+			"type": "categories",
+			"id": "b8c6999e-5409-4744-98b2-15542d0e0bb2",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:40.800Z",
+				"updatedAt": "2026-01-08T00:49:40.800Z",
+				"deletedAt": null,
+				"name": "categoria 7"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/b8c6999e-5409-4744-98b2-15542d0e0bb2"
+			}
+		}
+	]
+}

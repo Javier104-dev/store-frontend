@@ -1,0 +1,351 @@
+{
+	"data": [
+		{
+			"type": "category",
+			"id": "7dd961e6-d94d-4ad5-89ac-42c18f027347",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:26.372Z",
+				"updatedAt": "2026-01-08T00:49:26.372Z",
+				"deletedAt": null,
+				"name": "categoria 1"
+			},
+			"relationships": {
+				"products": {
+					"data": [
+						{
+							"type": "products",
+							"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748"
+						},
+						{
+							"type": "products",
+							"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa"
+						},
+						{
+							"type": "products",
+							"id": "9df03d81-70d1-408e-a00d-9d78962cf306"
+						}
+					],
+					"links": {
+						"self": "http://localhost:3001/api/v1/catalog/categories/7dd961e6-d94d-4ad5-89ac-42c18f027347/relationships/products",
+						"related": "http://localhost:3001/api/v1"
+					}
+				}
+			}
+		},
+		{
+			"type": "category",
+			"id": "dde00b00-3ae7-4af3-bb58-c5d801413216",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:29.425Z",
+				"updatedAt": "2026-01-08T00:49:29.425Z",
+				"deletedAt": null,
+				"name": "categoria 2"
+			},
+			"relationships": {
+				"products": {
+					"data": [
+						{
+							"type": "products",
+							"id": "14193ebf-b6d8-4888-9d51-83d0077fc68f"
+						},
+						{
+							"type": "products",
+							"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748"
+						},
+						{
+							"type": "products",
+							"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa"
+						},
+						{
+							"type": "products",
+							"id": "9df03d81-70d1-408e-a00d-9d78962cf306"
+						}
+					],
+					"links": {
+						"self": "http://localhost:3001/api/v1/catalog/categories/dde00b00-3ae7-4af3-bb58-c5d801413216/relationships/products",
+						"related": "http://localhost:3001/api/v1"
+					}
+				}
+			}
+		},
+		{
+			"type": "category",
+			"id": "dec25553-f170-4a69-a593-a1ef660720f6",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:31.389Z",
+				"updatedAt": "2026-01-08T00:49:31.389Z",
+				"deletedAt": null,
+				"name": "categoria 3"
+			},
+			"relationships": {
+				"products": {
+					"data": [
+						{
+							"type": "products",
+							"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748"
+						},
+						{
+							"type": "products",
+							"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa"
+						},
+						{
+							"type": "products",
+							"id": "9df03d81-70d1-408e-a00d-9d78962cf306"
+						},
+						{
+							"type": "products",
+							"id": "82ec48e5-938f-42b9-b165-ff747d17eadd"
+						}
+					],
+					"links": {
+						"self": "http://localhost:3001/api/v1/catalog/categories/dec25553-f170-4a69-a593-a1ef660720f6/relationships/products",
+						"related": "http://localhost:3001/api/v1"
+					}
+				}
+			}
+		},
+		{
+			"type": "category",
+			"id": "e6e3db5a-bb6a-450f-b737-7eeca3cb252c",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:33.731Z",
+				"updatedAt": "2026-01-08T00:49:33.731Z",
+				"deletedAt": null,
+				"name": "categoria 4"
+			},
+			"relationships": {
+				"products": {
+					"data": [
+						{
+							"type": "products",
+							"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748"
+						},
+						{
+							"type": "products",
+							"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa"
+						},
+						{
+							"type": "products",
+							"id": "9df03d81-70d1-408e-a00d-9d78962cf306"
+						}
+					],
+					"links": {
+						"self": "http://localhost:3001/api/v1/catalog/categories/e6e3db5a-bb6a-450f-b737-7eeca3cb252c/relationships/products",
+						"related": "http://localhost:3001/api/v1"
+					}
+				}
+			}
+		},
+		{
+			"type": "category",
+			"id": "249602c3-cef3-42c3-9f72-3b7da7381f87",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:35.925Z",
+				"updatedAt": "2026-01-08T00:49:35.925Z",
+				"deletedAt": null,
+				"name": "categoria 5"
+			},
+			"relationships": {
+				"products": {
+					"data": [
+						{
+							"type": "products",
+							"id": "14193ebf-b6d8-4888-9d51-83d0077fc68f"
+						},
+						{
+							"type": "products",
+							"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748"
+						},
+						{
+							"type": "products",
+							"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa"
+						},
+						{
+							"type": "products",
+							"id": "9df03d81-70d1-408e-a00d-9d78962cf306"
+						},
+						{
+							"type": "products",
+							"id": "587771d0-c036-4c3f-af80-8d2e732b94bd"
+						}
+					],
+					"links": {
+						"self": "http://localhost:3001/api/v1/catalog/categories/249602c3-cef3-42c3-9f72-3b7da7381f87/relationships/products",
+						"related": "http://localhost:3001/api/v1"
+					}
+				}
+			}
+		},
+		{
+			"type": "category",
+			"id": "d2b553df-1a38-49e2-8f21-e2a0813e25e5",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:39.094Z",
+				"updatedAt": "2026-01-08T00:49:39.094Z",
+				"deletedAt": null,
+				"name": "categoria 6"
+			},
+			"relationships": {
+				"products": {
+					"data": [
+						{
+							"type": "products",
+							"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748"
+						},
+						{
+							"type": "products",
+							"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa"
+						},
+						{
+							"type": "products",
+							"id": "9df03d81-70d1-408e-a00d-9d78962cf306"
+						},
+						{
+							"type": "products",
+							"id": "82ec48e5-938f-42b9-b165-ff747d17eadd"
+						}
+					],
+					"links": {
+						"self": "http://localhost:3001/api/v1/catalog/categories/d2b553df-1a38-49e2-8f21-e2a0813e25e5/relationships/products",
+						"related": "http://localhost:3001/api/v1"
+					}
+				}
+			}
+		},
+		{
+			"type": "category",
+			"id": "b8c6999e-5409-4744-98b2-15542d0e0bb2",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:40.800Z",
+				"updatedAt": "2026-01-08T00:49:40.800Z",
+				"deletedAt": null,
+				"name": "categoria 7"
+			},
+			"relationships": {
+				"products": {
+					"data": [
+						{
+							"type": "products",
+							"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748"
+						},
+						{
+							"type": "products",
+							"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa"
+						},
+						{
+							"type": "products",
+							"id": "9df03d81-70d1-408e-a00d-9d78962cf306"
+						}
+					],
+					"links": {
+						"self": "http://localhost:3001/api/v1/catalog/categories/b8c6999e-5409-4744-98b2-15542d0e0bb2/relationships/products",
+						"related": "http://localhost:3001/api/v1"
+					}
+				}
+			}
+		}
+	],
+	"links": {
+		"self": "http://localhost:3001/api/v1/catalog/categories",
+		"next": null,
+		"last": "http://localhost:3001/api/v1/catalog/categories?page[number]=1&page[size]=10"
+	},
+	"meta": {
+		"pageNumber": 1,
+		"pageSize": 10,
+		"pageCount": 1,
+		"itemCount": 7
+	},
+	"included": [
+		{
+			"type": "products",
+			"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748",
+			"attributes": {
+				"createdAt": "2026-02-02T07:36:40.012Z",
+				"updatedAt": "2026-02-02T07:37:27.187Z",
+				"deletedAt": null,
+				"name": "producto 2",
+				"price": 2,
+				"description": "2"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/55c6f09d-62ea-4c26-9cf0-a85ad1383748"
+			}
+		},
+		{
+			"type": "products",
+			"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa",
+			"attributes": {
+				"createdAt": "2026-02-02T07:36:46.230Z",
+				"updatedAt": "2026-02-02T07:37:38.338Z",
+				"deletedAt": null,
+				"name": "product 3",
+				"price": 3,
+				"description": "3"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/5ce53a73-2f3b-4d23-9b85-2642d6df10aa"
+			}
+		},
+		{
+			"type": "products",
+			"id": "9df03d81-70d1-408e-a00d-9d78962cf306",
+			"attributes": {
+				"createdAt": "2026-02-02T07:36:53.109Z",
+				"updatedAt": "2026-02-02T07:37:44.912Z",
+				"deletedAt": null,
+				"name": "product 4",
+				"price": 4,
+				"description": "4"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/9df03d81-70d1-408e-a00d-9d78962cf306"
+			}
+		},
+		{
+			"type": "products",
+			"id": "14193ebf-b6d8-4888-9d51-83d0077fc68f",
+			"attributes": {
+				"createdAt": "2026-02-01T22:13:38.891Z",
+				"updatedAt": "2026-02-02T07:37:16.118Z",
+				"deletedAt": null,
+				"name": "product 1",
+				"price": 1,
+				"description": "1"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/14193ebf-b6d8-4888-9d51-83d0077fc68f"
+			}
+		},
+		{
+			"type": "products",
+			"id": "82ec48e5-938f-42b9-b165-ff747d17eadd",
+			"attributes": {
+				"createdAt": "2026-01-31T05:36:55.985Z",
+				"updatedAt": "2026-02-02T07:38:04.088Z",
+				"deletedAt": null,
+				"name": "product 6",
+				"price": 6,
+				"description": "6"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/82ec48e5-938f-42b9-b165-ff747d17eadd"
+			}
+		},
+		{
+			"type": "products",
+			"id": "587771d0-c036-4c3f-af80-8d2e732b94bd",
+			"attributes": {
+				"createdAt": "2026-01-31T05:36:47.691Z",
+				"updatedAt": "2026-02-02T07:37:54.886Z",
+				"deletedAt": null,
+				"name": "product 5",
+				"price": 5,
+				"description": "5"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/587771d0-c036-4c3f-af80-8d2e732b94bd"
+			}
+		}
+	]
+}

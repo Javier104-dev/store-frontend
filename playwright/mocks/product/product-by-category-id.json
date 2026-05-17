@@ -1,0 +1,43 @@
+{
+	"data": [
+		{
+			"type": "product",
+			"id": "55c6f09d-62ea-4c26-9cf0-a85ad1383748",
+			"attributes": {
+				"name": "producto 2",
+				"price": 2,
+				"description": "2"
+			}
+		},
+		{
+			"type": "product",
+			"id": "5ce53a73-2f3b-4d23-9b85-2642d6df10aa",
+			"attributes": {
+				"name": "product 3",
+				"price": 3,
+				"description": "3"
+			}
+		},
+		{
+			"type": "product",
+			"id": "9df03d81-70d1-408e-a00d-9d78962cf306",
+			"attributes": {
+				"name": "product 4",
+				"price": 4,
+				"description": "4"
+			}
+		}
+	],
+	"links": {
+		"self": "http://localhost:3001/api/v1/product?filter%5Bcategories%5D%5Bid%5D=7dd961e6-d94d-4ad5-89ac-42c18f027347",
+		"next": null,
+		"last": "http://localhost:3001/api/v1/product?filter[categories][id]=7dd961e6-d94d-4ad5-89ac-42c18f027347&page[number]=1&page[size]=10"
+	},
+	"meta": {
+		"pageNumber": 1,
+		"pageSize": 10,
+		"pageCount": 1,
+		"itemCount": 3
+	},
+	"included": []
+}
