@@ -1,75 +1,166 @@
-# React + TypeScript + Vite
+# React Vite Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Template for building Web Apps using React + Vite.
 
-Currently, two official plugins are available:
+# Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 22 or higher
 
-## React Compiler
+# Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- React 18
+- TypeScript
+- Vite 4
+- TailwindCSS
+- React Router DOM 6
+- React Query (TanStack Query)
+- Formik + Yup for form handling
+- JWT Authentication support
+- Analytics integration (GA4 & Microsoft Clarity)
+- React Toastify for notifications
+- ESLint + Prettier
+- Husky
+- lint-staged
+- editorconfig
+- Playwright with code coverage
+- Environment variables management
 
-Note: This will impact Vite dev & build performances.
+# Setup
 
-## Expanding the ESLint configuration
+> ⚠️ We recommend using [Visual Studio Code](https://code.visualstudio.com/) as well as the extensions for [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) for development.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. `npm ci` to install dependencies
+2. `npm run dev:prepare` to copy contents of `.env.dist` into a `.env` file and populate it
+3. `npm run test:install` to install Playwright dependencies
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Environment Variables
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+All environment variables must be prefixed with `VITE_`. For example:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `VITE_API_BASE_URL`: For API endpoints
+- `VITE_GA_MEASUREMENT_ID`: For Google Analytics
+- `PORT`: For development server port (defaults to 5173)
+
+# Available Scripts
+
+Development and Production:
+
+```
+npm run start:dev
+# Start development server
+
+npm run start:prod
+# Start production preview
+
+npm run start:test
+# Start in test mode
+
+npm run build
+# Create production build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Testing:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+npm run test
+# Run tests with coverage
+
+npm run test:ui
+# Run tests with UI
+
+npm run test:coverage
+# Generate coverage report
+```
+
+Code Quality:
+
+```
+npm run lint
+# Run ESLint
+
+npm run format
+# Run Prettier
+```
+
+# Deploy
+
+### Prerequisites
+
+- Coolify API Tokens, create one for "Customer Prod" and "Customer Staging" in https://sre.bigger.systems/security/api-tokens, when you create the token please click the `root` checkbox.
+- GitHub Personal Access Token, you can create one in https://github.com/settings/tokens, when you create the token please click the `repo` checkbox.
+- Fill the .env file with the correct values.
+
+### Steps to deploy
+
+1. Run the command `npm run deploy`
+2. Follow the prompts to select the project, server, environment, and deployment type.
+3. Once the deployment is finished, you will see the URL of the deployed application.
+
+# Docker
+
+### Building the Image
+
+To build the Docker image, run:
+
+```bash
+docker build -t react-vite-app .
+```
+
+### Running the Container
+
+To run the container locally:
+
+```bash
+docker run -p 4173:4173 react-vite-app
+```
+
+The application will be available at `http://localhost:4173`
+
+### Environment Variables
+
+When running the container, you can pass environment variables using the `-e` flag:
+
+```bash
+docker run -p 4173:4173 -e VITE_API_BASE_URL=https://api.example.com react-vite-app
+```
+
+# Project Structure
+
+```
+src/
+├── assets/         # Static assets
+├── components/     # Shared components
+├── configs/        # Configuration files
+├── hooks/          # Custom React hooks
+├── interfaces/     # TypeScript interfaces
+├── layouts/        # Layout components
+├── pages/          # Route pages
+├── services/       # API services
+├── types/          # TypeScript types
+└── utils/          # Utility functions
+```
+
+# Page Module Structure
+
+Each page module follows this structure for better organization:
+
+```
+└── 📁example-page
+    ├── 📁components/     # Page-specific components
+    ├── 📁hooks/         # Page-specific hooks
+    ├── 📁services/      # Page-specific services
+    ├── 📁types/         # Page-specific types
+    ├── 📁context/       # (optional) Page-specific context
+    ├── 📁utils/         # (optional) Page-specific utilities
+    └── ExamplePage.tsx  # Main page component
+```
+
+# References
+
+- [React docs](https://react.dev/learn)
+- [Vite docs](https://vitejs.dev/guide/)
+- [React Router docs](https://reactrouter.com/en/main)
+- [TanStack Query docs](https://tanstack.com/query/latest)
+- [Playwright docs](https://playwright.dev/docs/intro)
+- [Formik docs](https://formik.org/docs/overview)
+- [Tailwind docs](https://tailwindcss.com/docs)
