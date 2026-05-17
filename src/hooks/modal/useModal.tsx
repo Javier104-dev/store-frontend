@@ -1,28 +1,21 @@
-import {
-	type ReactNode,
-	useCallback,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 import { Modal, type ModalProps } from '@/components/ui/modal/Modal';
 
 export type UseModalResp = {
-	modal: ReactNode;
+	modal: (children: ReactNode) => ReactNode;
 	openModal: () => void;
 	closeModal: () => void;
 };
 
 export type UseModalProps = Omit<ModalProps, 'children'> & {
-	children: (closeModal: () => void) => ReactNode;
 	onModalOpen?: () => void;
 	onModalClose?: () => void;
 };
 
 export const useModal = ({
-	children,
 	modalBoxClassName,
 	onModalClose,
 	onModalOpen,
@@ -32,14 +25,10 @@ export const useModal = ({
 	const [mounted, setMounted] = useState(false);
 
 	const closeModal = useCallback(() => {
+		dialogRef.current?.close();
 		onModalClose?.();
 		setMounted(false);
 	}, [onModalClose]);
-
-	const handleClose = useCallback(() => {
-		dialogRef.current?.close();
-		closeModal();
-	}, [closeModal]);
 
 	const openModal = useCallback(() => {
 		onModalOpen?.();
@@ -52,25 +41,29 @@ export const useModal = ({
 	useEffect(() => {
 		if (!mounted) return;
 		const handleEscape = (event: KeyboardEvent) => {
-			if (event.key === 'Escape') handleClose();
+			if (event.key === 'Escape') closeModal();
 		};
 		document.addEventListener('keydown', handleEscape);
 		return () => document.removeEventListener('keydown', handleEscape);
-	}, [mounted, handleClose]);
+	}, [mounted, closeModal]);
 
-	const modal = mounted
-		? createPortal(
-				<Modal
-					close={handleClose}
-					ref={dialogRef}
-					modalBoxClassName={modalBoxClassName}
-					closeOnOutClick={closeOnOutClick}
-				>
-					{children(closeModal)}
-				</Modal>,
-				document.body,
-			)
-		: null;
+	const modal = useCallback(
+		(children: ReactNode) =>
+			mounted
+				? createPortal(
+						<Modal
+							close={closeModal}
+							ref={dialogRef}
+							modalBoxClassName={modalBoxClassName}
+							closeOnOutClick={closeOnOutClick}
+						>
+							{children}
+						</Modal>,
+						document.body,
+					)
+				: null,
+		[mounted, closeModal, modalBoxClassName, closeOnOutClick],
+	);
 
-	return { openModal, closeModal: handleClose, modal };
+	return { openModal, closeModal, modal };
 };

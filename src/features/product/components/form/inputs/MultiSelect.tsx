@@ -19,18 +19,7 @@ const MultiSelect = <T,>({ name, resources }: IMultiSelectField<T>) => {
 		helpers.setValue(updatedValues);
 	};
 
-	const { openModal, modal } = useModal({
-		children: (closeModal) => (
-			<CategoriesModal
-				onClose={closeModal}
-				resources={resources as unknown as ICategoryOption[]}
-				handleRemove={handleRemove}
-				helpers={helpers}
-				values={values}
-			/>
-		),
-		closeOnOutClick: false,
-	});
+	const { openModal, closeModal, modal } = useModal({ closeOnOutClick: false });
 
 	return (
 		<div className="block border-[1px] border-gray-400 rounded-md p-2 text-sm">
@@ -47,7 +36,15 @@ const MultiSelect = <T,>({ name, resources }: IMultiSelectField<T>) => {
 				/>
 				<AddCategoryTag label={'Agregar categoría'} openModal={openModal} />
 			</div>
-			{modal}
+			{modal(
+				<CategoriesModal
+					onClose={closeModal}
+					resources={resources as unknown as ICategoryOption[]}
+					handleRemove={handleRemove}
+					helpers={helpers}
+					values={values}
+				/>,
+			)}
 		</div>
 	);
 };
