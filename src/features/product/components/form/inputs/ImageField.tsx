@@ -25,7 +25,13 @@ const ImageField = ({ name, ...props }: IImageField) => {
 
 	return (
 		<div className="block border-[1px] border-gray-400 rounded-md p-2 text-sm">
-			<input id={name} name={name} onChange={handleChange} {...props} />
+			<input
+				data-test="input-files"
+				id={name}
+				name={name}
+				onChange={handleChange}
+				{...props}
+			/>
 			{values.length > 0 && (
 				<div className="grid md:grid-cols-1 lg:grid-cols-2 gap-4">
 					{values.map((image, i) => (
@@ -34,6 +40,7 @@ const ImageField = ({ name, ...props }: IImageField) => {
 							url={image.url}
 							key={`${image.url}-${i}`}
 							onDelete={() => handleDelete(i)}
+							dataTest={`product-image-${i}`}
 						/>
 					))}
 				</div>

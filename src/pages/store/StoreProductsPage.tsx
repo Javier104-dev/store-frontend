@@ -5,7 +5,7 @@ import Spinner from '@/components/ui/feedback/Spinner';
 import SectionHeader from '@/components/ui/heading/SectionHeader';
 import PageLayout from '@/components/ui/layout/PageLayout';
 import VStack from '@/components/ui/layout/VStack';
-import { StoreRoutes } from '@/configs/router/StoreRoutes.enum';
+import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { buildStoreProductEditPath } from '@/configs/router/build-path/buildPath';
 import { notifyError } from '@/errors/notify-error';
 import AllProductsGrid from '@/features/product/components/grids/AllProductsGrid';

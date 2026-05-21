@@ -30,13 +30,13 @@ export const test = base.extend<{
 	) => Promise<void>;
 	validateCode: (inputSelector: string, errorSelector: string) => Promise<void>;
 }>({
-	getBySel: async ({ page }, use) => {
+	getBySel: async ({ page }, apply) => {
 		const getBySel = (selector: string) =>
 			page.locator(`[data-test="${selector}"]`);
-		await use(getBySel);
+		await apply(getBySel);
 	},
 
-	signIn: async ({ page }, use) => {
+	signIn: async ({ page }, apply) => {
 		const signIn = async () => {
 			await page.route('**/api/v1/auth/sign-in', async (route) => {
 				await route.fulfill({
@@ -53,10 +53,10 @@ export const test = base.extend<{
 			await page.waitForURL('/**');
 		};
 
-		await use(signIn);
+		await apply(signIn);
 	},
 
-	validateUsername: async ({ page }, use) => {
+	validateUsername: async ({ page }, apply) => {
 		const validateUsername = async (
 			inputSelector: string,
 			errorSelector: string,
@@ -80,10 +80,10 @@ export const test = base.extend<{
 			await page.locator(`[data-test="${inputSelector}"]`).blur();
 		};
 
-		await use(validateUsername);
+		await apply(validateUsername);
 	},
 
-	validatePassword: async ({ page }, use) => {
+	validatePassword: async ({ page }, apply) => {
 		const validatePassword = async (
 			inputSelector: string,
 			errorSelector: string,
@@ -139,10 +139,10 @@ export const test = base.extend<{
 			).toContainText(PASSWORD_NUMBER);
 		};
 
-		await use(validatePassword);
+		await apply(validatePassword);
 	},
 
-	validateCode: async ({ page }, use) => {
+	validateCode: async ({ page }, apply) => {
 		const validateCode = async (
 			inputSelector: string,
 			errorSelector: string,
@@ -166,7 +166,7 @@ export const test = base.extend<{
 			).toContainText(CODE_TYPE);
 		};
 
-		await use(validateCode);
+		await apply(validateCode);
 	},
 });
 

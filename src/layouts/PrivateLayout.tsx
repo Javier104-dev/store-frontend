@@ -1,8 +1,8 @@
 import { useCookies } from 'react-cookie';
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { AuthRoutes } from '@/configs/router/AuthRoutes.enum';
-import { StoredCookies } from '@/interfaces/auth/cookies.enum';
+import { AuthRoutes } from '@/configs/router/AuthRoutes';
+import { StoredCookies } from '@/interfaces/auth/cookies.constants';
 import { useAuthProvider } from '@/pages/auth/hooks/useAuthProvider';
 
 export default function PrivateLayout() {

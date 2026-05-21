@@ -1,10 +1,10 @@
 import Button from '@/components/ui/actions/Button';
-import { AuthRoutes } from '@/configs/router/AuthRoutes.enum';
+import { AuthRoutes } from '@/configs/router/AuthRoutes';
 
 type PropTypes = {
 	connected: boolean;
 };
-export default function Action({ connected }: PropTypes) {
+const Action = ({ connected }: PropTypes) => {
 	if (connected) {
 		return (
 			<Button
@@ -25,4 +25,6 @@ export default function Action({ connected }: PropTypes) {
 			width={180}
 		/>
 	);
-}
+};
+
+export default Action;

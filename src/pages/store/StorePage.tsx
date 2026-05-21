@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Spinner from '@/components/ui/feedback/Spinner';
 import PageLayout from '@/components/ui/layout/PageLayout';
 import VStack from '@/components/ui/layout/VStack';
-import { StoreRoutes } from '@/configs/router/StoreRoutes.enum';
+import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { notifyError } from '@/errors/notify-error';
 import StoreForm from '@/features/store/components/form/StoreForm';
 import { STORE_FORM_CONFIG } from '@/features/store/constants/store-form.config';

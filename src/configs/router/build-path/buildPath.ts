@@ -1,5 +1,5 @@
-import { ProductRoutes } from '@/configs/router/ProductRoutes.enum';
-import { StoreRoutes } from '@/configs/router/StoreRoutes.enum';
+import { ProductRoutes } from '@/configs/router/ProductRoutes';
+import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { buildRoute } from '@/configs/router/build-path/buildRoute';
 
 export const buildViewProductPath = (params: { id: string }) => {

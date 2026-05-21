@@ -2,12 +2,12 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AuthRoutes } from '@/configs/router/AuthRoutes.enum';
-import { HomeRoutes } from '@/configs/router/HomeRoutes.enum';
-import { StoreRoutes } from '@/configs/router/StoreRoutes.enum';
+import { AuthRoutes } from '@/configs/router/AuthRoutes';
+import { HomeRoutes } from '@/configs/router/HomeRoutes';
+import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { UserQueryKeys } from '@/features/user/constants/user.queryKeys';
 import { userService } from '@/features/user/services/user.service';
-import { StoredCookies } from '@/interfaces/auth/cookies.enum';
+import { StoredCookies } from '@/interfaces/auth/cookies.constants';
 import {
 	CONFIRMATION_SENT_MESSAGE,
 	SESSION_EXPIRED_ERROR,

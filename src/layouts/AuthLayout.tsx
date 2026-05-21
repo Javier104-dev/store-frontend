@@ -1,8 +1,8 @@
 import { useCookies } from 'react-cookie';
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { HomeRoutes } from '@/configs/router/HomeRoutes.enum';
-import { StoredCookies } from '@/interfaces/auth/cookies.enum';
+import { HomeRoutes } from '@/configs/router/HomeRoutes';
+import { StoredCookies } from '@/interfaces/auth/cookies.constants';
 
 export default function AuthLayout() {
 	const [cookies] = useCookies([

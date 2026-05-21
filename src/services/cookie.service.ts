@@ -5,11 +5,14 @@ import type {
 	ITokenPayload,
 	ITokenPayloadCognito,
 } from '@/interfaces/auth/ITokenPayload';
-import { StoredCookies } from '@/interfaces/auth/cookies.enum';
+import {
+	StoredCookies,
+	type StoredCookiesValues,
+} from '@/interfaces/auth/cookies.constants';
 import type { ICookieService } from '@/interfaces/services/ICookieService';
 
 class CookieService<T extends ITokenPayload> implements ICookieService<T> {
-	private THIRTY_DAYS_IN_MILISECONDS = 1000 * 60 * 60 * 24 * 30;
+	private readonly THIRTY_DAYS_IN_MILISECONDS = 1000 * 60 * 60 * 24 * 30;
 
 	cookies: Cookies;
 	constructor() {
@@ -36,10 +39,10 @@ class CookieService<T extends ITokenPayload> implements ICookieService<T> {
 	setAccessTokenCookie(accessToken: string) {
 		this.cookies.set(StoredCookies.ACCESS_TOKEN, accessToken, { path: '/' });
 	}
-	getCookie(name: StoredCookies) {
+	getCookie(name: StoredCookiesValues) {
 		return this.cookies.get(name);
 	}
-	remove(name: StoredCookies) {
+	remove(name: StoredCookiesValues) {
 		return this.cookies.remove(name);
 	}
 	removeAll() {

@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 
-import { HomeRoutes } from '@/configs/router/HomeRoutes.enum';
+import { HomeRoutes } from '@/configs/router/HomeRoutes';
 import {
 	authRoutes,
 	homeRoutes,

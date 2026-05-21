@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { HomeRoutes } from '@/configs/router/HomeRoutes.enum';
+import { HomeRoutes } from '@/configs/router/HomeRoutes';
 import { useAuthProvider } from '@/pages/auth/hooks/useAuthProvider';
 
 export default function SignOutRedirect() {

@@ -1,3 +1,3 @@
-export enum CategoryQueryKeys {
-	getCategories = 'get-categories',
-}
+export const CategoryQueryKeys = {
+	getCategories: 'get-categories',
+} as const;

@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie';
 import Action from '@/components/navbar/Action';
 import Logo from '@/components/navbar/Logo';
 import PageLayout from '@/components/ui/layout/PageLayout';
-import { StoredCookies } from '@/interfaces/auth/cookies.enum';
+import { StoredCookies } from '@/interfaces/auth/cookies.constants';
 
 export default function NavBar() {
 	const [cookies] = useCookies([

@@ -1,10 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 import Spinner from '@/components/ui/feedback/Spinner';
-import { StoreRoutes } from '@/configs/router/StoreRoutes.enum';
+import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { useStore } from '@/features/store/hooks/useStore';
 
-const StoreGuard = () => {
+const StoreLayout = () => {
 	const { storeInfo, isLoading } = useStore();
 
 	if (isLoading) {
@@ -18,4 +18,4 @@ const StoreGuard = () => {
 	return <Outlet />;
 };
 
-export default StoreGuard;
+export default StoreLayout;

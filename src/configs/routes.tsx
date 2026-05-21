@@ -1,12 +1,12 @@
 import type { RouteObject } from 'react-router-dom';
 
-import { AuthRoutes } from '@/configs/router/AuthRoutes.enum';
-import { HomeRoutes } from '@/configs/router/HomeRoutes.enum';
-import { ProductRoutes } from '@/configs/router/ProductRoutes.enum';
-import { StoreRoutes } from '@/configs/router/StoreRoutes.enum';
+import { AuthRoutes } from '@/configs/router/AuthRoutes';
+import { HomeRoutes } from '@/configs/router/HomeRoutes';
+import { ProductRoutes } from '@/configs/router/ProductRoutes';
+import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import AuthLayout from '@/layouts/AuthLayout';
 import PrivateLayout from '@/layouts/PrivateLayout';
-import StoreGuard from '@/layouts/StoreGuard';
+import StoreLayout from '@/layouts/StoreLayout';
 import About from '@/pages/about/About';
 import ConfirmPassword from '@/pages/auth/ConfirmPassword';
 import ConfirmUser from '@/pages/auth/ConfirmUser';
@@ -64,7 +64,7 @@ const storeRoutes: RouteObject[] = [
 		element: <StorePage />,
 	},
 	{
-		element: <StoreGuard />,
+		element: <StoreLayout />,
 		children: [
 			{
 				path: StoreRoutes.MANAGE_PRODUCTS,

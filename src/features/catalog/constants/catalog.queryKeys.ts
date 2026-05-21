@@ -1,3 +1,3 @@
-export enum CatalogQueryKeys {
-	getCategoriesWithProducts = 'get-categories-with-products',
-}
+export const CatalogQueryKeys = {
+	getCategoriesWithProducts: 'get-categories-with-products',
+} as const;

@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import Spinner from '@/components/ui/feedback/Spinner';
 import PageLayout from '@/components/ui/layout/PageLayout';
-import { StoreRoutes } from '@/configs/router/StoreRoutes.enum';
+import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { notifyError } from '@/errors/notify-error';
 import type { ICreateProduct } from '@/features/catalog/interfaces/api/request/ICreateProduct';
 import type { IUpdateProduct } from '@/features/catalog/interfaces/api/request/IUpdateProduct';
