@@ -1,4 +1,5 @@
 import { expect, test } from '../../utils/baseFixture';
+import { loadMock } from '../../utils/loadMocks';
 
 import { SIGN_IN_SUCCESS_MESSAGE } from '@pages/auth/context/auth-messages';
 import { PASSWORD_REQUIRED } from '@pages/auth/schemas/schema-errors';
@@ -20,11 +21,40 @@ test.describe('/auth/sign-in', () => {
 		await expect(page).toHaveURL('/auth/sign-in');
 	});
 
-	test('should be able to sign-in', async ({ page, signIn }) => {
+	test('should redirect admin user to /store', async ({ page, signIn }) => {
+		await page.route('**/api/v1/user/me', async (route) => {
+			await route.fulfill({
+				json: loadMock('user/admin-user.json'),
+			});
+		});
+
+		await page.route('**/api/v1/store/owner', async (route) => {
+			await route.fulfill({
+				json: loadMock('store/store-from-owner.json'),
+			});
+		});
+
+		await signIn();
+
+		await expect(page.locator('[data-test="toast-container"]')).toContainText(
+			SIGN_IN_SUCCESS_MESSAGE,
+		);
+
+		await expect(page).toHaveURL('/store/products');
+	});
+
+	test('should redirect regular user to /', async ({ page, signIn }) => {
+		await page.route('**/api/v1/user/me', async (route) => {
+			await route.fulfill({
+				json: loadMock('user/regular-user.json'),
+			});
+		});
+
 		await signIn();
 		await expect(page.locator('[data-test="toast-container"]')).toContainText(
 			SIGN_IN_SUCCESS_MESSAGE,
 		);
+		await expect(page).toHaveURL('/');
 	});
 
 	test('should be able to visit sign-up', async ({ page }) => {
@@ -72,7 +102,7 @@ test.describe('/auth/sign-in', () => {
 
 		await page.route('**/auth/sign-in', async (route) => {
 			await route.fulfill({
-				status: parseInt(errorResponse.error.status),
+				status: Number.parseInt(errorResponse.error.status),
 				body: JSON.stringify(errorResponse),
 			});
 		});
@@ -102,7 +132,7 @@ test.describe('/auth/sign-in', () => {
 
 		await page.route('**/auth/sign-in', async (route) => {
 			await route.fulfill({
-				status: parseInt(errorResponse.error.status),
+				status: Number.parseInt(errorResponse.error.status),
 				body: JSON.stringify(errorResponse),
 			});
 		});

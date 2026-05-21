@@ -13,7 +13,7 @@ test.describe('View product page', () => {
 			});
 		});
 
-		const categoryId = '7dd961e6-d94d-4ad5-89ac-42c18f027347';
+		const categoryId = 'd2614131-01c2-436a-9617-d94ccc46cacc';
 		await page.route(
 			`**/product?filter%5Bcategories%5D%5Bid%5D=${categoryId}`,
 			async (route) => {
@@ -27,9 +27,9 @@ test.describe('View product page', () => {
 		await page.goto(`/product/${productId}`);
 
 		await expect(getBySel('product-image')).toBeVisible();
-		await expect(getBySel('product-name')).toContainText('product 4');
-		await expect(getBySel('product-price')).toContainText('4');
-		await expect(getBySel('product-description')).toContainText('4');
+		await expect(getBySel('product-name')).toContainText('test');
+		await expect(getBySel('product-price')).toContainText('444');
+		await expect(getBySel('product-description')).toContainText('test');
 
 		const similarProducts = getBySel('similar-products');
 		await expect(similarProducts).toBeVisible();

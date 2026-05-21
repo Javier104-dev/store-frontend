@@ -77,7 +77,7 @@ test.describe('/auth/sign-up', () => {
 
 		await page.route('**/auth/sign-up', async (route) => {
 			await route.fulfill({
-				status: parseInt(errorResponse.error.status),
+				status: Number.parseInt(errorResponse.error.status),
 				body: JSON.stringify(errorResponse),
 			});
 		});

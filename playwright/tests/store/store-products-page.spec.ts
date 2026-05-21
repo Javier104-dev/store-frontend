@@ -3,6 +3,16 @@ import { loadMock } from '../../utils/loadMocks';
 
 test.describe('Store products page', () => {
 	test.beforeEach(async ({ page, signIn }) => {
+		await page.route('**/api/v1/user/me', async (route) => {
+			await route.fulfill({
+				json: loadMock('user/admin-user.json'),
+			});
+		});
+		await page.route('**/api/v1/store/owner', async (route) => {
+			await route.fulfill({
+				json: loadMock('store/store-from-owner.json'),
+			});
+		});
 		await signIn();
 		await page.route('**/api/v1/product/owner', async (route) => {
 			await route.fulfill({

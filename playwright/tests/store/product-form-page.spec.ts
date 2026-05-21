@@ -6,6 +6,16 @@ import { PRODUCT_TOAST_MESSAGES } from '@/features/product/constants/product-toa
 
 test.describe('Product form page', () => {
 	test.beforeEach(async ({ signIn, page }) => {
+		await page.route('**/api/v1/user/me', async (route) => {
+			await route.fulfill({
+				json: loadMock('user/admin-user.json'),
+			});
+		});
+		await page.route('**/api/v1/store/owner', async (route) => {
+			await route.fulfill({
+				json: loadMock('store/store-from-owner.json'),
+			});
+		});
 		await signIn();
 		await page.route('**/api/v1/category?page%5Bsize%5D=25', async (route) => {
 			await route.fulfill({
@@ -13,6 +23,37 @@ test.describe('Product form page', () => {
 			});
 		});
 		await page.goto('/store/product/new');
+	});
+
+	test('should be able to add and remove images in the form', async ({
+		getBySel,
+	}) => {
+		const inputFiles = getBySel('input-files');
+		await expect(inputFiles).toBeVisible();
+		await inputFiles.setInputFiles([
+			{
+				name: 'image-1.png',
+				mimeType: 'image/png',
+				buffer: Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+			},
+			{
+				name: 'image-2.png',
+				mimeType: 'image/png',
+				buffer: Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+			},
+		]);
+
+		const image0 = getBySel('product-image-0');
+		const image1 = getBySel('product-image-1');
+
+		await expect(image0).toBeVisible();
+		await expect(image1).toBeVisible();
+
+		const deleteButton = image0.locator('[data-test="delete-button"]');
+		await deleteButton.click();
+
+		await expect(image0).toHaveCount(1);
+		await expect(image1).toHaveCount(0);
 	});
 
 	test('should be able to add and remove categories in the form', async ({
@@ -83,6 +124,20 @@ test.describe('Product form page', () => {
 			PRODUCT_FORM_CONFIG.create.title,
 		);
 
+		const inputFiles = getBySel('input-files');
+		await inputFiles.setInputFiles([
+			{
+				name: 'image-1.png',
+				mimeType: 'image/png',
+				buffer: Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+			},
+			{
+				name: 'image-2.png',
+				mimeType: 'image/png',
+				buffer: Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+			},
+		]);
+
 		await getBySel('open-add-category-modal-button').click();
 		await getBySel(`category-select-tag-${newProduct.categoryIds[0]}`).click();
 		await getBySel(`category-select-tag-${newProduct.categoryIds[1]}`).click();
@@ -122,6 +177,7 @@ test.describe('Product form page', () => {
 			name: 'product 1',
 			price: '1000',
 			description: 'description',
+			images: ['product-image-0', 'product-image-1'],
 		};
 
 		await page.route(
@@ -135,6 +191,8 @@ test.describe('Product form page', () => {
 
 		await page.goto(`/store/product/${selectedProductId}/edit`);
 
+		await expect(getBySel(selecteProduct.images[0])).toHaveCount(1);
+		await expect(getBySel(selecteProduct.images[0])).toHaveCount(1);
 		await expect(
 			getBySel(`category-remove-tag-${selecteProduct.categoryIds[0]}`),
 		).toHaveCount(1);
@@ -174,6 +232,10 @@ test.describe('Product form page', () => {
 			price: '3000',
 			description: 'new description',
 		};
+
+		const image0 = getBySel('product-image-0');
+		const deleteButton = image0.locator('[data-test="delete-button"]');
+		await deleteButton.click();
 
 		await getBySel('name').fill(updatedProductData.name);
 		await getBySel('price').fill(updatedProductData.price);

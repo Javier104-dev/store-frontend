@@ -1,4 +1,5 @@
 import { expect, test } from '../utils/baseFixture';
+import { loadMock } from '../utils/loadMocks';
 
 test.describe('Layouts', () => {
 	test.describe('Private Layout', () => {
@@ -61,6 +62,57 @@ test.describe('Layouts', () => {
 			await signIn();
 			await page.goto('/auth/sign-out');
 			await expect(page).toHaveURL('/');
+		});
+	});
+
+	test.describe('Store Layout', () => {
+		test('should redirect to the store section if the user does not have a store created', async ({
+			page,
+			signIn,
+		}) => {
+			const errorResponse = {
+				error: {
+					status: '404',
+					source: {
+						pointer: '/api/v1/store/owner',
+					},
+					title: 'Store not found',
+					detail: "This user doesn't have a store yet.",
+				},
+			};
+
+			await page.route('**/api/v1/user/me', async (route) => {
+				await route.fulfill({
+					json: loadMock('user/admin-user.json'),
+				});
+			});
+			await page.route('**/api/v1/store/owner', async (route) => {
+				await route.fulfill({
+					status: Number.parseInt(errorResponse.error.status),
+					body: JSON.stringify(errorResponse),
+				});
+			});
+			await signIn();
+			await page.goto('/store/products');
+			await expect(page).toHaveURL('/store');
+		});
+
+		test('should redirect to the manage products section if the user has a store created', async ({
+			page,
+			signIn,
+		}) => {
+			await page.route('**/api/v1/user/me', async (route) => {
+				await route.fulfill({
+					json: loadMock('user/admin-user.json'),
+				});
+			});
+			await page.route('**/api/v1/store/owner', async (route) => {
+				await route.fulfill({
+					json: loadMock('store/store-from-owner.json'),
+				});
+			});
+			await signIn();
+			await expect(page).toHaveURL('/store/products');
 		});
 	});
 });
