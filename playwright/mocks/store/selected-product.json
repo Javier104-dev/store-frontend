@@ -1,0 +1,124 @@
+{
+	"data": {
+		"type": "product",
+		"id": "a5807543-048a-46e8-bedf-ea60e1b86bc2",
+		"attributes": {
+			"createdAt": "2026-02-09T06:16:19.074Z",
+			"updatedAt": "2026-02-09T06:16:19.074Z",
+			"deletedAt": null,
+			"name": "product 1",
+			"price": 1000,
+			"description": "description"
+		},
+		"relationships": {
+			"categories": {
+				"data": [
+					{
+						"type": "categories",
+						"id": "7dd961e6-d94d-4ad5-89ac-42c18f027347"
+					},
+					{
+						"type": "categories",
+						"id": "dec25553-f170-4a69-a593-a1ef660720f6"
+					},
+					{
+						"type": "categories",
+						"id": "b8c6999e-5409-4744-98b2-15542d0e0bb2"
+					}
+				],
+				"links": {
+					"self": "http://localhost:3001/api/v1/category/relationships/categories",
+					"related": "http://localhost:3001/api/v1"
+				}
+			},
+			"upload": {
+				"data": [
+					{
+						"type": "upload",
+						"id": "upload-product-1-a"
+					},
+					{
+						"type": "upload",
+						"id": "upload-product-1-b"
+					}
+				],
+				"links": {
+					"self": "http://localhost:3001/api/v1/product/a5807543-048a-46e8-bedf-ea60e1b86bc2/relationships/upload",
+					"related": "http://localhost:3001/api/v1"
+				}
+			}
+		}
+	},
+	"links": {
+		"self": "http://localhost:3001/api/v1/category?page%5Bsize%5D=25"
+	},
+	"included": [
+		{
+			"type": "categories",
+			"id": "7dd961e6-d94d-4ad5-89ac-42c18f027347",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:26.372Z",
+				"updatedAt": "2026-01-08T00:49:26.372Z",
+				"deletedAt": null,
+				"name": "categoria 1"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/7dd961e6-d94d-4ad5-89ac-42c18f027347"
+			}
+		},
+		{
+			"type": "categories",
+			"id": "dec25553-f170-4a69-a593-a1ef660720f6",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:31.389Z",
+				"updatedAt": "2026-01-08T00:49:31.389Z",
+				"deletedAt": null,
+				"name": "categoria 3"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/dec25553-f170-4a69-a593-a1ef660720f6"
+			}
+		},
+		{
+			"type": "categories",
+			"id": "b8c6999e-5409-4744-98b2-15542d0e0bb2",
+			"attributes": {
+				"createdAt": "2026-01-08T00:49:40.800Z",
+				"updatedAt": "2026-01-08T00:49:40.800Z",
+				"deletedAt": null,
+				"name": "categoria 7"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/b8c6999e-5409-4744-98b2-15542d0e0bb2"
+			}
+		},
+		{
+			"type": "upload",
+			"id": "upload-product-1-a",
+			"attributes": {
+				"createdAt": "2026-05-18T06:15:46.179Z",
+				"updatedAt": "2026-05-18T06:15:46.179Z",
+				"deletedAt": null,
+				"key": "product/product-1-a.png",
+				"url": "http://localhost:4566/test-bucket/product/product-1-a.png"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/upload-product-1-a"
+			}
+		},
+		{
+			"type": "upload",
+			"id": "upload-product-1-b",
+			"attributes": {
+				"createdAt": "2026-05-18T06:15:46.179Z",
+				"updatedAt": "2026-05-18T06:15:46.179Z",
+				"deletedAt": null,
+				"key": "product/product-1-b.png",
+				"url": "http://localhost:4566/test-bucket/product/product-1-b.png"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/upload-product-1-b"
+			}
+		}
+	]
+}

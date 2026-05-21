@@ -1,0 +1,15 @@
+{
+	"data": {
+		"type": "store",
+		"id": "86657b33-d3b8-47ee-bdef-5c70b3ffa5d4",
+		"attributes": {
+			"createdAt": "2026-05-17T06:26:07.648Z",
+			"updatedAt": "2026-05-17T06:26:07.648Z",
+			"deletedAt": null,
+			"name": "store"
+		}
+	},
+	"links": {
+		"self": "http://localhost:3001/api/v1/store/owner"
+	}
+}

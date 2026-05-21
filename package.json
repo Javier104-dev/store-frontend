@@ -1,34 +1,84 @@
 {
-  "name": "store-front",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.29.0",
-    "@eslint/js": "^10.0.1",
-    "@rolldown/plugin-babel": "^0.2.3",
-    "@types/babel__core": "^7.20.5",
-    "@types/node": "^24.12.3",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "babel-plugin-react-compiler": "^1.0.0",
-    "eslint": "^10.3.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.6.0",
-    "typescript": "~6.0.2",
-    "typescript-eslint": "^8.59.2",
-    "vite": "^8.0.12"
-  }
+	"name": "store-front",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"start:prod": "vite preview --host",
+		"start:dev": "vite",
+		"start:test": "vite -m test",
+		"build": "tsc && vite build",
+		"lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\" \"playwright/**/*.{js,jsx,ts,tsx,json}\" \"./*.{js,cjs,ts,json}\" --fix",
+		"format": "prettier \"src/**/*.{js,jsx,ts,tsx,json}\" \"playwright/**/*.{js,jsx,ts,tsx,json}\" \"./*.{js,cjs,ts,json}\" --write",
+		"test": "playwright test && npm run test:coverage",
+		"test:ui": "playwright test --ui",
+		"test:coverage": "npx nyc report --reporter text --reporter=lcov",
+		"test:install": "playwright install --with-deps",
+		"test:clear": "playwright uninstall --all && npx del-cli playwright-report playwright/.cache coverage",
+		"dev:prepare": "cross-env ./data/scripts/create_default_env.sh",
+		"deploy": "ts-node deploy/coolify-deploy.ts",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"src/**/*.{js,jsx,ts,tsx,json}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"./*.{js,ts,json}": [
+			"eslint --fix",
+			"prettier --write"
+		]
+	},
+	"dependencies": {
+		"@emotion/react": "^11.14.0",
+		"@emotion/styled": "^11.14.1",
+		"@hookform/resolvers": "^5.2.2",
+		"@mui/material": "^9.0.1",
+		"@tanstack/react-query": "^5.100.10",
+		"axios": "^1.16.1",
+		"formik": "^2.4.9",
+		"jwt-decode": "^4.0.0",
+		"playwright-test-coverage": "^1.2.12",
+		"react": "^19.2.6",
+		"react-cookie": "^8.1.2",
+		"react-dom": "^19.2.6",
+		"react-hook-form": "^7.76.0",
+		"react-icons": "^5.6.0",
+		"react-router-dom": "^7.15.1",
+		"react-toastify": "^11.1.0",
+		"yup": "^1.7.1",
+		"zod": "^4.4.3"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.29.0",
+		"@eslint/js": "^10.0.1",
+		"@playwright/test": "^1.60.0",
+		"@rolldown/plugin-babel": "^0.2.3",
+		"@tailwindcss/vite": "^4.3.0",
+		"@trivago/prettier-plugin-sort-imports": "^6.0.2",
+		"@types/babel__core": "^7.20.5",
+		"@types/node": "^24.12.3",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^6.0.1",
+		"babel-plugin-react-compiler": "^1.0.0",
+		"cross-env": "^10.1.0",
+		"eslint": "^10.3.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-no-comments": "^1.2.1",
+		"eslint-plugin-prettier": "^5.5.5",
+		"eslint-plugin-react-hooks": "^7.1.1",
+		"eslint-plugin-react-refresh": "^0.5.2",
+		"globals": "^17.6.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.0.5",
+		"npm-run-all": "^4.1.5",
+		"nyc": "^18.0.0",
+		"prettier": "^3.8.3",
+		"tailwindcss": "^4.3.0",
+		"typescript": "~6.0.2",
+		"typescript-eslint": "^8.59.2",
+		"vite": "^8.0.12",
+		"vite-plugin-istanbul": "^8.0.0"
+	}
 }

@@ -1,0 +1,90 @@
+{
+	"data": {
+		"type": "product",
+		"id": "538f767e-f3c7-4b3b-a53c-1fc13e96985a",
+		"attributes": {
+			"createdAt": "2026-05-18T06:15:46.024Z",
+			"updatedAt": "2026-05-18T06:15:46.024Z",
+			"deletedAt": null,
+			"name": "test",
+			"price": 444,
+			"description": "test"
+		},
+		"relationships": {
+			"categories": {
+				"data": [
+					{
+						"type": "categories",
+						"id": "d2614131-01c2-436a-9617-d94ccc46cacc"
+					}
+				],
+				"links": {
+					"self": "http://localhost:3001/api/v1/product/538f767e-f3c7-4b3b-a53c-1fc13e96985a/relationships/categories",
+					"related": "http://localhost:3001/api/v1"
+				}
+			},
+			"upload": {
+				"data": [
+					{
+						"type": "upload",
+						"id": "8eec6b9f-4ada-499a-a28a-a8abd269917e"
+					},
+					{
+						"type": "upload",
+						"id": "9ffd7c0a-5bcb-4aa-b39b-b9bce37a028f"
+					}
+				],
+				"links": {
+					"self": "http://localhost:3001/api/v1/product/538f767e-f3c7-4b3b-a53c-1fc13e96985a/relationships/upload",
+					"related": "http://localhost:3001/api/v1"
+				}
+			}
+		}
+	},
+	"links": {
+		"self": "http://localhost:3001/api/v1/product/538f767e-f3c7-4b3b-a53c-1fc13e96985a"
+	},
+	"included": [
+		{
+			"type": "categories",
+			"id": "d2614131-01c2-436a-9617-d94ccc46cacc",
+			"attributes": {
+				"createdAt": "2026-05-18T06:17:36.527Z",
+				"updatedAt": "2026-05-18T06:17:36.527Z",
+				"deletedAt": null,
+				"name": "category 1"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/d2614131-01c2-436a-9617-d94ccc46cacc"
+			}
+		},
+		{
+			"type": "upload",
+			"id": "8eec6b9f-4ada-499a-a28a-a8abd269917e",
+			"attributes": {
+				"createdAt": "2026-05-18T06:15:46.179Z",
+				"updatedAt": "2026-05-18T06:15:46.179Z",
+				"deletedAt": null,
+				"key": "product/a0ae53e5-1166-4783-ac12-393b4bba8e9e.png",
+				"url": "http://localhost:4566/test-bucket/product/a0ae53e5-1166-4783-ac12-393b4bba8e9e.png"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/8eec6b9f-4ada-499a-a28a-a8abd269917e"
+			}
+		},
+		{
+			"type": "upload",
+			"id": "9ffd7c0a-5bcb-4aa-b39b-b9bce37a028f",
+			"attributes": {
+				"createdAt": "2026-05-18T06:15:46.300Z",
+				"updatedAt": "2026-05-18T06:15:46.300Z",
+				"deletedAt": null,
+				"key": "product/b1bf64f6-2277-5894-bd23-4a4cf48b139g.png",
+				"url": "http://localhost:4566/test-bucket/product/b1bf64f6-2277-5894-bd23-4a4cf48b139g.png"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/9ffd7c0a-5bcb-4aa-b39b-b9bce37a028f"
+			}
+		}
+	]
+}
