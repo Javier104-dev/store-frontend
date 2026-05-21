@@ -30,6 +30,22 @@
 					"self": "http://localhost:3001/api/v1/category/relationships/categories",
 					"related": "http://localhost:3001/api/v1"
 				}
+			},
+			"upload": {
+				"data": [
+					{
+						"type": "upload",
+						"id": "upload-product-1-a"
+					},
+					{
+						"type": "upload",
+						"id": "upload-product-1-b"
+					}
+				],
+				"links": {
+					"self": "http://localhost:3001/api/v1/product/a5807543-048a-46e8-bedf-ea60e1b86bc2/relationships/upload",
+					"related": "http://localhost:3001/api/v1"
+				}
 			}
 		}
 	},
@@ -74,6 +90,34 @@
 			},
 			"links": {
 				"self": "http://localhost:3001/api/v1/b8c6999e-5409-4744-98b2-15542d0e0bb2"
+			}
+		},
+		{
+			"type": "upload",
+			"id": "upload-product-1-a",
+			"attributes": {
+				"createdAt": "2026-05-18T06:15:46.179Z",
+				"updatedAt": "2026-05-18T06:15:46.179Z",
+				"deletedAt": null,
+				"key": "product/product-1-a.png",
+				"url": "http://localhost:4566/test-bucket/product/product-1-a.png"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/upload-product-1-a"
+			}
+		},
+		{
+			"type": "upload",
+			"id": "upload-product-1-b",
+			"attributes": {
+				"createdAt": "2026-05-18T06:15:46.179Z",
+				"updatedAt": "2026-05-18T06:15:46.179Z",
+				"deletedAt": null,
+				"key": "product/product-1-b.png",
+				"url": "http://localhost:4566/test-bucket/product/product-1-b.png"
+			},
+			"links": {
+				"self": "http://localhost:3001/api/v1/upload-product-1-b"
 			}
 		}
 	]

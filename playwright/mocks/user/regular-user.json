@@ -1,0 +1,18 @@
+{
+	"data": {
+		"type": "user",
+		"id": "ea1c11fc-e779-409b-99e9-00e796c79d44",
+		"attributes": {
+			"createdAt": "2026-05-09T07:15:31.774Z",
+			"updatedAt": "2026-05-09T07:17:29.121Z",
+			"deletedAt": null,
+			"username": "test@test.com",
+			"externalId": "cce3d63e-1ba5-4af7-9c49-9d80a48eb01a",
+			"roles": ["regular"],
+			"isVerified": true
+		}
+	},
+	"links": {
+		"self": "http://localhost:3001/api/v1/user/me"
+	}
+}
