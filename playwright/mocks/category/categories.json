@@ -1,65 +1,65 @@
 {
-	"data": [
-		{
-			"type": "category",
-			"id": "7dd961e6-d94d-4ad5-89ac-42c18f027347",
-			"attributes": {
-				"name": "categoria 1"
-			}
-		},
-		{
-			"type": "category",
-			"id": "dde00b00-3ae7-4af3-bb58-c5d801413216",
-			"attributes": {
-				"name": "categoria 2"
-			}
-		},
-		{
-			"type": "category",
-			"id": "dec25553-f170-4a69-a593-a1ef660720f6",
-			"attributes": {
-				"name": "categoria 3"
-			}
-		},
-		{
-			"type": "category",
-			"id": "e6e3db5a-bb6a-450f-b737-7eeca3cb252c",
-			"attributes": {
-				"name": "categoria 4"
-			}
-		},
-		{
-			"type": "category",
-			"id": "249602c3-cef3-42c3-9f72-3b7da7381f87",
-			"attributes": {
-				"name": "categoria 5"
-			}
-		},
-		{
-			"type": "category",
-			"id": "d2b553df-1a38-49e2-8f21-e2a0813e25e5",
-			"attributes": {
-				"name": "categoria 6"
-			}
-		},
-		{
-			"type": "category",
-			"id": "b8c6999e-5409-4744-98b2-15542d0e0bb2",
-			"attributes": {
-				"name": "categoria 7"
-			}
-		}
-	],
-	"links": {
-		"self": "http://localhost:3001/api/v1/category?page%5Bsize%5D=25",
-		"next": null,
-		"last": "http://localhost:3001/api/v1/category?page[size]=25&page[number]=1"
-	},
-	"meta": {
-		"pageNumber": 1,
-		"pageSize": 25,
-		"pageCount": 1,
-		"itemCount": 7
-	},
-	"included": []
+  "data": [
+    {
+      "type": "category",
+      "id": "7dd961e6-d94d-4ad5-89ac-42c18f027347",
+      "attributes": {
+        "name": "categoria 1"
+      }
+    },
+    {
+      "type": "category",
+      "id": "dde00b00-3ae7-4af3-bb58-c5d801413216",
+      "attributes": {
+        "name": "categoria 2"
+      }
+    },
+    {
+      "type": "category",
+      "id": "dec25553-f170-4a69-a593-a1ef660720f6",
+      "attributes": {
+        "name": "categoria 3"
+      }
+    },
+    {
+      "type": "category",
+      "id": "e6e3db5a-bb6a-450f-b737-7eeca3cb252c",
+      "attributes": {
+        "name": "categoria 4"
+      }
+    },
+    {
+      "type": "category",
+      "id": "249602c3-cef3-42c3-9f72-3b7da7381f87",
+      "attributes": {
+        "name": "categoria 5"
+      }
+    },
+    {
+      "type": "category",
+      "id": "d2b553df-1a38-49e2-8f21-e2a0813e25e5",
+      "attributes": {
+        "name": "categoria 6"
+      }
+    },
+    {
+      "type": "category",
+      "id": "b8c6999e-5409-4744-98b2-15542d0e0bb2",
+      "attributes": {
+        "name": "categoria 7"
+      }
+    }
+  ],
+  "links": {
+    "self": "http://localhost:3001/api/v1/category?page%5Bsize%5D=25",
+    "next": null,
+    "last": "http://localhost:3001/api/v1/category?page[size]=25&page[number]=1"
+  },
+  "meta": {
+    "pageNumber": 1,
+    "pageSize": 25,
+    "pageCount": 1,
+    "itemCount": 7
+  },
+  "included": []
 }

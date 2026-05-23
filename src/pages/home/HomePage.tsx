@@ -11,26 +11,26 @@ import Banner from '@/pages/home/components/Banner';
 import { normalizeJsonApiList } from '@/utils/jsonApi-normalizer';
 
 const HomePage = () => {
-	const { data: categoriesWithProducts, isLoading } = useGet<
-		IListResponse<ICategoryAttributes>,
-		ICategory[]
-	>({
-		queryKey: [CatalogQueryKeys.getCategoriesWithProducts],
-		queryFn: () => catalogService.getCategoriesWithProducts(),
-		select: normalizeJsonApiList,
-	});
+  const { data: categoriesWithProducts, isLoading } = useGet<
+    IListResponse<ICategoryAttributes>,
+    ICategory[]
+  >({
+    queryKey: [CatalogQueryKeys.getCategoriesWithProducts],
+    queryFn: () => catalogService.getCategoriesWithProducts(),
+    select: normalizeJsonApiList,
+  });
 
-	return (
-		<div>
-			<Banner />
-			<PageLayout>
-				{!categoriesWithProducts && isLoading && <Spinner />}
-				{categoriesWithProducts && !isLoading && (
-					<CategoriesSection categories={categoriesWithProducts} />
-				)}
-			</PageLayout>
-		</div>
-	);
+  return (
+    <div>
+      <Banner />
+      <PageLayout>
+        {!categoriesWithProducts && isLoading && <Spinner />}
+        {categoriesWithProducts && !isLoading && (
+          <CategoriesSection categories={categoriesWithProducts} />
+        )}
+      </PageLayout>
+    </div>
+  );
 };
 
 export default HomePage;

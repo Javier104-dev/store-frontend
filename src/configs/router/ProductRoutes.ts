@@ -1,3 +1,3 @@
 export const ProductRoutes = {
-	VIEW_PRODUCT: '/product/:id',
+  VIEW_PRODUCT: '/product/:id',
 } as const;

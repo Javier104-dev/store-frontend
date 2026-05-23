@@ -6,17 +6,17 @@ import NavBar from '@/components/navbar/NavBar';
 import { AuthProvider } from '@/pages/auth/context/AuthContext';
 
 export default function Root() {
-	return (
-		<>
-			<AuthProvider>
-				<NavBar />
-				<div id="pages" className="flex flex-col flex-1">
-					<Outlet />
-				</div>
-			</AuthProvider>
-			<div data-test="toast-container">
-				<ToastContainer data-test="toast-container" />
-			</div>
-		</>
-	);
+  return (
+    <>
+      <AuthProvider>
+        <NavBar />
+        <div id="pages" className="flex flex-col flex-1">
+          <Outlet />
+        </div>
+      </AuthProvider>
+      <div data-test="toast-container">
+        <ToastContainer data-test="toast-container" />
+      </div>
+    </>
+  );
 }

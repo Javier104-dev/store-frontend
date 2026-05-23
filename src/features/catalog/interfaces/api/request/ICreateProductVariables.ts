@@ -1,6 +1,6 @@
 import { ICreateProduct } from '@/features/catalog/interfaces/api/request/ICreateProduct';
 
 export interface ICreateProductVariables {
-	product: ICreateProduct;
-	files: File[];
+  product: ICreateProduct;
+  files: File[];
 }

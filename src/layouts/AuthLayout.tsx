@@ -5,21 +5,21 @@ import { HomeRoutes } from '@/configs/router/HomeRoutes';
 import { StoredCookies } from '@/interfaces/auth/cookies.constants';
 
 export default function AuthLayout() {
-	const [cookies] = useCookies([
-		StoredCookies.USERNAME,
-		StoredCookies.REFRESH_TOKEN,
-	]);
+  const [cookies] = useCookies([
+    StoredCookies.USERNAME,
+    StoredCookies.REFRESH_TOKEN,
+  ]);
 
-	const isAuthenticated =
-		!!cookies[StoredCookies.REFRESH_TOKEN] && !!cookies[StoredCookies.USERNAME];
+  const isAuthenticated =
+    !!cookies[StoredCookies.REFRESH_TOKEN] && !!cookies[StoredCookies.USERNAME];
 
-	if (isAuthenticated) {
-		return <Navigate to={HomeRoutes.HOME} replace />;
-	}
+  if (isAuthenticated) {
+    return <Navigate to={HomeRoutes.HOME} replace />;
+  }
 
-	return (
-		<div>
-			<Outlet />
-		</div>
-	);
+  return (
+    <div>
+      <Outlet />
+    </div>
+  );
 }

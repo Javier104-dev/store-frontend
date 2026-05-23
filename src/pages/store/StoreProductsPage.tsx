@@ -23,71 +23,71 @@ import { notificationService } from '@/services/notification.service';
 import { normalizeJsonApiList } from '@/utils/jsonApi-normalizer';
 
 const StoreProductsPage = () => {
-	const navigate = useNavigate();
-	const { invalidateQueryKey } = useInvalidateQueries();
+  const navigate = useNavigate();
+  const { invalidateQueryKey } = useInvalidateQueries();
 
-	const { storeInfo } = useStore();
+  const { storeInfo } = useStore();
 
-	const { data: products, isLoading: productsIsLoading } = useGet<
-		IListResponse<IProductAttributes>,
-		IProduct[]
-	>({
-		queryKey: [ProductQueryKeys.getProductsFromOwner],
-		queryFn: () => productService.getProductsFromOwner(),
-		select: normalizeJsonApiList,
-		enabled: !!storeInfo,
-	});
+  const { data: products, isLoading: productsIsLoading } = useGet<
+    IListResponse<IProductAttributes>,
+    IProduct[]
+  >({
+    queryKey: [ProductQueryKeys.getProductsFromOwner],
+    queryFn: () => productService.getProductsFromOwner(),
+    select: normalizeJsonApiList,
+    enabled: !!storeInfo,
+  });
 
-	const { mutate, isPending, variables } = useMutate({
-		mutationFn: productService.deleteProduct,
-		onSuccess: () => {
-			invalidateQueryKey(ProductQueryKeys.getProductsFromOwner);
-		},
-	});
+  const { mutate, isPending, variables } = useMutate({
+    mutationFn: productService.deleteProduct,
+    onSuccess: () => {
+      invalidateQueryKey(ProductQueryKeys.getProductsFromOwner);
+    },
+  });
 
-	const handleDelete = (id: string) => {
-		mutate(id, {
-			onSuccess: () => {
-				notificationService.success(PRODUCT_TOAST_MESSAGES.deleted);
-			},
-			onError: (error) => {
-				notifyError(error);
-			},
-		});
-	};
+  const handleDelete = (id: string) => {
+    mutate(id, {
+      onSuccess: () => {
+        notificationService.success(PRODUCT_TOAST_MESSAGES.deleted);
+      },
+      onError: (error) => {
+        notifyError(error);
+      },
+    });
+  };
 
-	const handleEdit = (id: string) => {
-		navigate(buildStoreProductEditPath({ id }));
-	};
+  const handleEdit = (id: string) => {
+    navigate(buildStoreProductEditPath({ id }));
+  };
 
-	return (
-		<PageLayout>
-			<VStack dataTest="store-products">
-				<SectionHeader
-					title={'Todos los produtos'}
-					action={
-						<Button
-							innerText={'Agregar producto'}
-							to={StoreRoutes.CREATE_PRODUCT}
-							colorFill={true}
-							width={165}
-							data-test="create-product-button"
-						/>
-					}
-				/>
-				{!products && productsIsLoading && <Spinner />}
-				{products && !productsIsLoading && (
-					<AllProductsGrid
-						products={products}
-						onDelete={handleDelete}
-						onEdit={handleEdit}
-						disabled={isPending}
-						selectedProductId={variables}
-					/>
-				)}
-			</VStack>
-		</PageLayout>
-	);
+  return (
+    <PageLayout>
+      <VStack dataTest="store-products">
+        <SectionHeader
+          title={'Todos los produtos'}
+          action={
+            <Button
+              innerText={'Agregar producto'}
+              to={StoreRoutes.CREATE_PRODUCT}
+              colorFill={true}
+              width={165}
+              data-test="create-product-button"
+            />
+          }
+        />
+        {!products && productsIsLoading && <Spinner />}
+        {products && !productsIsLoading && (
+          <AllProductsGrid
+            products={products}
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+            disabled={isPending}
+            selectedProductId={variables}
+          />
+        )}
+      </VStack>
+    </PageLayout>
+  );
 };
 
 export default StoreProductsPage;

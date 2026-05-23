@@ -18,75 +18,75 @@ import useMutate from '@/hooks/query/useMutate';
 import { notificationService } from '@/services/notification.service';
 
 const defaultValues: IStoreFormValues = {
-	name: '',
+  name: '',
 };
 
 const StoreFormPage = () => {
-	const navigate = useNavigate();
-	const { invalidateQueryKeys } = useInvalidateQueries();
+  const navigate = useNavigate();
+  const { invalidateQueryKeys } = useInvalidateQueries();
 
-	const { storeInfo, isLoading } = useStore();
-	const storeId = storeInfo?.id ?? '';
-	const isEdit = Boolean(storeId);
+  const { storeInfo, isLoading } = useStore();
+  const storeId = storeInfo?.id ?? '';
+  const isEdit = Boolean(storeId);
 
-	const { mutate: createStore, isPending: createStoreIsPending } = useMutate({
-		mutationFn: storeService.createStore,
-		onSuccess: () => {
-			navigate(StoreRoutes.MANAGE_PRODUCTS);
-		},
-	});
+  const { mutate: createStore, isPending: createStoreIsPending } = useMutate({
+    mutationFn: storeService.createStore,
+    onSuccess: () => {
+      navigate(StoreRoutes.MANAGE_PRODUCTS);
+    },
+  });
 
-	const { mutate: updateStore, isPending: updateStoreIsPending } = useMutate({
-		mutationFn: storeService.updateStore,
-		onSuccess: () => {
-			invalidateQueryKeys([StoreQueryKeys.getStoreFronOwner]);
-			navigate(StoreRoutes.MANAGE_PRODUCTS);
-		},
-	});
+  const { mutate: updateStore, isPending: updateStoreIsPending } = useMutate({
+    mutationFn: storeService.updateStore,
+    onSuccess: () => {
+      invalidateQueryKeys([StoreQueryKeys.getStoreFronOwner]);
+      navigate(StoreRoutes.MANAGE_PRODUCTS);
+    },
+  });
 
-	const config = isEdit ? STORE_FORM_CONFIG.edit : STORE_FORM_CONFIG.create;
-	const mutation = isEdit ? updateStore : createStore;
-	const isPending = createStoreIsPending || updateStoreIsPending;
-	const mutationMessage = isEdit
-		? STORE_TOAST_MESSAGES.updated
-		: STORE_TOAST_MESSAGES.created;
+  const config = isEdit ? STORE_FORM_CONFIG.edit : STORE_FORM_CONFIG.create;
+  const mutation = isEdit ? updateStore : createStore;
+  const isPending = createStoreIsPending || updateStoreIsPending;
+  const mutationMessage = isEdit
+    ? STORE_TOAST_MESSAGES.updated
+    : STORE_TOAST_MESSAGES.created;
 
-	const handleStoreSubmit = (values: IStoreFormValues) => {
-		mutation(values, {
-			onSuccess: () => {
-				notificationService.success(mutationMessage);
-			},
-			onError: (error) => {
-				notifyError(error);
-			},
-		});
-	};
+  const handleStoreSubmit = (values: IStoreFormValues) => {
+    mutation(values, {
+      onSuccess: () => {
+        notificationService.success(mutationMessage);
+      },
+      onError: (error) => {
+        notifyError(error);
+      },
+    });
+  };
 
-	const handleDefaultValues = (storeInfo?: IStore): IStoreFormValues => {
-		if (isEdit && storeInfo) {
-			return {
-				name: storeInfo.name,
-			};
-		}
-		return defaultValues;
-	};
+  const handleDefaultValues = (storeInfo?: IStore): IStoreFormValues => {
+    if (isEdit && storeInfo) {
+      return {
+        name: storeInfo.name,
+      };
+    }
+    return defaultValues;
+  };
 
-	return (
-		<PageLayout>
-			<VStack>
-				{isLoading && <Spinner />}
-				{!isLoading && (
-					<StoreForm
-						handleStoreSubmit={handleStoreSubmit}
-						defaultValues={handleDefaultValues(storeInfo)}
-						isSubmitting={isPending}
-						title={config.title}
-						submitText={config.submitText}
-					/>
-				)}
-			</VStack>
-		</PageLayout>
-	);
+  return (
+    <PageLayout>
+      <VStack>
+        {isLoading && <Spinner />}
+        {!isLoading && (
+          <StoreForm
+            handleStoreSubmit={handleStoreSubmit}
+            defaultValues={handleDefaultValues(storeInfo)}
+            isSubmitting={isPending}
+            title={config.title}
+            submitText={config.submitText}
+          />
+        )}
+      </VStack>
+    </PageLayout>
+  );
 };
 
 export default StoreFormPage;

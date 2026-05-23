@@ -1,3 +1,3 @@
 export interface IStoreFormValues {
-	name: string;
+  name: string;
 }

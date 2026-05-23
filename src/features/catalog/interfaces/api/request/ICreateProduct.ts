@@ -1,6 +1,6 @@
 export interface ICreateProduct {
-	name: string;
-	price: number;
-	description: string;
-	categoryIds: string[];
+  name: string;
+  price: number;
+  description: string;
+  categoryIds: string[];
 }

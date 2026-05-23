@@ -4,14 +4,14 @@ import type { IListResponse } from '@/interfaces/api/IApiBaseResponse';
 import { type ApiRequestConfig, apiService } from '@/services/api.service';
 
 class CategoryService implements ICategoryService {
-	async getCategories(
-		config?: ApiRequestConfig,
-	): Promise<IListResponse<ICategoryAttributes>> {
-		return apiService.get<IListResponse<ICategoryAttributes>>('/category', {
-			...config,
-			params: { page: { size: 25 } },
-		});
-	}
+  async getCategories(
+    config?: ApiRequestConfig,
+  ): Promise<IListResponse<ICategoryAttributes>> {
+    return apiService.get<IListResponse<ICategoryAttributes>>('/category', {
+      ...config,
+      params: { page: { size: 25 } },
+    });
+  }
 }
 
 export const categoryService = new CategoryService();

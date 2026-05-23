@@ -10,62 +10,62 @@ import SelectableCategoryTag from '@/features/category/components/category-tags/
 import CategorySelectorContainer from '@/features/category/components/selector/CategorySelectorContainer';
 
 type PropTypes = {
-	onClose: () => void;
-	handleRemove: (categoryId: string) => void;
-	resources: ICategoryOption[];
-	helpers: FieldHelperProps<unknown>;
-	values: ICategoryOption[];
+  onClose: () => void;
+  handleRemove: (categoryId: string) => void;
+  resources: ICategoryOption[];
+  helpers: FieldHelperProps<unknown>;
+  values: ICategoryOption[];
 };
 
 const CategoriesModal = ({
-	onClose,
-	handleRemove,
-	resources,
-	helpers,
-	values,
+  onClose,
+  handleRemove,
+  resources,
+  helpers,
+  values,
 }: PropTypes) => {
-	const handleSelect = (selectedResource: ICategoryOption) => {
-		helpers.setValue([...values, selectedResource]);
-	};
+  const handleSelect = (selectedResource: ICategoryOption) => {
+    helpers.setValue([...values, selectedResource]);
+  };
 
-	const filteredResources = resources.filter(
-		(resource) => !values.some((item) => item.id === resource.id),
-	);
+  const filteredResources = resources.filter(
+    (resource) => !values.some((item) => item.id === resource.id),
+  );
 
-	return (
-		<FormContainer dataTest="categories-modal">
-			<VStack>
-				<SectionHeader
-					title={'Categorias'}
-					action={<CloseModalButton onClose={onClose} />}
-				/>
-				<CategorySelectorContainer
-					categories={filteredResources}
-					label={'Categorias disponibles'}
-					renderTag={(category) => (
-						<SelectableCategoryTag
-							key={category.id}
-							category={category}
-							onSelect={handleSelect}
-						/>
-					)}
-					dataTest="available-categories"
-				/>
-				<CategorySelectorContainer
-					categories={values}
-					label={'Categorias seleccionadas'}
-					renderTag={(category) => (
-						<RemovableCategoryTag
-							key={category.id}
-							category={category}
-							handleRemove={handleRemove}
-						/>
-					)}
-					dataTest="selected-categories"
-				/>
-			</VStack>
-		</FormContainer>
-	);
+  return (
+    <FormContainer dataTest="categories-modal">
+      <VStack>
+        <SectionHeader
+          title={'Categorias'}
+          action={<CloseModalButton onClose={onClose} />}
+        />
+        <CategorySelectorContainer
+          categories={filteredResources}
+          label={'Categorias disponibles'}
+          renderTag={(category) => (
+            <SelectableCategoryTag
+              key={category.id}
+              category={category}
+              onSelect={handleSelect}
+            />
+          )}
+          dataTest="available-categories"
+        />
+        <CategorySelectorContainer
+          categories={values}
+          label={'Categorias seleccionadas'}
+          renderTag={(category) => (
+            <RemovableCategoryTag
+              key={category.id}
+              category={category}
+              handleRemove={handleRemove}
+            />
+          )}
+          dataTest="selected-categories"
+        />
+      </VStack>
+    </FormContainer>
+  );
 };
 
 export default CategoriesModal;

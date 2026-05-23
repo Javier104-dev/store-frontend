@@ -5,21 +5,21 @@ import ProductGrid from '@/features/product/components/grids/ProductGrid';
 import type { IProduct } from '@/features/product/interfaces/types/IProduct';
 
 type PropTypes = {
-	title: string;
-	products: IProduct[];
-	dataTest?: string;
+  title: string;
+  products: IProduct[];
+  dataTest?: string;
 };
 
 const CategorySection = ({ title, products, dataTest }: PropTypes) => {
-	return (
-		<VStack dataTest={dataTest}>
-			<SectionHeader
-				title={title}
-				action={<ArrowLink label={'Ver todo'} to={'#'} />}
-			/>
-			<ProductGrid products={products} />
-		</VStack>
-	);
+  return (
+    <VStack dataTest={dataTest}>
+      <SectionHeader
+        title={title}
+        action={<ArrowLink label={'Ver todo'} to={'#'} />}
+      />
+      <ProductGrid products={products} />
+    </VStack>
+  );
 };
 
 export default CategorySection;

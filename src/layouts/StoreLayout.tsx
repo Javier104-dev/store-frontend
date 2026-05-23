@@ -5,17 +5,17 @@ import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { useStore } from '@/features/store/hooks/useStore';
 
 const StoreLayout = () => {
-	const { storeInfo, isLoading } = useStore();
+  const { storeInfo, isLoading } = useStore();
 
-	if (isLoading) {
-		return <Spinner />;
-	}
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-	if (!storeInfo) {
-		return <Navigate to={StoreRoutes.STORE} replace />;
-	}
+  if (!storeInfo) {
+    return <Navigate to={StoreRoutes.STORE} replace />;
+  }
 
-	return <Outlet />;
+  return <Outlet />;
 };
 
 export default StoreLayout;

@@ -5,15 +5,15 @@ import type { ISingleResponse } from '@/interfaces/api/IApiBaseResponse';
 import { type ApiRequestConfig, apiService } from '@/services/api.service';
 
 class UserService implements IUserService {
-	async getMe(
-		config?: ApiRequestConfig,
-	): Promise<ISingleResponse<IUserAttributes>> {
-		return apiService.get<ISingleResponse<IUserAttributes>>('/user/me', config);
-	}
+  async getMe(
+    config?: ApiRequestConfig,
+  ): Promise<ISingleResponse<IUserAttributes>> {
+    return apiService.get<ISingleResponse<IUserAttributes>>('/user/me', config);
+  }
 
-	async getUsersCount(): Promise<ISingleResponse<IUserCountAttributes>> {
-		return apiService.get<ISingleResponse<IUserCountAttributes>>('/user/count');
-	}
+  async getUsersCount(): Promise<ISingleResponse<IUserCountAttributes>> {
+    return apiService.get<ISingleResponse<IUserCountAttributes>>('/user/count');
+  }
 }
 
 export const userService = new UserService();

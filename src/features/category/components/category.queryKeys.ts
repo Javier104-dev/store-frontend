@@ -1,3 +1,3 @@
 export const CategoryQueryKeys = {
-	getCategories: 'get-categories',
+  getCategories: 'get-categories',
 } as const;

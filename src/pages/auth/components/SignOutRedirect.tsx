@@ -5,9 +5,9 @@ import { HomeRoutes } from '@/configs/router/HomeRoutes';
 import { useAuthProvider } from '@/pages/auth/hooks/useAuthProvider';
 
 export default function SignOutRedirect() {
-	const { handleSignOut } = useAuthProvider();
-	useEffect(() => {
-		handleSignOut();
-	}, [handleSignOut]);
-	return <Navigate to={HomeRoutes.HOME} />;
+  const { handleSignOut } = useAuthProvider();
+  useEffect(() => {
+    handleSignOut();
+  }, [handleSignOut]);
+  return <Navigate to={HomeRoutes.HOME} />;
 }

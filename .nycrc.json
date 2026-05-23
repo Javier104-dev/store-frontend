@@ -1,16 +1,16 @@
 {
-	"all": true,
-	"check-coverage": true,
-	"report-dir": "coverage/playwright",
-	"include": [
-		"src/**/*.{js,jsx,ts,tsx}",
-		"!src/**/*.{test,spec}.{js,jsx,ts,tsx}",
-		"!src/**/*.config.{js,ts}",
-		"!**/*.d.ts",
-		"!src/interfaces/**/*.*"
-	],
-	"branches": 90,
-	"functions": 90,
-	"lines": 90,
-	"statements": 90
+  "all": true,
+  "check-coverage": true,
+  "report-dir": "coverage/playwright",
+  "include": [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/**/*.{test,spec}.{js,jsx,ts,tsx}",
+    "!src/**/*.config.{js,ts}",
+    "!**/*.d.ts",
+    "!src/interfaces/**/*.*"
+  ],
+  "branches": 90,
+  "functions": 90,
+  "lines": 90,
+  "statements": 90
 }

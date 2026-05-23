@@ -2,6 +2,6 @@ import type { ICategoryAttributes } from '@/features/category/interfaces/api/res
 import type { IProduct } from '@/features/product/interfaces/types/IProduct';
 
 export interface ICategory extends ICategoryAttributes {
-	id: string;
-	products: IProduct[];
+  id: string;
+  products: IProduct[];
 }

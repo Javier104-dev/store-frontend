@@ -3,7 +3,7 @@ import type { IListResponse } from '@/interfaces/api/IApiBaseResponse';
 import type { ApiRequestConfig } from '@/services/api.service';
 
 export interface ICategoryService {
-	getCategories(
-		config?: ApiRequestConfig,
-	): Promise<IListResponse<ICategoryAttributes>>;
+  getCategories(
+    config?: ApiRequestConfig,
+  ): Promise<IListResponse<ICategoryAttributes>>;
 }
