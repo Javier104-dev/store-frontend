@@ -52,7 +52,7 @@ const StoreForm = ({
 						disabled={isSubmitting}
 						innerText={submitText}
 						colorFill={true}
-						data-test="product-form-submit"
+						data-test="store-form-submit"
 						type="submit"
 					/>
 				</form>
