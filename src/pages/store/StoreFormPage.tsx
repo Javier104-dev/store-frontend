@@ -21,7 +21,7 @@ const defaultValues: IStoreFormValues = {
 	name: '',
 };
 
-const StorePage = () => {
+const StoreFormPage = () => {
 	const navigate = useNavigate();
 	const { invalidateQueryKeys } = useInvalidateQueries();
 
@@ -73,7 +73,7 @@ const StorePage = () => {
 
 	return (
 		<PageLayout>
-			<VStack dataTest="store-products">
+			<VStack>
 				{isLoading && <Spinner />}
 				{!isLoading && (
 					<StoreForm
@@ -89,4 +89,4 @@ const StorePage = () => {
 	);
 };
 
-export default StorePage;
+export default StoreFormPage;

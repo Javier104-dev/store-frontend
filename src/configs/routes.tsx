@@ -17,10 +17,10 @@ import SignOut from '@/pages/auth/SignOut';
 import SignUp from '@/pages/auth/SignUp';
 import HomePage from '@/pages/home/HomePage';
 import ViewProduct from '@/pages/product/ViewProductPage';
-import StorePage from '@/pages/store/StorePage';
 import StoreProductsPage from '@/pages/store/StoreProductsPage';
 
 import ProductForm from '@pages/store/ProductFormPage';
+import StoreFormPage from '@pages/store/StoreFormPage';
 
 export const authRoutes: RouteObject[] = [
 	{
@@ -61,7 +61,7 @@ export const authRoutes: RouteObject[] = [
 const storeRoutes: RouteObject[] = [
 	{
 		path: StoreRoutes.STORE,
-		element: <StorePage />,
+		element: <StoreFormPage />,
 	},
 	{
 		element: <StoreLayout />,

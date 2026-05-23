@@ -1,9 +1,11 @@
-import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FormProvider, useForm } from 'react-hook-form';
 
 import FormField from '@/components/forms/form-field/FormFiel';
 import Button from '@/components/ui/actions/Button';
 import FormContainer from '@/components/ui/form/FormContainer';
 import Heading from '@/components/ui/heading/Heading';
+import { storeFormSchema } from '@/features/store/components/form/schemas/store-form.schema';
 import type { IStoreFormValues } from '@/features/store/interfaces/form/IStoreFormValues';
 import type { IRHFFieldConfig } from '@/interfaces/form/IRHFFieldConfig';
 
@@ -22,7 +24,9 @@ const StoreForm = ({
 	title,
 	submitText,
 }: PropsTypes) => {
-	const { register, handleSubmit } = useForm<IStoreFormValues>({
+	const methods = useForm<IStoreFormValues>({
+		resolver: zodResolver(storeFormSchema),
+		mode: 'onTouched',
 		defaultValues,
 	});
 
@@ -37,24 +41,22 @@ const StoreForm = ({
 
 	return (
 		<FormContainer>
-			<form onSubmit={handleSubmit(handleStoreSubmit)}>
-				<Heading title={title} />
-				{formFields.map((field) => (
-					<FormField<IStoreFormValues>
-						key={field.name}
-						register={register}
-						{...field}
+			<FormProvider {...methods}>
+				<form onSubmit={methods.handleSubmit(handleStoreSubmit)}>
+					<Heading title={title} />
+					{formFields.map((field) => (
+						<FormField<IStoreFormValues> key={field.name} {...field} />
+					))}
+					<Button
+						isLoading={isSubmitting}
+						disabled={isSubmitting}
+						innerText={submitText}
+						colorFill={true}
+						data-test="store-form-submit"
+						type="submit"
 					/>
-				))}
-				<Button
-					isLoading={isSubmitting}
-					disabled={isSubmitting}
-					innerText={submitText}
-					colorFill={true}
-					data-test="product-form-submit"
-					type="submit"
-				/>
-			</form>
+				</form>
+			</FormProvider>
 		</FormContainer>
 	);
 };
