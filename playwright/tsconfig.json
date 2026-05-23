@@ -1,13 +1,13 @@
 {
-	"compilerOptions": {
-		"paths": {
-			"@context/*": ["../src/context/*"],
-			"@assets/*": ["../src/assets/*"],
-			"@components/*": ["../src/components/*"],
-			"@configs/*": ["../src/configs/*"],
-			"@pages/*": ["../src/pages/*"],
-			"@/*": ["../src/*"]
-		}
-	},
-	"include": ["**/*.ts", "../src"]
+  "compilerOptions": {
+    "paths": {
+      "@context/*": ["../src/context/*"],
+      "@assets/*": ["../src/assets/*"],
+      "@components/*": ["../src/components/*"],
+      "@configs/*": ["../src/configs/*"],
+      "@pages/*": ["../src/pages/*"],
+      "@/*": ["../src/*"]
+    }
+  },
+  "include": ["**/*.ts", "../src"]
 }

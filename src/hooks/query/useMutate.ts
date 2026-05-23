@@ -2,21 +2,21 @@ import { type UseMutationResult, useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
 interface UseMutateOptions<TData, TVariables = void> {
-	mutationFn: (variables: TVariables) => Promise<TData>;
-	onSuccess?: (data: TData) => void;
-	onError?: (error: AxiosError) => void;
+  mutationFn: (variables: TVariables) => Promise<TData>;
+  onSuccess?: (data: TData) => void;
+  onError?: (error: AxiosError) => void;
 }
 
 const useMutate = <TData = unknown, TVariables = void>(
-	options: UseMutateOptions<TData, TVariables>,
+  options: UseMutateOptions<TData, TVariables>,
 ): UseMutationResult<TData, AxiosError, TVariables> => {
-	const { mutationFn, onSuccess, onError } = options;
+  const { mutationFn, onSuccess, onError } = options;
 
-	return useMutation<TData, AxiosError, TVariables>({
-		mutationFn,
-		onSuccess,
-		onError,
-	});
+  return useMutation<TData, AxiosError, TVariables>({
+    mutationFn,
+    onSuccess,
+    onError,
+  });
 };
 
 export default useMutate;

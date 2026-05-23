@@ -1,3 +1,3 @@
 export interface ICreateStore {
-	name: string;
+  name: string;
 }

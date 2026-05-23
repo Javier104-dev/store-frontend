@@ -1,17 +1,17 @@
 import { useQueryClient } from '@tanstack/react-query';
 
 const useInvalidateQueries = () => {
-	const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
-	return {
-		invalidateQueryKey: (queryKey: string) =>
-			queryClient.invalidateQueries({ queryKey: [queryKey] }),
+  return {
+    invalidateQueryKey: (queryKey: string) =>
+      queryClient.invalidateQueries({ queryKey: [queryKey] }),
 
-		invalidateQueryKeys: (queryKeys: string[]) =>
-			queryClient.invalidateQueries({ queryKey: queryKeys }),
+    invalidateQueryKeys: (queryKeys: string[]) =>
+      queryClient.invalidateQueries({ queryKey: queryKeys }),
 
-		invalidateAllQueryKeys: () => queryClient.invalidateQueries(),
-	};
+    invalidateAllQueryKeys: () => queryClient.invalidateQueries(),
+  };
 };
 
 export default useInvalidateQueries;

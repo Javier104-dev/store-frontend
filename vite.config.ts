@@ -11,31 +11,31 @@ const rawAlias: Record<string, string[]> = tsconfigApp.compilerOptions.paths;
 const alias: Record<string, string> = {};
 
 for (const x in rawAlias) {
-	alias[x.replace('/*', '')] = path.resolve(
-		__dirname,
-		rawAlias[x][0].replace('/*', ''),
-	);
+  alias[x.replace('/*', '')] = path.resolve(
+    __dirname,
+    rawAlias[x][0].replace('/*', ''),
+  );
 }
 
 function viteConfig({ mode }: { mode: string }): UserConfig {
-	process.env = loadEnv(mode, process.cwd(), '');
-	return defineConfig({
-		resolve: { alias },
-		plugins: [
-			tailwindcss(),
-			react(),
-			babel({ presets: [reactCompilerPreset()] }),
-			istanbul({
-				include: 'src/*',
-				exclude: ['node_modules', 'playwright/**'],
-				extension: ['.js', '.jsx', '.ts', '.tsx'],
-			}),
-		],
-		server: {
-			host: true,
-			port: process.env.PORT ? +process.env.PORT : 3000,
-		},
-	});
+  process.env = loadEnv(mode, process.cwd(), '');
+  return defineConfig({
+    resolve: { alias },
+    plugins: [
+      tailwindcss(),
+      react(),
+      babel({ presets: [reactCompilerPreset()] }),
+      istanbul({
+        include: 'src/*',
+        exclude: ['node_modules', 'playwright/**'],
+        extension: ['.js', '.jsx', '.ts', '.tsx'],
+      }),
+    ],
+    server: {
+      host: true,
+      port: process.env.PORT ? +process.env.PORT : 3000,
+    },
+  });
 }
 
 export default viteConfig;

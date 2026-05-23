@@ -23,89 +23,89 @@ import ProductForm from '@pages/store/ProductFormPage';
 import StoreFormPage from '@pages/store/StoreFormPage';
 
 export const authRoutes: RouteObject[] = [
-	{
-		path: AuthRoutes.SIGN_OUT,
-		element: <SignOut />,
-	},
-	{
-		element: <AuthLayout />,
-		children: [
-			{
-				path: AuthRoutes.SIGN_IN,
-				element: <SignIn />,
-			},
-			{
-				path: AuthRoutes.SIGN_UP,
-				element: <SignUp />,
-			},
-			{
-				path: AuthRoutes.CONFIRM_USER,
-				element: <ConfirmUser />,
-			},
-			{
-				path: AuthRoutes.CONFIRM_PASSWORD,
-				element: <ConfirmPassword />,
-			},
-			{
-				path: AuthRoutes.RESEND_CONFIRMATION_CODE,
-				element: <ResendConfirmationCode />,
-			},
-			{
-				path: AuthRoutes.FORGOT_PASSWORD,
-				element: <ForgotPassword />,
-			},
-		],
-	},
+  {
+    path: AuthRoutes.SIGN_OUT,
+    element: <SignOut />,
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: AuthRoutes.SIGN_IN,
+        element: <SignIn />,
+      },
+      {
+        path: AuthRoutes.SIGN_UP,
+        element: <SignUp />,
+      },
+      {
+        path: AuthRoutes.CONFIRM_USER,
+        element: <ConfirmUser />,
+      },
+      {
+        path: AuthRoutes.CONFIRM_PASSWORD,
+        element: <ConfirmPassword />,
+      },
+      {
+        path: AuthRoutes.RESEND_CONFIRMATION_CODE,
+        element: <ResendConfirmationCode />,
+      },
+      {
+        path: AuthRoutes.FORGOT_PASSWORD,
+        element: <ForgotPassword />,
+      },
+    ],
+  },
 ];
 
 const storeRoutes: RouteObject[] = [
-	{
-		path: StoreRoutes.STORE,
-		element: <StoreFormPage />,
-	},
-	{
-		element: <StoreLayout />,
-		children: [
-			{
-				path: StoreRoutes.MANAGE_PRODUCTS,
-				element: <StoreProductsPage />,
-			},
-			{
-				path: StoreRoutes.CREATE_PRODUCT,
-				element: <ProductForm />,
-			},
-			{
-				path: StoreRoutes.EDIT_PRODUCT,
-				element: <ProductForm />,
-			},
-		],
-	},
+  {
+    path: StoreRoutes.STORE,
+    element: <StoreFormPage />,
+  },
+  {
+    element: <StoreLayout />,
+    children: [
+      {
+        path: StoreRoutes.MANAGE_PRODUCTS,
+        element: <StoreProductsPage />,
+      },
+      {
+        path: StoreRoutes.CREATE_PRODUCT,
+        element: <ProductForm />,
+      },
+      {
+        path: StoreRoutes.EDIT_PRODUCT,
+        element: <ProductForm />,
+      },
+    ],
+  },
 ];
 
 export const privateRoutes: RouteObject[] = [
-	{
-		element: <PrivateLayout />,
-		children: [
-			...storeRoutes,
-			{
-				path: '/about',
-				element: <About />,
-			},
-		],
-	},
+  {
+    element: <PrivateLayout />,
+    children: [
+      ...storeRoutes,
+      {
+        path: '/about',
+        element: <About />,
+      },
+    ],
+  },
 ];
 
 export const homeRoutes: RouteObject[] = [
-	{
-		index: true,
-		path: HomeRoutes.HOME,
-		element: <HomePage />,
-	},
+  {
+    index: true,
+    path: HomeRoutes.HOME,
+    element: <HomePage />,
+  },
 ];
 
 export const productRoutes: RouteObject[] = [
-	{
-		path: ProductRoutes.VIEW_PRODUCT,
-		element: <ViewProduct />,
-	},
+  {
+    path: ProductRoutes.VIEW_PRODUCT,
+    element: <ViewProduct />,
+  },
 ];

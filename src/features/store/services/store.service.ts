@@ -6,36 +6,36 @@ import type { ISingleResponse } from '@/interfaces/api/IApiBaseResponse';
 import { type ApiRequestConfig, apiService } from '@/services/api.service';
 
 class StoreService implements IStoreService {
-	async getStoreFronOwner(
-		config?: ApiRequestConfig,
-	): Promise<ISingleResponse<IStoreAttributes>> {
-		return apiService.get<ISingleResponse<IStoreAttributes>>(
-			'/store/owner',
-			config,
-		);
-	}
+  async getStoreFronOwner(
+    config?: ApiRequestConfig,
+  ): Promise<ISingleResponse<IStoreAttributes>> {
+    return apiService.get<ISingleResponse<IStoreAttributes>>(
+      '/store/owner',
+      config,
+    );
+  }
 
-	async createStore(
-		createStore: ICreateStore,
-		config?: ApiRequestConfig,
-	): Promise<ISingleResponse<IStoreAttributes>> {
-		return apiService.post<ISingleResponse<IStoreAttributes>>(
-			'/store',
-			createStore,
-			config,
-		);
-	}
+  async createStore(
+    createStore: ICreateStore,
+    config?: ApiRequestConfig,
+  ): Promise<ISingleResponse<IStoreAttributes>> {
+    return apiService.post<ISingleResponse<IStoreAttributes>>(
+      '/store',
+      createStore,
+      config,
+    );
+  }
 
-	async updateStore(
-		updateStore: IUpdateStore,
-		config?: ApiRequestConfig,
-	): Promise<ISingleResponse<IStoreAttributes>> {
-		return apiService.patch<ISingleResponse<IStoreAttributes>>(
-			'/store',
-			updateStore,
-			config,
-		);
-	}
+  async updateStore(
+    updateStore: IUpdateStore,
+    config?: ApiRequestConfig,
+  ): Promise<ISingleResponse<IStoreAttributes>> {
+    return apiService.patch<ISingleResponse<IStoreAttributes>>(
+      '/store',
+      updateStore,
+      config,
+    );
+  }
 }
 
 export const storeService = new StoreService();

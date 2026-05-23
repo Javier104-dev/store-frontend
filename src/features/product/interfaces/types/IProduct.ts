@@ -3,7 +3,7 @@ import type { IProductAttributes } from '@/features/product/interfaces/api/respo
 import type { IUpload } from '@/features/product/interfaces/types/IUpload';
 
 export interface IProduct extends IProductAttributes {
-	id: string;
-	categories: ICategory[];
-	upload: IUpload[];
+  id: string;
+  categories: ICategory[];
+  upload: IUpload[];
 }

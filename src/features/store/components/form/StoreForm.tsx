@@ -10,55 +10,55 @@ import type { IStoreFormValues } from '@/features/store/interfaces/form/IStoreFo
 import type { IRHFFieldConfig } from '@/interfaces/form/IRHFFieldConfig';
 
 type PropsTypes = {
-	handleStoreSubmit: (values: IStoreFormValues) => void;
-	defaultValues: IStoreFormValues;
-	isSubmitting: boolean;
-	title: string;
-	submitText: string;
+  handleStoreSubmit: (values: IStoreFormValues) => void;
+  defaultValues: IStoreFormValues;
+  isSubmitting: boolean;
+  title: string;
+  submitText: string;
 };
 
 const StoreForm = ({
-	handleStoreSubmit,
-	defaultValues,
-	isSubmitting,
-	title,
-	submitText,
+  handleStoreSubmit,
+  defaultValues,
+  isSubmitting,
+  title,
+  submitText,
 }: PropsTypes) => {
-	const methods = useForm<IStoreFormValues>({
-		resolver: zodResolver(storeFormSchema),
-		mode: 'onTouched',
-		defaultValues,
-	});
+  const methods = useForm<IStoreFormValues>({
+    resolver: zodResolver(storeFormSchema),
+    mode: 'onTouched',
+    defaultValues,
+  });
 
-	const formFields: IRHFFieldConfig<IStoreFormValues>[] = [
-		{
-			name: 'name',
-			label: 'Nombre de la tienda',
-			type: 'text',
-			placeholder: 'Nombre de la tienda',
-		},
-	];
+  const formFields: IRHFFieldConfig<IStoreFormValues>[] = [
+    {
+      name: 'name',
+      label: 'Nombre de la tienda',
+      type: 'text',
+      placeholder: 'Nombre de la tienda',
+    },
+  ];
 
-	return (
-		<FormContainer>
-			<FormProvider {...methods}>
-				<form onSubmit={methods.handleSubmit(handleStoreSubmit)}>
-					<Heading title={title} />
-					{formFields.map((field) => (
-						<FormField<IStoreFormValues> key={field.name} {...field} />
-					))}
-					<Button
-						isLoading={isSubmitting}
-						disabled={isSubmitting}
-						innerText={submitText}
-						colorFill={true}
-						data-test="store-form-submit"
-						type="submit"
-					/>
-				</form>
-			</FormProvider>
-		</FormContainer>
-	);
+  return (
+    <FormContainer>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(handleStoreSubmit)}>
+          <Heading title={title} />
+          {formFields.map((field) => (
+            <FormField<IStoreFormValues> key={field.name} {...field} />
+          ))}
+          <Button
+            isLoading={isSubmitting}
+            disabled={isSubmitting}
+            innerText={submitText}
+            colorFill={true}
+            data-test="store-form-submit"
+            type="submit"
+          />
+        </form>
+      </FormProvider>
+    </FormContainer>
+  );
 };
 
 export default StoreForm;

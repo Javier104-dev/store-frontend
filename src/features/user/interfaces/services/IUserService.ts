@@ -4,6 +4,6 @@ import type { ISingleResponse } from '@/interfaces/api/IApiBaseResponse';
 import type { ApiRequestConfig } from '@/services/api.service';
 
 export interface IUserService {
-	getMe(config?: ApiRequestConfig): Promise<ISingleResponse<IUserAttributes>>;
-	getUsersCount(): Promise<ISingleResponse<IUserCountAttributes>>;
+  getMe(config?: ApiRequestConfig): Promise<ISingleResponse<IUserAttributes>>;
+  getUsersCount(): Promise<ISingleResponse<IUserCountAttributes>>;
 }

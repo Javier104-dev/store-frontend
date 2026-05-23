@@ -1,3 +1,3 @@
 export interface ISignUpResponse {
-	externalId: string;
+  externalId: string;
 }

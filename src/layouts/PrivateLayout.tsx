@@ -6,34 +6,34 @@ import { StoredCookies } from '@/interfaces/auth/cookies.constants';
 import { useAuthProvider } from '@/pages/auth/hooks/useAuthProvider';
 
 export default function PrivateLayout() {
-	const [cookies] = useCookies([
-		StoredCookies.USERNAME,
-		StoredCookies.REFRESH_TOKEN,
-	]);
-	const { loadingState } = useAuthProvider();
+  const [cookies] = useCookies([
+    StoredCookies.USERNAME,
+    StoredCookies.REFRESH_TOKEN,
+  ]);
+  const { loadingState } = useAuthProvider();
 
-	const isAuthenticated =
-		!!cookies[StoredCookies.REFRESH_TOKEN] && !!cookies[StoredCookies.USERNAME];
+  const isAuthenticated =
+    !!cookies[StoredCookies.REFRESH_TOKEN] && !!cookies[StoredCookies.USERNAME];
 
-	if (loadingState.refreshSession) {
-		return (
-			<div className="flex flex-1 items-center justify-center flex-col">
-				<div className="flex flex-1 items-center justify-center">
-					<span className="material-symbols-outlined animate-spin pointer-events-none">
-						progress_activity
-					</span>
-				</div>
-			</div>
-		);
-	}
+  if (loadingState.refreshSession) {
+    return (
+      <div className="flex flex-1 items-center justify-center flex-col">
+        <div className="flex flex-1 items-center justify-center">
+          <span className="material-symbols-outlined animate-spin pointer-events-none">
+            progress_activity
+          </span>
+        </div>
+      </div>
+    );
+  }
 
-	if (!isAuthenticated) {
-		return <Navigate to={AuthRoutes.SIGN_IN} replace />;
-	}
+  if (!isAuthenticated) {
+    return <Navigate to={AuthRoutes.SIGN_IN} replace />;
+  }
 
-	return (
-		<div>
-			<Outlet />
-		</div>
-	);
+  return (
+    <div>
+      <Outlet />
+    </div>
+  );
 }

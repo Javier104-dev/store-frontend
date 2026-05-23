@@ -1,4 +1,4 @@
 export interface ProductFilter {
-	categoryId?: string;
-	storeId?: string;
+  categoryId?: string;
+  storeId?: string;
 }

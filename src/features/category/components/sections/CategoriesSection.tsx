@@ -3,22 +3,22 @@ import CategorySection from '@/features/category/components/sections/CategorySec
 import type { ICategory } from '@/features/category/interfaces/types/ICategory';
 
 type PropTypes = {
-	categories: ICategory[];
+  categories: ICategory[];
 };
 
 const CategoriesSection = ({ categories }: PropTypes) => {
-	return (
-		<VStack gapClassName={'gap-8 lg:gap-16'}>
-			{categories.map((category) => (
-				<CategorySection
-					key={category.id}
-					title={category.name}
-					products={category.products}
-					dataTest={category.id}
-				/>
-			))}
-		</VStack>
-	);
+  return (
+    <VStack gapClassName={'gap-8 lg:gap-16'}>
+      {categories.map((category) => (
+        <CategorySection
+          key={category.id}
+          title={category.name}
+          products={category.products}
+          dataTest={category.id}
+        />
+      ))}
+    </VStack>
+  );
 };
 
 export default CategoriesSection;

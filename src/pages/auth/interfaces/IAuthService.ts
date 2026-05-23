@@ -6,38 +6,38 @@ import type { ISuccessfulAuthenticationResponse } from '@/pages/auth/interfaces/
 import type { ApiRequestConfig } from '@/services/api.service';
 
 export interface IAuthService {
-	signUp: (
-		username: string,
-		password: string,
-		config?: ApiRequestConfig,
-	) => Promise<ISingleResponse<ISignUpResponse>>;
-	signIn: (
-		username: string,
-		password: string,
-		config?: ApiRequestConfig,
-	) => Promise<ISingleResponse<ISignInResponse>>;
-	confirmUser: (
-		username: string,
-		code: string,
-		config?: ApiRequestConfig,
-	) => Promise<ISingleResponse<ISuccessfulAuthenticationResponse>>;
-	confirmPassword: (
-		username: string,
-		newPassword: string,
-		code: string,
-		config?: ApiRequestConfig,
-	) => Promise<ISingleResponse<ISuccessfulAuthenticationResponse>>;
-	resendConfirmationCode: (
-		username: string,
-		config?: ApiRequestConfig,
-	) => Promise<ISingleResponse<ISuccessfulAuthenticationResponse>>;
-	forgotPassword: (
-		username: string,
-		config?: ApiRequestConfig,
-	) => Promise<ISingleResponse<ISuccessfulAuthenticationResponse>>;
-	refreshToken: (
-		username: string,
-		refreshToken: string,
-		config?: ApiRequestConfig,
-	) => Promise<ISingleResponse<IRefreshSessionResponse>>;
+  signUp: (
+    username: string,
+    password: string,
+    config?: ApiRequestConfig,
+  ) => Promise<ISingleResponse<ISignUpResponse>>;
+  signIn: (
+    username: string,
+    password: string,
+    config?: ApiRequestConfig,
+  ) => Promise<ISingleResponse<ISignInResponse>>;
+  confirmUser: (
+    username: string,
+    code: string,
+    config?: ApiRequestConfig,
+  ) => Promise<ISingleResponse<ISuccessfulAuthenticationResponse>>;
+  confirmPassword: (
+    username: string,
+    newPassword: string,
+    code: string,
+    config?: ApiRequestConfig,
+  ) => Promise<ISingleResponse<ISuccessfulAuthenticationResponse>>;
+  resendConfirmationCode: (
+    username: string,
+    config?: ApiRequestConfig,
+  ) => Promise<ISingleResponse<ISuccessfulAuthenticationResponse>>;
+  forgotPassword: (
+    username: string,
+    config?: ApiRequestConfig,
+  ) => Promise<ISingleResponse<ISuccessfulAuthenticationResponse>>;
+  refreshToken: (
+    username: string,
+    refreshToken: string,
+    config?: ApiRequestConfig,
+  ) => Promise<ISingleResponse<IRefreshSessionResponse>>;
 }
