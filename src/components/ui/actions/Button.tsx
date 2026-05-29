@@ -30,6 +30,7 @@ const Button = ({
     border: colorFill ? 'none' : '1px solid #2A7AE4',
     width: width ? `${width}px` : '100%',
     height: '50px',
+    cursor: 'pointer',
   };
 
   const spinnerStyle = {

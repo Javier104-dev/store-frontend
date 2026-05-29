@@ -22,7 +22,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
         ref={ref}
         aria-modal="true"
         onPointerDown={handleBackdropPointerDown}
-        className={`focus:outline-none p-4 rounded-md backdrop:bg-black/30 border border-grey-20 text-[#464646] ${
+        className={`m-auto focus:outline-none p-4 rounded-md backdrop:bg-black/30 border border-grey-20 text-[#464646] ${
           modalBoxClassName ?? ''
         }`}
       >
