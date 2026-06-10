@@ -15,7 +15,7 @@ const CategorySection = ({ title, products, dataTest }: PropTypes) => {
     <VStack dataTest={dataTest}>
       <SectionHeader
         title={title}
-        action={<ArrowLink label={'Ver todo'} to={'#'} />}
+        action={<ArrowLink label={'View All'} to={'#'} />}
       />
       <ProductGrid products={products} />
     </VStack>

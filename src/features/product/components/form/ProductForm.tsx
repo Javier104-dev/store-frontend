@@ -37,34 +37,34 @@ const ProductForm = ({
   )[] = [
     {
       name: 'images',
-      label: 'Imagenes',
+      label: 'Images',
       type: 'file',
       multiple: true,
       accept: '.jpg,.jpeg,.png',
     },
     {
       name: 'categories',
-      label: 'Categorias',
+      label: 'Categories',
       type: 'multiSelect',
       resources: [],
     },
     {
       name: 'name',
-      label: 'Nombre del producto',
+      label: 'Product Name',
       type: 'text',
-      placeholder: 'Nombre',
+      placeholder: 'Product Name',
     },
     {
       name: 'price',
-      label: 'Precio del producto',
+      label: 'Product Price',
       type: 'number',
       placeholder: '$ 00,00',
     },
     {
       name: 'description',
-      label: 'Descripción del producto',
+      label: 'Product Description',
       type: 'textarea',
-      placeholder: 'Descripción del producto',
+      placeholder: 'Product Description',
       rows: 5,
     },
   ];

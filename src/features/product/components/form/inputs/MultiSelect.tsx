@@ -34,7 +34,7 @@ const MultiSelect = <T,>({ name, resources }: IMultiSelectField<T>) => {
             />
           )}
         />
-        <AddCategoryTag label={'Agregar categoría'} openModal={openModal} />
+        <AddCategoryTag label={'Add Categories'} openModal={openModal} />
       </div>
       {modal(
         <CategoriesModal
