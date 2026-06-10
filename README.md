@@ -1,166 +1,142 @@
-# React Vite Template
+# Geek Shop
 
-Template for building Web Apps using React + Vite.
+Frontend for a geek products store. Customers can browse products by category and view
+product details. Store owners have a dedicated dashboard to manage their store and products.
+Includes a complete authentication flow with login, password recovery, and email verification.
+Fully responsive design for mobile and desktop.
 
-# Requirements
+## ⚡ Quick Start
 
-- Node.js 22 or higher
+1. Clone the repository
+2. Follow the [Setup](#setup) section
+3. Follow the [How to Run](#how-to-run) section
 
-# Features
+## 🚀 Tech Stack
 
-- React 18
-- TypeScript
-- Vite 4
-- TailwindCSS
-- React Router DOM 6
-- React Query (TanStack Query)
-- Formik + Yup for form handling
-- JWT Authentication support
-- Analytics integration (GA4 & Microsoft Clarity)
-- React Toastify for notifications
-- ESLint + Prettier
-- Husky
-- lint-staged
-- editorconfig
-- Playwright with code coverage
-- Environment variables management
+- **Framework:** React 19 + TypeScript
+- **Build Tool:** Vite
+- **Styles:** TailwindCSS + Material UI
+- **Routing:** React Router DOM
+- **Data Fetching:** TanStack Query
+- **Forms:** Formik + Yup / React Hook Form + Zod
+- **HTTP Client:** Axios
+- **Testing:** Playwright
+- **Notifications:** React Toastify
 
-# Setup
-
-> ⚠️ We recommend using [Visual Studio Code](https://code.visualstudio.com/) as well as the extensions for [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) for development.
-
-1. `npm ci` to install dependencies
-2. `npm run dev:prepare` to copy contents of `.env.dist` into a `.env` file and populate it
-3. `npm run test:install` to install Playwright dependencies
-
-# Environment Variables
-
-All environment variables must be prefixed with `VITE_`. For example:
-
-- `VITE_API_BASE_URL`: For API endpoints
-- `VITE_GA_MEASUREMENT_ID`: For Google Analytics
-- `PORT`: For development server port (defaults to 5173)
-
-# Available Scripts
-
-Development and Production:
-
-```
-npm run start:dev
-# Start development server
-
-npm run start:prod
-# Start production preview
-
-npm run start:test
-# Start in test mode
-
-npm run build
-# Create production build
-```
-
-Testing:
-
-```
-npm run test
-# Run tests with coverage
-
-npm run test:ui
-# Run tests with UI
-
-npm run test:coverage
-# Generate coverage report
-```
-
-Code Quality:
-
-```
-npm run lint
-# Run ESLint
-
-npm run format
-# Run Prettier
-```
-
-# Deploy
+## ⚙️ Setup
 
 ### Prerequisites
 
-- Coolify API Tokens, create one for "Customer Prod" and "Customer Staging" in https://sre.bigger.systems/security/api-tokens, when you create the token please click the `root` checkbox.
-- GitHub Personal Access Token, you can create one in https://github.com/settings/tokens, when you create the token please click the `repo` checkbox.
-- Fill the .env file with the correct values.
+- [Node >=24](https://github.com/nvm-sh/nvm)
 
-### Steps to deploy
+### Installation
 
-1. Run the command `npm run deploy`
-2. Follow the prompts to select the project, server, environment, and deployment type.
-3. Once the deployment is finished, you will see the URL of the deployed application.
+1. Run `npm ci` to install dependencies
+2. Run `npm run dev:prepare` to generate environment variables
+3. Run `npm run test:install` to install Playwright dependencies
 
-# Docker
+## ▶️ How to Run
 
-### Building the Image
-
-To build the Docker image, run:
+### Server
 
 ```bash
-docker build -t react-vite-app .
+# Development
+npm run start:dev
+
+# Production (build first)
+npm run build
+npm run start:prod
 ```
 
-### Running the Container
-
-To run the container locally:
+### Testing
 
 ```bash
-docker run -p 4173:4173 react-vite-app
+# Run all tests with coverage
+npm run test
+
+# Run tests with UI
+npm run test:ui
+
+# Generate coverage report
+npm run test:coverage
 ```
 
-The application will be available at `http://localhost:4173`
-
-### Environment Variables
-
-When running the container, you can pass environment variables using the `-e` flag:
+### Code Quality
 
 ```bash
-docker run -p 4173:4173 -e VITE_API_BASE_URL=https://api.example.com react-vite-app
+# Lint and fix
+npm run lint
+
+# Format code
+npm run format
 ```
 
-# Project Structure
+## 🌍 Environment Variables
+
+The `dev:prepare` script generates the `.env` file automatically. Key variables:
+
+| Variable       | Description     | Example                        |
+| -------------- | --------------- | ------------------------------ |
+| `PORT`         | Dev server port | `3000`                         |
+| `VITE_API_URL` | Backend API URL | `http://localhost:3001/api/v1` |
+
+> All environment variables exposed to the app must be prefixed with `VITE_`
+
+## 📸 Screenshots
+
+### Desktop
+
+|                                                      |                                                                           |
+| ---------------------------------------------------- | ------------------------------------------------------------------------- |
+| ![Home](./docs/screenshots/home.png)                 | ![Product Detail](./docs/screenshots/product-detail.png)                  |
+| ![Login](./docs/screenshots/login.png)               | ![Admin Dashboard](./docs/screenshots/admin-dashboard.png)                |
+| ![Product Form](./docs/screenshots/product-form.png) | ![Product Form Modal](./docs/screenshots/product-form-category-modal.png) |
+
+### Mobile
+
+|                                                                          |                                                                        |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| ![Home Mobile](./docs/screenshots/home-mobile.png)                       | ![Product Detail Mobile](./docs/screenshots/product-detail-mobile.png) |
+| ![Admin Dashboard Mobile](./docs/screenshots/admin-dashboard-mobile.png) |                                                                        |
+
+## 📁 Project Structure
 
 ```
 src/
 ├── assets/         # Static assets
 ├── components/     # Shared components
 ├── configs/        # Configuration files
-├── hooks/          # Custom React hooks
-├── interfaces/     # TypeScript interfaces
+├── errors/         # Error handling
+├── features/       # Feature modules
+├── hooks/          # Global custom hooks
+├── interfaces/     # Global TypeScript interfaces
 ├── layouts/        # Layout components
-├── pages/          # Route pages
-├── services/       # API services
-├── types/          # TypeScript types
+├── pages/          # Route pages (orchestrators)
+├── services/       # Global API services
 └── utils/          # Utility functions
 ```
 
-# Page Module Structure
+### Feature Module Structure
 
-Each page module follows this structure for better organization:
+Each feature follows this structure:
 
 ```
-└── 📁example-page
-    ├── 📁components/     # Page-specific components
-    ├── 📁hooks/         # Page-specific hooks
-    ├── 📁services/      # Page-specific services
-    ├── 📁types/         # Page-specific types
-    ├── 📁context/       # (optional) Page-specific context
-    ├── 📁utils/         # (optional) Page-specific utilities
-    └── ExamplePage.tsx  # Main page component
+└── 📁example-feature
+    ├── 📁components/     # Feature-specific components
+    ├── 📁constants/      # Feature-specific constants
+    ├── 📁hooks/          # Feature-specific hooks (optional)
+    ├── 📁interfaces/     # Feature-specific interfaces
+    ├── 📁services/       # Feature-specific services
+    └── 📁utils/          # Feature-specific utilities (optional)
 ```
 
-# References
+## 🛠️ Recommended Tools
 
-- [React docs](https://react.dev/learn)
-- [Vite docs](https://vitejs.dev/guide/)
-- [React Router docs](https://reactrouter.com/en/main)
-- [TanStack Query docs](https://tanstack.com/query/latest)
-- [Playwright docs](https://playwright.dev/docs/intro)
-- [Formik docs](https://formik.org/docs/overview)
-- [Tailwind docs](https://tailwindcss.com/docs)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+## 👤 Author
+
+| [<img src='https://avatars.githubusercontent.com/u/105408069?v=4' width=115><br><sub>Javier Anibal Villca</sub>](https://github.com/Javier104-dev) |
+| :------------------------------------------------------------------------------------------------------------------------------------------------: |
