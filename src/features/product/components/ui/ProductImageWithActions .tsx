@@ -47,7 +47,7 @@ const ProductImageWithActions = ({
         {actions.map(({ name, Icon, onClick, showsSpinner, dataTest }) => (
           <button
             key={name}
-            className="transition-transform active:scale-90"
+            className="transition-transform active:scale-90 cursor-pointer"
             onClick={onClick}
             disabled={disabled}
             data-test={dataTest}

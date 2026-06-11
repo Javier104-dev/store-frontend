@@ -11,7 +11,7 @@ const RemovableCategoryTag = ({ category, handleRemove }: PropTypes) => {
   return (
     <button
       onClick={() => handleRemove(category.id)}
-      className="rounded-full px-4 py-1 bg-[#E8F1FF] hover:bg-[#d3e5ff] active:bg-[#bdd6ff] transition"
+      className="rounded-full px-4 py-1 bg-[#E8F1FF] hover:bg-[#d3e5ff] active:bg-[#bdd6ff] transition cursor-pointer"
       data-test={`category-remove-tag-${category.id}`}
       type="button"
     >
