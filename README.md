@@ -8,8 +8,8 @@ Fully responsive design for mobile and desktop.
 ## ⚡ Quick Start
 
 1. Clone the repository
-2. Follow the [Setup](#setup) section
-3. Follow the [How to Run](#how-to-run) section
+2. Follow the [Setup](#️-setup) section
+3. Follow the [How to Run](#️-how-to-run) section
 
 ## 🚀 Tech Stack
 
