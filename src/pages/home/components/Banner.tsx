@@ -13,13 +13,11 @@ const Banner = () => {
       <PageLayout>
         <div className="text-[#FFFFFF]">
           <div className="font-bold mb-3">
-            <h1 className="text-[52px]">Febrero Promocional</h1>
-            <p className="text-[22px]">
-              Productos selecionados con 33% de descuento
-            </p>
+            <h1 className="text-[52px]">February Promotions</h1>
+            <p className="text-[22px]">33% Off Selected Products</p>
           </div>
           <Button
-            innerText={'Ver consolas'}
+            innerText={'View Consoles'}
             colorFill={true}
             to="#"
             width={130}

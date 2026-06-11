@@ -71,7 +71,7 @@ const ViewProductPage = () => {
         {!similarProducts && similarProductsIsLoading && <Spinner />}
         {similarProducts && !similarProductsIsLoading && (
           <CategorySection
-            title={'Productos similares'}
+            title={'Similar Products'}
             products={similarProducts}
             dataTest="similar-products"
           />

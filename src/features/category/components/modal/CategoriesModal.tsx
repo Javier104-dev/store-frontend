@@ -36,12 +36,12 @@ const CategoriesModal = ({
     <FormContainer dataTest="categories-modal">
       <VStack>
         <SectionHeader
-          title={'Categorias'}
+          title={'Categories'}
           action={<CloseModalButton onClose={onClose} />}
         />
         <CategorySelectorContainer
           categories={filteredResources}
-          label={'Categorias disponibles'}
+          label={'Available Categories'}
           renderTag={(category) => (
             <SelectableCategoryTag
               key={category.id}
@@ -53,7 +53,7 @@ const CategoriesModal = ({
         />
         <CategorySelectorContainer
           categories={values}
-          label={'Categorias seleccionadas'}
+          label={'Selected Categories'}
           renderTag={(category) => (
             <RemovableCategoryTag
               key={category.id}

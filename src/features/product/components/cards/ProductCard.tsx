@@ -23,7 +23,7 @@ const ProductCard = ({ height, id, name, price, url }: PropTypes) => {
           className="font-bold text-[16px] text-[#2A7AE4]"
           data-test={`view-product-${id}`}
         >
-          Ver producto
+          View Product
         </Link>
       </div>
     </div>

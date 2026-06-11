@@ -1,10 +1,10 @@
 export const PRODUCT_FORM_CONFIG = {
   create: {
-    title: 'Agregar nuevo producto',
-    submitText: 'Agregar producto',
+    title: 'Add New Product',
+    submitText: 'Add Product',
   },
   edit: {
-    title: 'Editar producto',
-    submitText: 'Guardar cambios',
+    title: 'Edit Product',
+    submitText: 'Save Changes',
   },
 };

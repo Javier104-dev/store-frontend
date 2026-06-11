@@ -64,10 +64,10 @@ const StoreProductsPage = () => {
     <PageLayout>
       <VStack dataTest="store-products">
         <SectionHeader
-          title={'Todos los produtos'}
+          title={'All Products'}
           action={
             <Button
-              innerText={'Agregar producto'}
+              innerText={'Add Product'}
               to={StoreRoutes.CREATE_PRODUCT}
               colorFill={true}
               width={165}
