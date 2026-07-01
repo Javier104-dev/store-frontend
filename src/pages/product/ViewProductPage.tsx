@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-dom';
 
+import Button from '@/components/ui/buttons/Button';
 import Spinner from '@/components/ui/feedback/Spinner';
 import PageLayout from '@/components/ui/layout/PageLayout';
 import VStack from '@/components/ui/layout/VStack';
+import { useCartStore } from '@/features/cart/hooks/useCart';
 import CategorySection from '@/features/category/components/sections/CategorySection';
 import ProductImage from '@/features/product/components/ui/ProductImage';
 import ProductInfo from '@/features/product/components/ui/ProductInfo';
@@ -21,6 +23,7 @@ import {
 } from '@/utils/jsonApi-normalizer';
 
 const ViewProductPage = () => {
+  const { addItem, openCart } = useCartStore();
   const { id } = useParams<{ id: string }>();
   const productId = id ?? '';
 
@@ -53,7 +56,7 @@ const ViewProductPage = () => {
         {selectedProduct && !isLoading && (
           <div className="flex flex-col md:flex-row md:items-center gap-4">
             <div
-              className="h-[220px] w-[100%] md:h-[160px] md:w-[250px] lg:h-[400px] lg:w-[560px] flex-shrink-0"
+              className="h-55 w-full md:h-40 md:w-62.5 lg:h-100 lg:w-140 shrink-0"
               data-test="product-image"
             >
               <ProductImage
@@ -61,11 +64,33 @@ const ViewProductPage = () => {
                 url={selectedProduct?.upload[0]?.url}
               />
             </div>
-            <ProductInfo
-              name={selectedProduct.name}
-              price={selectedProduct.price}
-              description={selectedProduct.description}
-            />
+            <div className="flex flex-col gap-5">
+              <ProductInfo
+                name={selectedProduct.name}
+                price={selectedProduct.price}
+                description={selectedProduct.description}
+              />
+              <div className="flex flex-col gap-2 w-1/2">
+                <Button
+                  colorFill={true}
+                  innerText="Agregar al carrito"
+                  onClick={() => {
+                    addItem({
+                      id: selectedProduct.id,
+                      name: selectedProduct.name,
+                      quantity: 1,
+                      price: selectedProduct.price,
+                      img: selectedProduct?.upload[0]?.url,
+                    });
+                  }}
+                />
+                <Button
+                  colorFill={true}
+                  innerText="Comprar ahora"
+                  onClick={openCart}
+                />
+              </div>
+            </div>
           </div>
         )}
         {!similarProducts && similarProductsIsLoading && <Spinner />}

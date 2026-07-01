@@ -95,7 +95,7 @@ test.describe('Product form page', () => {
     );
     await expect(removeCategory2).toHaveCount(1);
 
-    await getBySel('close-modal-button').click();
+    await getBySel('close-button').click();
     await expect(getBySel('categories-modal')).toHaveCount(0);
 
     await expect(getBySel(categoryRemoveTag1)).toHaveCount(1);
@@ -142,7 +142,7 @@ test.describe('Product form page', () => {
     await getBySel(`category-select-tag-${newProduct.categoryIds[0]}`).click();
     await getBySel(`category-select-tag-${newProduct.categoryIds[1]}`).click();
 
-    await getBySel('close-modal-button').click();
+    await getBySel('close-button').click();
 
     await getBySel('name').fill(newProduct.name);
     await getBySel('price').fill(newProduct.price);

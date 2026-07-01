@@ -1,9 +1,9 @@
 import type { FieldHelperProps } from 'formik';
 
+import CloseButton from '@/components/ui/buttons/CloseButton';
 import FormContainer from '@/components/ui/form/FormContainer';
 import SectionHeader from '@/components/ui/heading/SectionHeader';
 import VStack from '@/components/ui/layout/VStack';
-import CloseModalButton from '@/components/ui/modal/CloseModalButton';
 import type { ICategoryOption } from '@/features/catalog/interfaces/form/IProductFormValues';
 import RemovableCategoryTag from '@/features/category/components/category-tags/RemovableCategoryTag';
 import SelectableCategoryTag from '@/features/category/components/category-tags/SelectableCategoryTag';
@@ -37,7 +37,7 @@ const CategoriesModal = ({
       <VStack>
         <SectionHeader
           title={'Categories'}
-          action={<CloseModalButton onClose={onClose} />}
+          action={<CloseButton onClose={onClose} />}
         />
         <CategorySelectorContainer
           categories={filteredResources}

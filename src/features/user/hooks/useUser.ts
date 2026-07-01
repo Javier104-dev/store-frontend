@@ -1,15 +1,15 @@
 import {
-  QueryKey,
-  UseQueryOptions,
+  type QueryKey,
+  type UseQueryOptions,
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query';
 
 import { UserQueryKeys } from '@/features/user/constants/user.queryKeys';
-import { IUserAttributes } from '@/features/user/interfaces/api/response/IUserAttributes';
-import { IUser } from '@/features/user/interfaces/types/IUser';
+import type { IUserAttributes } from '@/features/user/interfaces/api/response/IUserAttributes';
+import type { IUser } from '@/features/user/interfaces/types/IUser';
 import { userService } from '@/features/user/services/user.service';
-import { ISingleResponse } from '@/interfaces/api/IApiBaseResponse';
+import type { ISingleResponse } from '@/interfaces/api/IApiBaseResponse';
 import { normalizeJsonApiItem } from '@/utils/jsonApi-normalizer';
 
 type ICustomQueryOptions = Omit<

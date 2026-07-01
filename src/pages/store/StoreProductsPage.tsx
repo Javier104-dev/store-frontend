@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import Button from '@/components/ui/actions/Button';
+import Button from '@/components/ui/buttons/Button';
 import Spinner from '@/components/ui/feedback/Spinner';
 import SectionHeader from '@/components/ui/heading/SectionHeader';
 import PageLayout from '@/components/ui/layout/PageLayout';
@@ -70,7 +70,7 @@ const StoreProductsPage = () => {
               innerText={'Add Product'}
               to={StoreRoutes.CREATE_PRODUCT}
               colorFill={true}
-              width={165}
+              paddingX={60}
               data-test="create-product-button"
             />
           }

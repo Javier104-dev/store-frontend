@@ -11,7 +11,7 @@ import type {
   IProductFormValues,
 } from '@/features/catalog/interfaces/form/IProductFormValues';
 import { catalogService } from '@/features/catalog/services/catalog.service';
-import { CategoryQueryKeys } from '@/features/category/components/category.queryKeys';
+import { CategoryQueryKeys } from '@/features/category/constansts/category.queryKeys';
 import type { ICategoryAttributes } from '@/features/category/interfaces/api/response/ICategoryAttributes';
 import type { ICategory } from '@/features/category/interfaces/types/ICategory';
 import { categoryService } from '@/features/category/services/category.service';

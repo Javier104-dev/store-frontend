@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import FormField from '@/components/forms/form-field/FormFiel';
-import Button from '@/components/ui/actions/Button';
+import Button from '@/components/ui/buttons/Button';
 import FormContainer from '@/components/ui/form/FormContainer';
 import Heading from '@/components/ui/heading/Heading';
 import { storeFormSchema } from '@/features/store/components/form/schemas/store-form.schema';

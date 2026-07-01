@@ -7,7 +7,7 @@ type PropTypes = IReactChildrenProps & {
 const FormContainer = ({ children, dataTest }: PropTypes) => {
   return (
     <div
-      className="w-full max-w-[500px] mx-auto"
+      className="w-full max-w-125 mx-auto"
       {...(dataTest && { 'data-test': dataTest })}
     >
       {children}

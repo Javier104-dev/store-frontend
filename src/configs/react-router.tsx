@@ -7,8 +7,7 @@ import {
   privateRoutes,
   productRoutes,
 } from '@/configs/routes';
-
-import Root from '@pages/Root';
+import Root from '@/pages/Root';
 
 const router = createBrowserRouter([
   {

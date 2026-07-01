@@ -3,9 +3,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import NavBar from '@/components/navbar/NavBar';
+import CartDrawer from '@/features/cart/componets/cart-drawer/CartDrawer';
 import { AuthProvider } from '@/pages/auth/context/AuthContext';
 
-export default function Root() {
+const Root = () => {
   return (
     <>
       <AuthProvider>
@@ -14,9 +15,12 @@ export default function Root() {
           <Outlet />
         </div>
       </AuthProvider>
+      <CartDrawer />
       <div data-test="toast-container">
         <ToastContainer data-test="toast-container" />
       </div>
     </>
   );
-}
+};
+
+export default Root;

@@ -22,7 +22,7 @@ const MultiSelect = <T,>({ name, resources }: IMultiSelectField<T>) => {
   const { openModal, closeModal, modal } = useModal({ closeOnOutClick: false });
 
   return (
-    <div className="block border-[1px] border-gray-400 rounded-md p-2 text-sm">
+    <div className="block border border-gray-400 rounded-md p-2 text-sm">
       <div className="flex flex-col gap-2">
         <CategoryTagsList
           categories={values}
