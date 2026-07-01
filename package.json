@@ -47,7 +47,8 @@
     "react-router-dom": "^7.15.1",
     "react-toastify": "^11.1.0",
     "yup": "^1.7.1",
-    "zod": "^4.4.3"
+    "zod": "^4.4.3",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
