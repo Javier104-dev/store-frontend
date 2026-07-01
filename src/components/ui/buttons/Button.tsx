@@ -5,19 +5,21 @@ import { useNavigate } from 'react-router-dom';
 type PropTypes = {
   innerText: string;
   colorFill: boolean;
-  width?: number;
   isLoading?: boolean;
   onClick?: () => void;
   to?: string;
+  paddingY?: number;
+  paddingX?: number;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = ({
   innerText,
   colorFill,
-  width,
   isLoading = false,
   onClick,
   to,
+  paddingY,
+  paddingX,
   ...props
 }: PropTypes) => {
   const navigate = useNavigate();
@@ -28,8 +30,8 @@ const Button = ({
     alignItems: 'center',
     color: colorFill ? '#FFFFFF' : ' #2A7AE4',
     border: colorFill ? 'none' : '1px solid #2A7AE4',
-    width: width ? `${width}px` : '100%',
-    height: '50px',
+    padding: `${paddingY ?? 13}px ${paddingX ?? 0}px`,
+    width: paddingX ? 'auto' : '100%',
     cursor: 'pointer',
   };
 
@@ -41,7 +43,7 @@ const Button = ({
     ? 'bg-[#2A7AE4] hover:bg-[#1F63C9] active:bg-[#1958B0]'
     : 'bg-[#FFFFFF] hover:bg-[#E8F1FF] active:bg-[#DCEBFF]';
 
-  const buttonClass = `${backgroundColor} active:scale-95 transition-transform`;
+  const buttonClass = `${backgroundColor} active:scale-95 transition-all duration-300`;
 
   const handleClick = () => {
     if (onClick) onClick();

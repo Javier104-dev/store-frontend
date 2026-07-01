@@ -1,10 +1,12 @@
-import Button from '@/components/ui/actions/Button';
+import Button from '@/components/ui/buttons/Button';
 import { AuthRoutes } from '@/configs/router/AuthRoutes';
 
 type PropTypes = {
   connected: boolean;
+  isSticky: boolean;
 };
-const Action = ({ connected }: PropTypes) => {
+
+const Action = ({ connected, isSticky }: PropTypes) => {
   if (connected) {
     return (
       <Button
@@ -12,7 +14,8 @@ const Action = ({ connected }: PropTypes) => {
         to={AuthRoutes.SIGN_OUT}
         innerText={'Logout'}
         colorFill={connected}
-        width={180}
+        paddingY={isSticky ? 7 : 13}
+        paddingX={isSticky ? 35 : 60}
       />
     );
   }
@@ -22,7 +25,8 @@ const Action = ({ connected }: PropTypes) => {
       to={AuthRoutes.SIGN_IN}
       innerText={'Login'}
       colorFill={connected}
-      width={180}
+      paddingY={isSticky ? 7 : 13}
+      paddingX={isSticky ? 35 : 60}
     />
   );
 };
