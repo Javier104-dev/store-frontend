@@ -1,5 +1,4 @@
-import type { IStoreAttributes } from '@/features/store/interfaces/api/response/IStoreAttributes';
-
-export interface IStore extends IStoreAttributes {
+export interface IStore {
   id: string;
+  name: string;
 }

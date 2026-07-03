@@ -1,5 +1,5 @@
-import { IUserAttributes } from '@/features/user/interfaces/api/response/IUserAttributes';
+import type { UserRole } from '@/features/user/interfaces/types/UserRole';
 
-export interface IUser extends IUserAttributes {
-  id: string;
+export interface IUser {
+  roles: UserRole[];
 }

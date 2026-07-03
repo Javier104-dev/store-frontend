@@ -5,12 +5,16 @@ const sanitizeNumber = (value: number): number => {
 };
 
 const calculateLineTotal = (quantity: number, price: number): number => {
-  return sanitizeNumber(quantity) * sanitizeNumber(price);
+  return new Decimal(sanitizeNumber(price))
+    .times(sanitizeNumber(quantity))
+    .toNumber();
 };
 
 export const calculateSubtotal = (items: ICartItem[]): number => {
-  return items.reduce(
-    (sum, item) => sum + calculateLineTotal(item.quantity, item.price),
-    0,
-  );
+  return items
+    .reduce(
+      (sum, item) => sum.plus(calculateLineTotal(item.quantity, item.price)),
+      new Decimal(0),
+    )
+    .toNumber();
 };

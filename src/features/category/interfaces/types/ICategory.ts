@@ -1,7 +1,7 @@
-import type { ICategoryAttributes } from '@/features/category/interfaces/api/response/ICategoryAttributes';
 import type { IProduct } from '@/features/product/interfaces/types/IProduct';
 
-export interface ICategory extends ICategoryAttributes {
+export interface ICategory {
   id: string;
+  name: string;
   products: IProduct[];
 }

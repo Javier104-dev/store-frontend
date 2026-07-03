@@ -11,16 +11,13 @@ import { notifyError } from '@/errors/notify-error';
 import AllProductsGrid from '@/features/product/components/grids/AllProductsGrid';
 import { PRODUCT_TOAST_MESSAGES } from '@/features/product/constants/product-toast-messages';
 import { ProductQueryKeys } from '@/features/product/constants/product.queryKeys';
-import type { IProductAttributes } from '@/features/product/interfaces/api/response/IProductAttributes';
 import type { IProduct } from '@/features/product/interfaces/types/IProduct';
 import { productService } from '@/features/product/services/product.service';
 import { useStore } from '@/features/store/hooks/useStore';
 import useGet from '@/hooks/query/useGet';
 import useInvalidateQueries from '@/hooks/query/useInvalidateQueries';
 import useMutate from '@/hooks/query/useMutate';
-import type { IListResponse } from '@/interfaces/api/IApiBaseResponse';
 import { notificationService } from '@/services/notification.service';
-import { normalizeJsonApiList } from '@/utils/jsonApi-normalizer';
 
 const StoreProductsPage = () => {
   const navigate = useNavigate();
@@ -28,13 +25,9 @@ const StoreProductsPage = () => {
 
   const { storeInfo } = useStore();
 
-  const { data: products, isLoading: productsIsLoading } = useGet<
-    IListResponse<IProductAttributes>,
-    IProduct[]
-  >({
+  const { data: products, isLoading: productsIsLoading } = useGet<IProduct[]>({
     queryKey: [ProductQueryKeys.getProductsFromOwner],
     queryFn: () => productService.getProductsFromOwner(),
-    select: normalizeJsonApiList,
     enabled: !!storeInfo,
   });
 

@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: PropTypes) => {
           const userResponse = await userService.getMe();
           queryClient.setQueryData([UserQueryKeys.getMe], userResponse);
           notificationService.success(SIGN_IN_SUCCESS_MESSAGE);
-          const roles = userResponse.data.attributes.roles;
+          const roles = userResponse.roles;
           if (roles.includes('admin')) {
             navigate(StoreRoutes.MANAGE_PRODUCTS);
           } else {

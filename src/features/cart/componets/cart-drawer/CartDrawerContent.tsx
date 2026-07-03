@@ -10,7 +10,8 @@ type PropTypes = {
   removeItem: (id: string) => void;
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
-  total: string;
+  closeCart: () => void;
+  total: number;
 };
 
 const CartDrawerContent = ({
@@ -18,13 +19,14 @@ const CartDrawerContent = ({
   removeItem,
   increaseQuantity,
   decreaseQuantity,
+  closeCart,
   total,
 }: PropTypes) => {
   return (
     <div className="w-87.5">
       <div className="flex justify-between items-center py-5 px-6 border-b border-gray-200">
         <h1 className="font-bold">Tu carrito</h1>
-        <CloseButton onClose={() => {}} />
+        <CloseButton onClose={closeCart} />
       </div>
       <div className="divide-y divide-gray-200 px-6">
         {cartItems.map((item) => (
@@ -33,7 +35,7 @@ const CartDrawerContent = ({
             <div className="w-full">
               <div className="mb-4">
                 <h1 className="font-bold">{item.name}</h1>
-                <p>$ {item.price}</p>
+                <p>$ {item.price.toFixed(2)}</p>
               </div>
               <div className="flex justify-between">
                 <div className="border rounded-md w-fit text-[20px] overflow-hidden">
@@ -66,7 +68,7 @@ const CartDrawerContent = ({
       <div className="border-t border-gray-200 py-5 px-6">
         <div className="flex justify-between mb-4">
           <span>Subtotal</span>
-          <span>$ {total}</span>
+          <span>$ {total.toFixed(2)}</span>
         </div>
         <Button innerText={'Ir al checkout'} colorFill={true} />
       </div>

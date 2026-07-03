@@ -9,43 +9,28 @@ import CategorySection from '@/features/category/components/sections/CategorySec
 import ProductImage from '@/features/product/components/ui/ProductImage';
 import ProductInfo from '@/features/product/components/ui/ProductInfo';
 import { ProductQueryKeys } from '@/features/product/constants/product.queryKeys';
-import type { IProductAttributes } from '@/features/product/interfaces/api/response/IProductAttributes';
 import type { IProduct } from '@/features/product/interfaces/types/IProduct';
 import { productService } from '@/features/product/services/product.service';
 import useGet from '@/hooks/query/useGet';
-import type {
-  IListResponse,
-  ISingleResponse,
-} from '@/interfaces/api/IApiBaseResponse';
-import {
-  normalizeJsonApiItem,
-  normalizeJsonApiList,
-} from '@/utils/jsonApi-normalizer';
 
 const ViewProductPage = () => {
   const { addItem, openCart } = useCartStore();
   const { id } = useParams<{ id: string }>();
   const productId = id ?? '';
 
-  const { data: selectedProduct, isLoading } = useGet<
-    ISingleResponse<IProductAttributes>,
-    IProduct
-  >({
+  const { data: selectedProduct, isLoading } = useGet<IProduct>({
     queryKey: [ProductQueryKeys.getProductById, productId],
     queryFn: () => productService.getProductById(productId),
-    select: normalizeJsonApiItem,
     enabled: Boolean(id),
   });
 
   const categoryId: string = selectedProduct?.categories?.[0]?.id ?? '';
 
   const { data: similarProducts, isLoading: similarProductsIsLoading } = useGet<
-    IListResponse<IProductAttributes>,
     IProduct[]
   >({
     queryKey: [ProductQueryKeys.getProductsByCategoryId, categoryId],
     queryFn: () => productService.getProducts({ categoryId }),
-    select: normalizeJsonApiList,
     enabled: Boolean(categoryId),
   });
 

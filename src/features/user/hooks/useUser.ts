@@ -6,14 +6,11 @@ import {
 } from '@tanstack/react-query';
 
 import { UserQueryKeys } from '@/features/user/constants/user.queryKeys';
-import type { IUserAttributes } from '@/features/user/interfaces/api/response/IUserAttributes';
 import type { IUser } from '@/features/user/interfaces/types/IUser';
 import { userService } from '@/features/user/services/user.service';
-import type { ISingleResponse } from '@/interfaces/api/IApiBaseResponse';
-import { normalizeJsonApiItem } from '@/utils/jsonApi-normalizer';
 
 type ICustomQueryOptions = Omit<
-  UseQueryOptions<ISingleResponse<IUserAttributes>, Error, IUser, QueryKey>,
+  UseQueryOptions<IUser, Error, IUser, QueryKey>,
   'queryKey' | 'queryFn' | 'refetchOnWindowFocus' | 'initialData'
 >;
 
@@ -26,16 +23,13 @@ export const useUser = (options?: ICustomQueryOptions) => {
     isLoading,
     refetch,
     ...rest
-  } = useQuery<ISingleResponse<IUserAttributes>, Error, IUser>({
+  } = useQuery<IUser, Error>({
     queryKey: [UserQueryKeys.getMe],
     queryFn: () => userService.getMe(),
     refetchOnWindowFocus: false,
     initialData:
-      queryClient.getQueryData<ISingleResponse<IUserAttributes>>([
-        UserQueryKeys.getMe,
-      ]) ?? undefined,
+      queryClient.getQueryData<IUser>([UserQueryKeys.getMe]) ?? undefined,
     staleTime: ONE_HOUR,
-    select: normalizeJsonApiItem,
     ...options,
   });
 

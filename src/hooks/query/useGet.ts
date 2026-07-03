@@ -1,23 +1,20 @@
 import { type UseQueryResult, useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 
-interface UseGetOptions<TQueryFnData, TData> {
+interface UseGetOptions<TData> {
   queryKey: (string | undefined)[];
-  queryFn: () => Promise<TQueryFnData>;
+  queryFn: () => Promise<TData>;
   enabled?: boolean;
-  select?: (data: TQueryFnData) => TData;
 }
 
-const useGet = <TQueryFnData, TData>(
-  options: UseGetOptions<TQueryFnData, TData>,
+const useGet = <TData>(
+  options: UseGetOptions<TData>,
 ): UseQueryResult<TData, AxiosError> => {
-  const { queryKey, queryFn, enabled = true, select } = options;
-
-  return useQuery<TQueryFnData, AxiosError, TData>({
+  const { queryKey, queryFn, enabled = true } = options;
+  return useQuery<TData, AxiosError>({
     queryKey,
     queryFn,
     enabled,
-    select,
   });
 };
 
