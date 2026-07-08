@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useShallow } from 'zustand/react/shallow';
 
-import Button from '@/components/ui/buttons/Button';
 import Spinner from '@/components/ui/feedback/Spinner';
 import PageLayout from '@/components/ui/layout/PageLayout';
 import VStack from '@/components/ui/layout/VStack';
 import { useCartStore } from '@/features/cart/hooks/useCart';
 import CategorySection from '@/features/category/components/sections/CategorySection';
+import ProductActions from '@/features/product/components/ui/ProductActions';
 import ProductImage from '@/features/product/components/ui/ProductImage';
 import ProductInfo from '@/features/product/components/ui/ProductInfo';
 import { ProductQueryKeys } from '@/features/product/constants/product.queryKeys';
@@ -14,7 +16,14 @@ import { productService } from '@/features/product/services/product.service';
 import useGet from '@/hooks/query/useGet';
 
 const ViewProductPage = () => {
-  const { addItem, openCart } = useCartStore();
+  const [quantity, setQuantity] = useState(1);
+
+  const { addItem, openCart } = useCartStore(
+    useShallow(({ addItem, openCart }) => ({
+      addItem,
+      openCart,
+    })),
+  );
   const { id } = useParams<{ id: string }>();
   const productId = id ?? '';
 
@@ -34,6 +43,19 @@ const ViewProductPage = () => {
     enabled: Boolean(categoryId),
   });
 
+  const handleAddToCart = () => {
+    if (!selectedProduct) return;
+    console.log(quantity);
+
+    addItem({
+      id: selectedProduct.id,
+      name: selectedProduct.name,
+      quantity: quantity,
+      price: selectedProduct.price,
+      img: selectedProduct?.upload[0]?.url,
+    });
+  };
+
   return (
     <PageLayout>
       <VStack>
@@ -49,32 +71,21 @@ const ViewProductPage = () => {
                 url={selectedProduct?.upload[0]?.url}
               />
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-10">
               <ProductInfo
                 name={selectedProduct.name}
                 price={selectedProduct.price}
                 description={selectedProduct.description}
               />
-              <div className="flex flex-col gap-2 w-1/2">
-                <Button
-                  colorFill={true}
-                  innerText="Agregar al carrito"
-                  onClick={() => {
-                    addItem({
-                      id: selectedProduct.id,
-                      name: selectedProduct.name,
-                      quantity: 1,
-                      price: selectedProduct.price,
-                      img: selectedProduct?.upload[0]?.url,
-                    });
-                  }}
-                />
-                <Button
-                  colorFill={true}
-                  innerText="Comprar ahora"
-                  onClick={openCart}
-                />
-              </div>
+              <ProductActions
+                addItem={handleAddToCart}
+                openCart={openCart}
+                decreaseQuantity={() =>
+                  setQuantity((prev) => Math.max(1, prev - 1))
+                }
+                itemQuantity={quantity}
+                increaseQuantity={() => setQuantity((prev) => prev + 1)}
+              />
             </div>
           </div>
         )}

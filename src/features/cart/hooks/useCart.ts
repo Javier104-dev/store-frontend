@@ -5,6 +5,7 @@ import type { ICartItem } from '@/features/cart/interfaces/types/ICartItem';
 type CartStore = {
   items: ICartItem[];
   isOpen: boolean;
+  setItems: (product: ICartItem[]) => void;
   addItem: (product: ICartItem) => void;
   removeItem: (id: string) => void;
   increaseQuantity: (id: string) => void;
@@ -17,19 +18,21 @@ export const useCartStore = create<CartStore>((set) => ({
   items: [],
   isOpen: false,
 
+  setItems: (items) => set({ items }),
+
   addItem: (product) =>
     set(({ items }) => {
-      const exists = items.find((item) => item.id === product.id);
+      const exists = items.some((item) => item.id === product.id);
       if (exists) {
         return {
           items: items.map((item) =>
             item.id === product.id
-              ? { ...item, quantity: item.quantity + 1 }
+              ? { ...item, quantity: item.quantity + product.quantity }
               : item,
           ),
         };
       }
-      return { items: [...items, { ...product, quantity: 1 }] };
+      return { items: [...items, product] };
     }),
 
   removeItem: (id: string) =>

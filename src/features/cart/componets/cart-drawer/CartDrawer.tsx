@@ -1,6 +1,7 @@
+import { useShallow } from 'zustand/react/shallow';
+
 import CartDrawerContent from '@/features/cart/componets/cart-drawer/CartDrawerContent';
 import { useCartStore } from '@/features/cart/hooks/useCart';
-import { calculateSubtotal } from '@/features/cart/utils/cart-utils';
 
 const CartDrawer = () => {
   const {
@@ -10,7 +11,16 @@ const CartDrawer = () => {
     increaseQuantity,
     decreaseQuantity,
     closeCart,
-  } = useCartStore();
+  } = useCartStore(
+    useShallow((state) => ({
+      items: state.items,
+      isOpen: state.isOpen,
+      removeItem: state.removeItem,
+      increaseQuantity: state.increaseQuantity,
+      decreaseQuantity: state.decreaseQuantity,
+      closeCart: state.closeCart,
+    })),
+  );
 
   return (
     <div>
@@ -31,7 +41,6 @@ const CartDrawer = () => {
           increaseQuantity={increaseQuantity}
           decreaseQuantity={decreaseQuantity}
           closeCart={closeCart}
-          total={calculateSubtotal(items)}
         />
       </div>
     </div>
