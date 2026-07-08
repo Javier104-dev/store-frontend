@@ -1,22 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
 
 import Action from '@/components/navbar/Action';
 import Logo from '@/components/navbar/Logo';
 import PageLayout from '@/components/ui/layout/PageLayout';
 import CartIcon from '@/features/cart/componets/cart-icon/CartIcon';
-import { StoredCookies } from '@/interfaces/auth/cookies.constants';
+import useAuth from '@/hooks/auth/useAuth';
 
 export default function NavBar() {
+  const { connected } = useAuth();
   const [isSticky, setIsSticky] = useState(false);
-
-  const [cookies] = useCookies([
-    StoredCookies.USERNAME,
-    StoredCookies.REFRESH_TOKEN,
-  ]);
-
-  const connected =
-    !!cookies[StoredCookies.REFRESH_TOKEN] && !!cookies[StoredCookies.USERNAME];
 
   useEffect(() => {
     const handleScroll = () => setIsSticky(window.scrollY > 50);

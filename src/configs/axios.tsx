@@ -2,13 +2,13 @@ import axios, {
   AxiosError,
   type AxiosInstance,
   type AxiosRequestConfig,
+  type AxiosResponse,
 } from 'axios';
 import Cookies from 'universal-cookie';
 
 import { ApiResponseError } from '@/errors/ApiResponseError';
 import type { IHTTPRequestService } from '@/interfaces/IHTTPRequestService';
 import type { IApiResponseError } from '@/interfaces/api/IApiResponseError';
-import type { IRefreshSessionResponse } from '@/pages/auth/interfaces/IRefreshSessionResponse';
 import { normalizeString } from '@/utils/normalize-string';
 
 const accessToken = new Cookies('accessToken', { path: '/' });
@@ -29,15 +29,18 @@ function createErrorHandler(instance: AxiosInstance) {
       normalizeString(data.error.title) === normalizeString('Token expired');
 
     if (shouldRefresh && originalRequest) {
-      const refreshResponse = await instance.post<IRefreshSessionResponse>(
+      const refreshResponse = await instance.post<AxiosResponse>(
         '/auth/refresh',
         {
           username: username.get('username'),
           refreshToken: refreshToken.get('refreshToken'),
         },
       );
-      accessToken.set('accessToken', refreshResponse.data.accessToken);
-      const authorization = `Bearer ${refreshResponse.data.accessToken}`;
+
+      const newAccessToken = refreshResponse.data.data.attributes.accessToken;
+
+      accessToken.set('accessToken', newAccessToken);
+      const authorization = `Bearer ${newAccessToken}`;
       instance.defaults.headers.common['Authorization'] = authorization;
       originalRequest.headers.Authorization = authorization;
       return instance(originalRequest);
