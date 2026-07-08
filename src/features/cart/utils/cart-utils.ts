@@ -1,3 +1,5 @@
+import Decimal from 'decimal.js';
+
 import type { ICartItem } from '@/features/cart/interfaces/types/ICartItem';
 
 const sanitizeNumber = (value: number): number => {
@@ -17,4 +19,8 @@ export const calculateSubtotal = (items: ICartItem[]): number => {
       new Decimal(0),
     )
     .toNumber();
+};
+
+export const calculateTotalItems = (items: ICartItem[]): number => {
+  return items.reduce((acc, item) => acc + item.quantity, 0);
 };
