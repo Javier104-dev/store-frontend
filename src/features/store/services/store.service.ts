@@ -23,8 +23,8 @@ class StoreService implements IStoreService {
   async createStore(
     createStore: ICreateStore,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IStoreAttributes>> {
-    return apiService.post<ISingleResponse<IStoreAttributes>>(
+  ): Promise<void> {
+    await apiService.post<ISingleResponse<IStoreAttributes>>(
       '/store',
       createStore,
       config,
@@ -34,8 +34,8 @@ class StoreService implements IStoreService {
   async updateStore(
     updateStore: IUpdateStore,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IStoreAttributes>> {
-    return apiService.patch<ISingleResponse<IStoreAttributes>>(
+  ): Promise<void> {
+    await apiService.patch<ISingleResponse<IStoreAttributes>>(
       '/store',
       updateStore,
       config,

@@ -63,7 +63,7 @@ class ProductService implements IProductService {
   }
 
   async deleteProduct(id: string, config?: ApiRequestConfig): Promise<void> {
-    return apiService.delete(`/product/${id}`, config);
+    await apiService.delete(`/product/${id}`, config);
   }
 }
 

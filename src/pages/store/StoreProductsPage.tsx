@@ -31,7 +31,7 @@ const StoreProductsPage = () => {
     enabled: !!storeInfo,
   });
 
-  const { mutate, isPending, variables } = useMutate({
+  const { mutate, isPending, variables } = useMutate<void, string>({
     mutationFn: productService.deleteProduct,
     onSuccess: () => {
       invalidateQueryKey(ProductQueryKeys.getProductsFromOwner);

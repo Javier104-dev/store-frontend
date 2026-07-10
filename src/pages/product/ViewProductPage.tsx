@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useShallow } from 'zustand/react/shallow';
 
 import Spinner from '@/components/ui/feedback/Spinner';
 import PageLayout from '@/components/ui/layout/PageLayout';
 import VStack from '@/components/ui/layout/VStack';
+import useAddCartItem from '@/features/cart/hooks/useAddCartItem';
 import { useCartStore } from '@/features/cart/hooks/useCart';
 import CategorySection from '@/features/category/components/sections/CategorySection';
 import ProductActions from '@/features/product/components/ui/ProductActions';
@@ -18,12 +18,7 @@ import useGet from '@/hooks/query/useGet';
 const ViewProductPage = () => {
   const [quantity, setQuantity] = useState(1);
 
-  const { addItem, openCart } = useCartStore(
-    useShallow(({ addItem, openCart }) => ({
-      addItem,
-      openCart,
-    })),
-  );
+  const openCart = useCartStore((state) => state.openCart);
   const { id } = useParams<{ id: string }>();
   const productId = id ?? '';
 
@@ -43,11 +38,12 @@ const ViewProductPage = () => {
     enabled: Boolean(categoryId),
   });
 
+  const { mutate: addToCart } = useAddCartItem();
+
   const handleAddToCart = () => {
     if (!selectedProduct) return;
-    console.log(quantity);
 
-    addItem({
+    addToCart({
       id: selectedProduct.id,
       name: selectedProduct.name,
       quantity: quantity,

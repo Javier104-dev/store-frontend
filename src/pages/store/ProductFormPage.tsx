@@ -5,7 +5,9 @@ import PageLayout from '@/components/ui/layout/PageLayout';
 import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { notifyError } from '@/errors/notify-error';
 import type { ICreateProduct } from '@/features/catalog/interfaces/api/request/ICreateProduct';
+import type { ICreateProductVariables } from '@/features/catalog/interfaces/api/request/ICreateProductVariables';
 import type { IUpdateProduct } from '@/features/catalog/interfaces/api/request/IUpdateProduct';
+import type { IUpdateProductVariables } from '@/features/catalog/interfaces/api/request/IUpdateProductVariables';
 import type {
   ICategoryOption,
   IProductFormValues,
@@ -56,12 +58,12 @@ const ProductFormPage = () => {
     });
 
   const { mutate: createProduct, isPending: createProductIsPending } =
-    useMutate({
+    useMutate<void, ICreateProductVariables>({
       mutationFn: catalogService.createProduct,
     });
 
   const { mutate: updateProduct, isPending: updateProductIsPending } =
-    useMutate({
+    useMutate<void, IUpdateProductVariables>({
       mutationFn: catalogService.updateProduct,
       onSuccess: () => {
         invalidateQueryKeys([ProductQueryKeys.getProductById, productId]);

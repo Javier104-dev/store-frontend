@@ -30,12 +30,12 @@ class CatalogService implements ICatalogService {
   async createProduct(
     createProductVariables: ICreateProductVariables,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IProductAttributes>> {
+  ): Promise<void> {
     const { product, files } = createProductVariables;
 
     const formData = buildFormData(product, files);
 
-    return apiService.post<ISingleResponse<IProductAttributes>>(
+    await apiService.post<ISingleResponse<IProductAttributes>>(
       '/catalog/product',
       formData,
       config,
@@ -45,7 +45,7 @@ class CatalogService implements ICatalogService {
   async updateProduct(
     updateProductVariables: IUpdateProductVariables,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IProductAttributes>> {
+  ): Promise<void> {
     const {
       product: { id, ...rest },
       files,
@@ -53,7 +53,7 @@ class CatalogService implements ICatalogService {
 
     const formData = buildFormData(rest, files);
 
-    return apiService.patch<ISingleResponse<IProductAttributes>>(
+    await apiService.patch<ISingleResponse<IProductAttributes>>(
       `/catalog/product/${id}`,
       formData,
       config,
