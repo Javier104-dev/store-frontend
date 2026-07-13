@@ -1,4 +1,5 @@
 import CircularProgress from '@mui/material/CircularProgress';
+import type { CSSProperties } from '@mui/material/styles';
 import type { ButtonHTMLAttributes } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,7 +25,8 @@ const Button = ({
 }: PropTypes) => {
   const navigate = useNavigate();
 
-  const buttonStyle = {
+  const buttonStyle: CSSProperties = {
+    position: 'relative',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -33,10 +35,6 @@ const Button = ({
     padding: `${paddingY ?? 13}px ${paddingX ?? 0}px`,
     width: paddingX ? 'auto' : '100%',
     cursor: 'pointer',
-  };
-
-  const spinnerStyle = {
-    color: colorFill ? '#FFFFFF' : ' #2A7AE4',
   };
 
   const backgroundColor = colorFill
@@ -57,10 +55,15 @@ const Button = ({
       className={buttonClass}
       {...props}
     >
-      {isLoading ? (
-        <CircularProgress size={16} style={spinnerStyle} />
-      ) : (
-        innerText
+      <span className={isLoading ? 'invisible' : 'visible'}>{innerText}</span>
+      {isLoading && (
+        <CircularProgress
+          size={16}
+          style={{
+            position: 'absolute',
+            color: colorFill ? '#FFF' : '#2A7AE4',
+          }}
+        />
       )}
     </button>
   );
