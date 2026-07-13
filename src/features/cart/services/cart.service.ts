@@ -1,4 +1,5 @@
 import type { ICreateCartItem } from '@/features/cart/interfaces/api/request/ICreateCartItem';
+import type { IUpdateCart } from '@/features/cart/interfaces/api/request/IUpdateCart';
 import type { ICartAttributes } from '@/features/cart/interfaces/api/response/ICartAttributes';
 import type { ICartService } from '@/features/cart/interfaces/services/ICartService';
 import type { ICart } from '@/features/cart/interfaces/types/ICart';
@@ -24,10 +25,26 @@ class CartService implements ICartService {
     config?: ApiRequestConfig,
   ): Promise<void> {
     await apiService.post<ISingleResponse<ICartAttributes>>(
-      '/cart/cart-item',
+      '/cart/item',
       createCartItem,
       config,
     );
+  }
+
+  async updateCartItem(
+    cartId: string,
+    updateCartItem: IUpdateCart,
+    config?: ApiRequestConfig,
+  ): Promise<void> {
+    await apiService.patch<ISingleResponse<ICartAttributes>>(
+      `/cart/${cartId}`,
+      updateCartItem,
+      config,
+    );
+  }
+
+  async deleteCartItem(cartItemId: string): Promise<void> {
+    await apiService.delete<void>(`/cart/item/${cartItemId}`);
   }
 }
 
