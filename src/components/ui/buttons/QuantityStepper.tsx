@@ -1,19 +1,19 @@
 type PropTypes = {
-  decreaseQuantity: () => void;
+  handleDecreaseQuantity: () => void;
   itemQuantity: number;
-  increaseQuantity: () => void;
+  handleIncreaseQuantity: () => void;
 };
 
 const QuantityStepper = ({
-  decreaseQuantity,
+  handleDecreaseQuantity,
   itemQuantity,
-  increaseQuantity,
+  handleIncreaseQuantity,
 }: PropTypes) => {
   return (
     <div className="border rounded-md w-fit text-[20px] overflow-hidden">
       <button
         className="py-0.2 px-4 hover:bg-gray-200 cursor-pointer"
-        onClick={decreaseQuantity}
+        onClick={handleDecreaseQuantity}
       >
         -
       </button>
@@ -22,7 +22,7 @@ const QuantityStepper = ({
       </span>
       <button
         className="py-0.2 px-4 hover:bg-gray-200 cursor-pointer"
-        onClick={increaseQuantity}
+        onClick={handleIncreaseQuantity}
       >
         +
       </button>

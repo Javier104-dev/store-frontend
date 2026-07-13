@@ -9,19 +9,10 @@ import {
 
 type PropTypes = {
   cartItems: ICartItem[];
-  decreaseQuantity: (id: string) => void;
-  increaseQuantity: (id: string) => void;
-  removeItem: (id: string) => void;
   closeCart: () => void;
 };
 
-const CartDrawerContent = ({
-  cartItems,
-  decreaseQuantity,
-  increaseQuantity,
-  removeItem,
-  closeCart,
-}: PropTypes) => {
+const CartDrawerContent = ({ cartItems, closeCart }: PropTypes) => {
   const subTotal = calculateSubtotal(cartItems);
   const totalItems = calculateTotalItems(cartItems);
 
@@ -33,13 +24,7 @@ const CartDrawerContent = ({
       </div>
       <div className="divide-y divide-gray-200 px-6">
         {cartItems.map((item) => (
-          <CartItem
-            key={item.id}
-            item={item}
-            decreaseQuantity={decreaseQuantity}
-            increaseQuantity={increaseQuantity}
-            removeItem={removeItem}
-          />
+          <CartItem key={item.id} item={item} />
         ))}
       </div>
       <CartSubTotal subTotal={subTotal} />

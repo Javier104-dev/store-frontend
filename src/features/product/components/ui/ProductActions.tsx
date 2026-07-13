@@ -4,29 +4,32 @@ import QuantityStepper from '@/components/ui/buttons/QuantityStepper';
 type PropTypes = {
   addItem: () => void;
   openCart: () => void;
-  decreaseQuantity: () => void;
-  increaseQuantity: () => void;
+  handleDecreaseQuantity: () => void;
+  handleIncreaseQuantity: () => void;
   itemQuantity: number;
+  isLoading: boolean;
 };
 
 const ProductActions = ({
   addItem,
   openCart,
-  decreaseQuantity,
-  increaseQuantity,
+  handleDecreaseQuantity,
+  handleIncreaseQuantity,
   itemQuantity,
+  isLoading,
 }: PropTypes) => {
   return (
     <div className="flex flex-col gap-2 w-1/3">
       <QuantityStepper
-        decreaseQuantity={decreaseQuantity}
+        handleDecreaseQuantity={handleDecreaseQuantity}
         itemQuantity={itemQuantity}
-        increaseQuantity={increaseQuantity}
+        handleIncreaseQuantity={handleIncreaseQuantity}
       />
       <Button
         colorFill={true}
         innerText="Agregar al carrito"
         onClick={addItem}
+        isLoading={isLoading}
       />
       <Button colorFill={true} innerText="Comprar ahora" onClick={openCart} />
     </div>

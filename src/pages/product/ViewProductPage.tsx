@@ -18,6 +18,7 @@ import useGet from '@/hooks/query/useGet';
 const ViewProductPage = () => {
   const [quantity, setQuantity] = useState(1);
 
+  const { mutate: addToCart, isPending } = useAddCartItem();
   const openCart = useCartStore((state) => state.openCart);
   const { id } = useParams<{ id: string }>();
   const productId = id ?? '';
@@ -37,8 +38,6 @@ const ViewProductPage = () => {
     queryFn: () => productService.getProducts({ categoryId }),
     enabled: Boolean(categoryId),
   });
-
-  const { mutate: addToCart } = useAddCartItem();
 
   const handleAddToCart = () => {
     if (!selectedProduct) return;
@@ -76,11 +75,12 @@ const ViewProductPage = () => {
               <ProductActions
                 addItem={handleAddToCart}
                 openCart={openCart}
-                decreaseQuantity={() =>
+                handleDecreaseQuantity={() =>
                   setQuantity((prev) => Math.max(1, prev - 1))
                 }
                 itemQuantity={quantity}
-                increaseQuantity={() => setQuantity((prev) => prev + 1)}
+                handleIncreaseQuantity={() => setQuantity((prev) => prev + 1)}
+                isLoading={isPending}
               />
             </div>
           </div>

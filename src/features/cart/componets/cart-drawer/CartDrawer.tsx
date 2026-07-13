@@ -4,20 +4,10 @@ import CartDrawerContent from '@/features/cart/componets/cart-drawer/CartDrawerC
 import { useCartStore } from '@/features/cart/hooks/useCart';
 
 const CartDrawer = () => {
-  const {
-    items,
-    isOpen,
-    removeItem,
-    increaseQuantity,
-    decreaseQuantity,
-    closeCart,
-  } = useCartStore(
+  const { items, isOpen, closeCart } = useCartStore(
     useShallow((state) => ({
       items: state.items,
       isOpen: state.isOpen,
-      removeItem: state.removeItem,
-      increaseQuantity: state.increaseQuantity,
-      decreaseQuantity: state.decreaseQuantity,
       closeCart: state.closeCart,
     })),
   );
@@ -35,13 +25,7 @@ const CartDrawer = () => {
           transition-transform duration-300
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        <CartDrawerContent
-          cartItems={items}
-          removeItem={removeItem}
-          increaseQuantity={increaseQuantity}
-          decreaseQuantity={decreaseQuantity}
-          closeCart={closeCart}
-        />
+        <CartDrawerContent cartItems={items} closeCart={closeCart} />
       </div>
     </div>
   );

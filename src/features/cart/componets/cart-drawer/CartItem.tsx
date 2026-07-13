@@ -1,22 +1,18 @@
 import { BiSolidTrashAlt } from 'react-icons/bi';
 
 import QuantityStepper from '@/components/ui/buttons/QuantityStepper';
+import useCartItemActions from '@/features/cart/hooks/useCartItemActions';
 import type { ICartItem } from '@/features/cart/interfaces/types/ICartItem';
 import ProductImage from '@/features/product/components/ui/ProductImage';
 
 type PropTypes = {
   item: ICartItem;
-  decreaseQuantity: (itemId: string) => void;
-  increaseQuantity: (itemId: string) => void;
-  removeItem: (itemId: string) => void;
 };
 
-const CartItem = ({
-  item,
-  decreaseQuantity,
-  increaseQuantity,
-  removeItem,
-}: PropTypes) => {
+const CartItem = ({ item }: PropTypes) => {
+  const { handleDecreaseQuantity, handleIncreaseQuantity, handleDeleteItem } =
+    useCartItemActions(item);
+
   return (
     <div className="flex items-center gap-3 py-7">
       <ProductImage height={90} url={item.img} />
@@ -27,13 +23,13 @@ const CartItem = ({
         </div>
         <div className="flex justify-between">
           <QuantityStepper
-            decreaseQuantity={() => decreaseQuantity(item.id)}
+            handleDecreaseQuantity={handleDecreaseQuantity}
             itemQuantity={item.quantity}
-            increaseQuantity={() => increaseQuantity(item.id)}
+            handleIncreaseQuantity={handleIncreaseQuantity}
           />
           <button
             className="cursor-pointer"
-            onClick={() => removeItem(item.id)}
+            onClick={handleDeleteItem}
             type="button"
           >
             <BiSolidTrashAlt />
