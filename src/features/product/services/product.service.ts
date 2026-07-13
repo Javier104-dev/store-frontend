@@ -1,27 +1,37 @@
 import type { ProductFilter } from '@/features/product/interfaces/api/request/ProductFilter';
 import type { IProductAttributes } from '@/features/product/interfaces/api/response/IProductAttributes';
 import type { IProductService } from '@/features/product/interfaces/services/IProductService';
+import type { IProduct } from '@/features/product/interfaces/types/IProduct';
+import type { IProductNormalized } from '@/features/product/interfaces/types/IProductNormalized';
+import { mapProduct } from '@/features/product/mapper/product-mapper';
 import type {
   IListResponse,
   ISingleResponse,
 } from '@/interfaces/api/IApiBaseResponse';
 import { type ApiRequestConfig, apiService } from '@/services/api.service';
+import {
+  normalizeJsonApiItem,
+  normalizeJsonApiList,
+} from '@/utils/jsonApi-normalizer';
 
 class ProductService implements IProductService {
   async getProductById(
     id: string,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IProductAttributes>> {
-    return apiService.get<ISingleResponse<IProductAttributes>>(
+  ): Promise<IProduct> {
+    const response = await apiService.get<ISingleResponse<IProductAttributes>>(
       `/product/${id}`,
       config,
+    );
+    return mapProduct(
+      normalizeJsonApiItem<IProductAttributes, IProductNormalized>(response),
     );
   }
 
   async getProducts(
     productFilter?: ProductFilter,
     config?: ApiRequestConfig,
-  ): Promise<IListResponse<IProductAttributes>> {
+  ): Promise<IProduct[]> {
     const { categoryId, storeId } = productFilter || {};
 
     const filter = {
@@ -29,23 +39,31 @@ class ProductService implements IProductService {
       ...(storeId && { store: { id: storeId } }),
     };
 
-    return apiService.get<IListResponse<IProductAttributes>>('/product', {
-      ...config,
-      params: { filter },
-    });
+    const response = await apiService.get<IListResponse<IProductAttributes>>(
+      '/product',
+      {
+        ...config,
+        params: { filter },
+      },
+    );
+
+    return normalizeJsonApiList<IProductAttributes, IProductNormalized>(
+      response,
+    ).map(mapProduct);
   }
 
-  async getProductsFromOwner(
-    config?: ApiRequestConfig,
-  ): Promise<IListResponse<IProductAttributes>> {
-    return apiService.get<IListResponse<IProductAttributes>>(
+  async getProductsFromOwner(config?: ApiRequestConfig): Promise<IProduct[]> {
+    const response = await apiService.get<IListResponse<IProductAttributes>>(
       '/product/owner',
       config,
     );
+    return normalizeJsonApiList<IProductAttributes, IProductNormalized>(
+      response,
+    ).map(mapProduct);
   }
 
   async deleteProduct(id: string, config?: ApiRequestConfig): Promise<void> {
-    return apiService.delete(`/product/${id}`, config);
+    await apiService.delete(`/product/${id}`, config);
   }
 }
 

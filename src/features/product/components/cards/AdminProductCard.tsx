@@ -30,7 +30,7 @@ const AdminProductCard = ({
       />
       <div className="mt-2">
         <h1 className="text-[14px]">{product.name}</h1>
-        <p className="font-bold text-[16px]">$ {product.price}</p>
+        <p className="font-bold text-[16px]">$ {product.price.toFixed(2)}</p>
         <p className="text-[14px]">#{product.id}</p>
       </div>
     </div>

@@ -1,9 +1,9 @@
 import type { IReactChildrenProps } from '@/interfaces/IReactChildren';
 
-interface PropTypes extends IReactChildrenProps {
+type PropTypes = IReactChildrenProps & {
   dataTest?: string;
   gapClassName?: string;
-}
+};
 
 const VStack = ({ children, gapClassName, dataTest }: PropTypes) => {
   return (

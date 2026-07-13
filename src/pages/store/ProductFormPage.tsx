@@ -5,35 +5,27 @@ import PageLayout from '@/components/ui/layout/PageLayout';
 import { StoreRoutes } from '@/configs/router/StoreRoutes';
 import { notifyError } from '@/errors/notify-error';
 import type { ICreateProduct } from '@/features/catalog/interfaces/api/request/ICreateProduct';
+import type { ICreateProductVariables } from '@/features/catalog/interfaces/api/request/ICreateProductVariables';
 import type { IUpdateProduct } from '@/features/catalog/interfaces/api/request/IUpdateProduct';
+import type { IUpdateProductVariables } from '@/features/catalog/interfaces/api/request/IUpdateProductVariables';
 import type {
   ICategoryOption,
   IProductFormValues,
 } from '@/features/catalog/interfaces/form/IProductFormValues';
 import { catalogService } from '@/features/catalog/services/catalog.service';
-import { CategoryQueryKeys } from '@/features/category/components/category.queryKeys';
-import type { ICategoryAttributes } from '@/features/category/interfaces/api/response/ICategoryAttributes';
+import { CategoryQueryKeys } from '@/features/category/constansts/category.queryKeys';
 import type { ICategory } from '@/features/category/interfaces/types/ICategory';
 import { categoryService } from '@/features/category/services/category.service';
 import ProductForm from '@/features/product/components/form/ProductForm';
 import { PRODUCT_FORM_CONFIG } from '@/features/product/constants/product-form.config';
 import { PRODUCT_TOAST_MESSAGES } from '@/features/product/constants/product-toast-messages';
 import { ProductQueryKeys } from '@/features/product/constants/product.queryKeys';
-import type { IProductAttributes } from '@/features/product/interfaces/api/response/IProductAttributes';
 import type { IProduct } from '@/features/product/interfaces/types/IProduct';
 import { productService } from '@/features/product/services/product.service';
 import useGet from '@/hooks/query/useGet';
 import useInvalidateQueries from '@/hooks/query/useInvalidateQueries';
 import useMutate from '@/hooks/query/useMutate';
-import type {
-  IListResponse,
-  ISingleResponse,
-} from '@/interfaces/api/IApiBaseResponse';
 import { notificationService } from '@/services/notification.service';
-import {
-  normalizeJsonApiItem,
-  normalizeJsonApiList,
-} from '@/utils/jsonApi-normalizer';
 
 const initialValues: IProductFormValues = {
   name: '',
@@ -52,31 +44,26 @@ const ProductFormPage = () => {
   const isEdit = Boolean(productId);
 
   const { data: allCategories, isLoading: allCategoriesIsLoading } = useGet<
-    IListResponse<ICategoryAttributes>,
     ICategory[]
   >({
     queryKey: [CategoryQueryKeys.getCategories],
     queryFn: () => categoryService.getCategories(),
-    select: normalizeJsonApiList,
   });
 
-  const { data: selectedProduct, isLoading: selectedProductIsLoading } = useGet<
-    ISingleResponse<IProductAttributes>,
-    IProduct
-  >({
-    queryKey: [ProductQueryKeys.getProductById, productId],
-    queryFn: () => productService.getProductById(productId),
-    select: normalizeJsonApiItem,
-    enabled: isEdit,
-  });
+  const { data: selectedProduct, isLoading: selectedProductIsLoading } =
+    useGet<IProduct>({
+      queryKey: [ProductQueryKeys.getProductById, productId],
+      queryFn: () => productService.getProductById(productId),
+      enabled: isEdit,
+    });
 
   const { mutate: createProduct, isPending: createProductIsPending } =
-    useMutate({
+    useMutate<void, ICreateProductVariables>({
       mutationFn: catalogService.createProduct,
     });
 
   const { mutate: updateProduct, isPending: updateProductIsPending } =
-    useMutate({
+    useMutate<void, IUpdateProductVariables>({
       mutationFn: catalogService.updateProduct,
       onSuccess: () => {
         invalidateQueryKeys([ProductQueryKeys.getProductById, productId]);
@@ -109,7 +96,7 @@ const ProductFormPage = () => {
       ...(isEdit && { id }),
       ...(isEdit && { uploadIds }),
       name,
-      price: Number(price),
+      price: Number.parseFloat(price),
       description,
       categoryIds: categories?.map((category) => category.id),
     };
@@ -138,7 +125,7 @@ const ProductFormPage = () => {
 
       return {
         name,
-        price: price.toString(),
+        price: price.toFixed(2),
         description,
         categories:
           categories?.map((category) => ({

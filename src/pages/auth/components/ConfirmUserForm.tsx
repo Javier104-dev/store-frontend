@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 
-import Button from '@/components/ui/actions/Button';
+import Button from '@/components/ui/buttons/Button';
 import AuthContainer from '@/pages/auth/components/AuthContainer';
 import AuthForm from '@/pages/auth/components/AuthForm';
 import AuthInput from '@/pages/auth/components/AuthInput';

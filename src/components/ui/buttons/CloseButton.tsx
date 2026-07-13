@@ -4,12 +4,12 @@ type PropTypes = {
   onClose: () => void;
 };
 
-const CloseModalButton = ({ onClose }: PropTypes) => {
+const CloseButton = ({ onClose }: PropTypes) => {
   return (
     <button
       onClick={onClose}
-      className="absolute top-3 right-3 p-2 hover:bg-gray-200 rounded-full cursor-pointer"
-      data-test="close-modal-button"
+      className="p-2 hover:bg-gray-200 rounded-full cursor-pointer"
+      data-test="close-button"
       type="button"
     >
       <IoMdClose className="text-[22px] lg:text-[32px]" />
@@ -17,4 +17,4 @@ const CloseModalButton = ({ onClose }: PropTypes) => {
   );
 };
 
-export default CloseModalButton;
+export default CloseButton;

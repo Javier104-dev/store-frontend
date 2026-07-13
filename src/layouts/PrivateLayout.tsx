@@ -1,19 +1,12 @@
-import { useCookies } from 'react-cookie';
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { AuthRoutes } from '@/configs/router/AuthRoutes';
-import { StoredCookies } from '@/interfaces/auth/cookies.constants';
+import useAuth from '@/hooks/auth/useAuth';
 import { useAuthProvider } from '@/pages/auth/hooks/useAuthProvider';
 
 export default function PrivateLayout() {
-  const [cookies] = useCookies([
-    StoredCookies.USERNAME,
-    StoredCookies.REFRESH_TOKEN,
-  ]);
+  const { connected } = useAuth();
   const { loadingState } = useAuthProvider();
-
-  const isAuthenticated =
-    !!cookies[StoredCookies.REFRESH_TOKEN] && !!cookies[StoredCookies.USERNAME];
 
   if (loadingState.refreshSession) {
     return (
@@ -27,7 +20,7 @@ export default function PrivateLayout() {
     );
   }
 
-  if (!isAuthenticated) {
+  if (!connected) {
     return <Navigate to={AuthRoutes.SIGN_IN} replace />;
   }
 

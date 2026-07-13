@@ -1,14 +1,16 @@
+import type { ICreateStore } from '@/features/store/interfaces/api/request/ICreateStore';
 import type { IUpdateStore } from '@/features/store/interfaces/api/request/IUpdateStore';
-import type { IStoreAttributes } from '@/features/store/interfaces/api/response/IStoreAttributes';
-import type { ISingleResponse } from '@/interfaces/api/IApiBaseResponse';
+import type { IStore } from '@/features/store/interfaces/types/IStore';
 import type { ApiRequestConfig } from '@/services/api.service';
 
 export interface IStoreService {
-  getStoreFronOwner(
+  getStoreFronOwner(config?: ApiRequestConfig): Promise<IStore>;
+  createStore(
+    createStore: ICreateStore,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IStoreAttributes>>;
+  ): Promise<void>;
   updateStore(
     updateStore: IUpdateStore,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IStoreAttributes>>;
+  ): Promise<void>;
 }

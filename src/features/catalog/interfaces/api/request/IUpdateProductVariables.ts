@@ -1,4 +1,4 @@
-import { IUpdateProduct } from '@/features/catalog/interfaces/api/request/IUpdateProduct';
+import type { IUpdateProduct } from '@/features/catalog/interfaces/api/request/IUpdateProduct';
 
 export interface IUpdateProductVariables {
   product: IUpdateProduct;

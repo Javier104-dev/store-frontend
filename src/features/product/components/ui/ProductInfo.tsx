@@ -11,7 +11,7 @@ const ProductInfo = ({ name, price, description }: PropTypes) => {
         {name}
       </h1>
       <p className="font-bold" data-test="product-price">
-        $ {price}
+        $ {price.toFixed(2)}
       </p>
       <p className="text-[14px] lg:text-[16px]" data-test="product-description">
         {description}

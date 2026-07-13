@@ -1,9 +1,6 @@
-import type { ICategoryAttributes } from '@/features/category/interfaces/api/response/ICategoryAttributes';
-import type { IListResponse } from '@/interfaces/api/IApiBaseResponse';
+import type { ICategory } from '@/features/category/interfaces/types/ICategory';
 import type { ApiRequestConfig } from '@/services/api.service';
 
 export interface ICategoryService {
-  getCategories(
-    config?: ApiRequestConfig,
-  ): Promise<IListResponse<ICategoryAttributes>>;
+  getCategories(config?: ApiRequestConfig): Promise<ICategory[]>;
 }

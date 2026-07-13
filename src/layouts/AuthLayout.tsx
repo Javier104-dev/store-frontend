@@ -1,19 +1,12 @@
-import { useCookies } from 'react-cookie';
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { HomeRoutes } from '@/configs/router/HomeRoutes';
-import { StoredCookies } from '@/interfaces/auth/cookies.constants';
+import useAuth from '@/hooks/auth/useAuth';
 
 export default function AuthLayout() {
-  const [cookies] = useCookies([
-    StoredCookies.USERNAME,
-    StoredCookies.REFRESH_TOKEN,
-  ]);
+  const { connected } = useAuth();
 
-  const isAuthenticated =
-    !!cookies[StoredCookies.REFRESH_TOKEN] && !!cookies[StoredCookies.USERNAME];
-
-  if (isAuthenticated) {
+  if (connected) {
     return <Navigate to={HomeRoutes.HOME} replace />;
   }
 

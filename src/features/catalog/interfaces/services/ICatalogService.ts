@@ -1,23 +1,16 @@
 import type { ICreateProductVariables } from '@/features/catalog/interfaces/api/request/ICreateProductVariables';
 import type { IUpdateProductVariables } from '@/features/catalog/interfaces/api/request/IUpdateProductVariables';
-import type { ICategoryAttributes } from '@/features/category/interfaces/api/response/ICategoryAttributes';
-import type { IProductAttributes } from '@/features/product/interfaces/api/response/IProductAttributes';
-import type {
-  IListResponse,
-  ISingleResponse,
-} from '@/interfaces/api/IApiBaseResponse';
+import type { ICategory } from '@/features/category/interfaces/types/ICategory';
 import type { ApiRequestConfig } from '@/services/api.service';
 
 export interface ICatalogService {
-  getCategoriesWithProducts(
-    config?: ApiRequestConfig,
-  ): Promise<IListResponse<ICategoryAttributes>>;
+  getCategoriesWithProducts(config?: ApiRequestConfig): Promise<ICategory[]>;
   createProduct(
     createProductVariables: ICreateProductVariables,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IProductAttributes>>;
+  ): Promise<void>;
   updateProduct(
     updateProductVariables: IUpdateProductVariables,
     config?: ApiRequestConfig,
-  ): Promise<ISingleResponse<IProductAttributes>>;
+  ): Promise<void>;
 }

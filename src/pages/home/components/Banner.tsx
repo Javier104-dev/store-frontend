@@ -1,4 +1,4 @@
-import Button from '@/components/ui/actions/Button';
+import Button from '@/components/ui/buttons/Button';
 import PageLayout from '@/components/ui/layout/PageLayout';
 
 import hero from '@assets/banner/Hero.png';
@@ -7,7 +7,7 @@ const Banner = () => {
   return (
     <div
       style={{ backgroundImage: `url(${hero})` }}
-      className="bg-center bg-cover bg-no-repeat h-[350px] flex items-end"
+      className="bg-center bg-cover bg-no-repeat h-87.5 flex items-end"
       data-test="banner"
     >
       <PageLayout>
@@ -20,7 +20,7 @@ const Banner = () => {
             innerText={'View Consoles'}
             colorFill={true}
             to="#"
-            width={130}
+            paddingX={60}
           />
         </div>
       </PageLayout>

@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
 
-import Button from '@/components/ui/actions/Button';
+import Button from '@/components/ui/buttons/Button';
 import FormContainer from '@/components/ui/form/FormContainer';
 import Heading from '@/components/ui/heading/Heading';
 import type {

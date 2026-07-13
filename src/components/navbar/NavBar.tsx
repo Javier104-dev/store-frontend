@@ -1,23 +1,33 @@
-import { useCookies } from 'react-cookie';
+import { useEffect, useState } from 'react';
 
 import Action from '@/components/navbar/Action';
 import Logo from '@/components/navbar/Logo';
 import PageLayout from '@/components/ui/layout/PageLayout';
-import { StoredCookies } from '@/interfaces/auth/cookies.constants';
+import CartIcon from '@/features/cart/componets/cart-icon/CartIcon';
+import useAuth from '@/hooks/auth/useAuth';
 
 export default function NavBar() {
-  const [cookies] = useCookies([
-    StoredCookies.USERNAME,
-    StoredCookies.REFRESH_TOKEN,
-  ]);
-  const connected =
-    !!cookies[StoredCookies.REFRESH_TOKEN] && !!cookies[StoredCookies.USERNAME];
+  const { connected } = useAuth();
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsSticky(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="flex shadow-md" data-test="navbar">
+    <div
+      className={`sticky top-0 shadow-md transition-all duration-500 ${isSticky ? 'bg-white/80 backdrop-blur-md' : ' bg-white'}`}
+      data-test="navbar"
+    >
       <PageLayout>
-        <div className="flex justify-between">
-          <Logo width={176} height={50} />
-          <Action connected={connected} />
+        <div className="flex justify-between items-center">
+          <Logo width={isSticky ? 130 : 176} height={50} />
+          <div className="flex items-center gap-6">
+            <CartIcon isSticky={isSticky} />
+            <Action connected={connected} isSticky={isSticky} />
+          </div>
         </div>
       </PageLayout>
     </div>

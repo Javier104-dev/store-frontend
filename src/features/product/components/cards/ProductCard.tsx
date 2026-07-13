@@ -17,7 +17,7 @@ const ProductCard = ({ height, id, name, price, url }: PropTypes) => {
       <ProductImage height={height} url={url} />
       <div className="mt-2">
         <h1 className="text-[14px]">{name}</h1>
-        <p className="font-bold text-[16px]">$ {price}</p>
+        <p className="font-bold text-[16px]">$ {price.toFixed(2)}</p>
         <Link
           to={buildViewProductPath({ id })}
           className="font-bold text-[16px] text-[#2A7AE4]"

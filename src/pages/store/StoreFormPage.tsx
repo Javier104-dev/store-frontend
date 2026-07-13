@@ -10,6 +10,8 @@ import { STORE_FORM_CONFIG } from '@/features/store/constants/store-form.config'
 import { STORE_TOAST_MESSAGES } from '@/features/store/constants/store-toast-messages';
 import { StoreQueryKeys } from '@/features/store/constants/store.queryKeys';
 import { useStore } from '@/features/store/hooks/useStore';
+import type { ICreateStore } from '@/features/store/interfaces/api/request/ICreateStore';
+import type { IUpdateStore } from '@/features/store/interfaces/api/request/IUpdateStore';
 import type { IStoreFormValues } from '@/features/store/interfaces/form/IStoreFormValues';
 import type { IStore } from '@/features/store/interfaces/types/IStore';
 import { storeService } from '@/features/store/services/store.service';
@@ -29,14 +31,20 @@ const StoreFormPage = () => {
   const storeId = storeInfo?.id ?? '';
   const isEdit = Boolean(storeId);
 
-  const { mutate: createStore, isPending: createStoreIsPending } = useMutate({
+  const { mutate: createStore, isPending: createStoreIsPending } = useMutate<
+    void,
+    ICreateStore
+  >({
     mutationFn: storeService.createStore,
     onSuccess: () => {
       navigate(StoreRoutes.MANAGE_PRODUCTS);
     },
   });
 
-  const { mutate: updateStore, isPending: updateStoreIsPending } = useMutate({
+  const { mutate: updateStore, isPending: updateStoreIsPending } = useMutate<
+    void,
+    IUpdateStore
+  >({
     mutationFn: storeService.updateStore,
     onSuccess: () => {
       invalidateQueryKeys([StoreQueryKeys.getStoreFronOwner]);

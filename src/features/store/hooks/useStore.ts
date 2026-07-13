@@ -6,14 +6,11 @@ import {
 } from '@tanstack/react-query';
 
 import { StoreQueryKeys } from '@/features/store/constants/store.queryKeys';
-import type { IStoreAttributes } from '@/features/store/interfaces/api/response/IStoreAttributes';
 import type { IStore } from '@/features/store/interfaces/types/IStore';
 import { storeService } from '@/features/store/services/store.service';
-import type { ISingleResponse } from '@/interfaces/api/IApiBaseResponse';
-import { normalizeJsonApiItem } from '@/utils/jsonApi-normalizer';
 
 type ICustomQueryOptions = Omit<
-  UseQueryOptions<ISingleResponse<IStoreAttributes>, Error, IStore, QueryKey>,
+  UseQueryOptions<IStore, Error, IStore, QueryKey>,
   'queryKey' | 'queryFn' | 'refetchOnWindowFocus' | 'initialData'
 >;
 
@@ -26,16 +23,14 @@ export const useStore = (options?: ICustomQueryOptions) => {
     isLoading,
     refetch,
     ...rest
-  } = useQuery<ISingleResponse<IStoreAttributes>, Error, IStore>({
+  } = useQuery<IStore, Error>({
     queryKey: [StoreQueryKeys.getStoreFronOwner],
     queryFn: () => storeService.getStoreFronOwner(),
     refetchOnWindowFocus: false,
     initialData:
-      queryClient.getQueryData<ISingleResponse<IStoreAttributes>>([
-        StoreQueryKeys.getStoreFronOwner,
-      ]) ?? undefined,
+      queryClient.getQueryData<IStore>([StoreQueryKeys.getStoreFronOwner]) ??
+      undefined,
     staleTime: ONE_HOUR,
-    select: normalizeJsonApiItem,
     ...options,
   });
 

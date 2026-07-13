@@ -1,12 +1,12 @@
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 
+import Button from '@/components/ui/buttons/Button';
 import AuthContainer from '@/pages/auth/components/AuthContainer';
 import AuthForm from '@/pages/auth/components/AuthForm';
 import AuthInput from '@/pages/auth/components/AuthInput';
 import AuthOr from '@/pages/auth/components/AuthOr';
 import AuthSub from '@/pages/auth/components/AuthSub';
-import AuthSubmit from '@/pages/auth/components/AuthSubmit';
 import AuthTitle from '@/pages/auth/components/AuthTitle';
 import { usernameOnlySchema } from '@/pages/auth/schemas/username-only.schema';
 
@@ -40,9 +40,12 @@ export default function ResendConfirmationCodeForm({
               touched={touched.username}
               data-test="resend-confirmation-code-username"
             />
-            <AuthSubmit
-              loading={loading}
+            <Button
+              isLoading={loading}
+              innerText={'Submit'}
+              colorFill={true}
               data-test="resend-confirmation-code-submit"
+              type="submit"
             />
             <AuthOr />
             <AuthSub>
