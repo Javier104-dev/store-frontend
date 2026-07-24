@@ -15,8 +15,8 @@ const CartItem = ({ item }: PropTypes) => {
 
   return (
     <div className="flex items-center gap-3 py-7">
-      <ProductImage height={90} url={item.img} />
-      <div className="w-full">
+      <ProductImage height={90} width={90} url={item.img} />
+      <div className="flex-1">
         <div className="mb-4">
           <h1 className="font-bold">{item.name}</h1>
           <p>$ {item.price.toFixed(2)}</p>
