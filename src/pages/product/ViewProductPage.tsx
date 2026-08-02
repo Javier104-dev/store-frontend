@@ -66,7 +66,7 @@ const ViewProductPage = () => {
                 url={selectedProduct?.upload[0]?.url}
               />
             </div>
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-10 flex-1">
               <ProductInfo
                 name={selectedProduct.name}
                 price={selectedProduct.price}
