@@ -1,6 +1,7 @@
 import debounce from 'lodash/debounce';
 import { useShallow } from 'zustand/react/shallow';
 
+import { notifyError } from '@/errors/notify-error';
 import { CartQueryKeys } from '@/features/cart/constants/cart.queryKeys';
 import { useCartStore } from '@/features/cart/hooks/useCart';
 import type { IUpdateCart } from '@/features/cart/interfaces/api/request/IUpdateCart';
@@ -23,7 +24,8 @@ const useCartItemActions = (cartItem: ICartItem) => {
       cartService.updateCartItem(cartItem.id, {
         quantity: variables.quantity,
       }),
-    onError: () => {
+    onError: (error) => {
+      notifyError(error);
       invalidateQueryKey(CartQueryKeys.getActiveCart);
     },
     onSuccess: () => {
@@ -36,7 +38,8 @@ const useCartItemActions = (cartItem: ICartItem) => {
     onMutate: (cartItemId) => {
       removeItem(cartItemId);
     },
-    onError: () => {
+    onError: (error) => {
+      notifyError(error);
       invalidateQueryKey(CartQueryKeys.getActiveCart);
     },
     onSuccess: () => {

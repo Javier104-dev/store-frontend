@@ -1,5 +1,4 @@
-import { useShallow } from 'zustand/react/shallow';
-
+import { notifyError } from '@/errors/notify-error';
 import { CartQueryKeys } from '@/features/cart/constants/cart.queryKeys';
 import { useCartStore } from '@/features/cart/hooks/useCart';
 import type { ICartItem } from '@/features/cart/interfaces/types/ICartItem';
@@ -8,12 +7,7 @@ import useInvalidateQueries from '@/hooks/query/useInvalidateQueries';
 import useMutate from '@/hooks/query/useMutate';
 
 const useAddCartItem = () => {
-  const { addItem, removeItem } = useCartStore(
-    useShallow(({ addItem, removeItem }) => ({
-      addItem,
-      removeItem,
-    })),
-  );
+  const addItem = useCartStore((state) => state.addItem);
 
   const { invalidateQueryKey } = useInvalidateQueries();
 
@@ -26,7 +20,10 @@ const useAddCartItem = () => {
     onMutate: (newItem) => {
       addItem(newItem);
     },
-    onError: (_err, newItem) => removeItem(newItem.id),
+    onError: (error) => {
+      notifyError(error);
+      invalidateQueryKey(CartQueryKeys.getActiveCart);
+    },
     onSuccess: () => {
       invalidateQueryKey(CartQueryKeys.getActiveCart);
     },
