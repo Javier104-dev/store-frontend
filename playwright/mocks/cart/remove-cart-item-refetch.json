@@ -1,0 +1,246 @@
+{
+  "data": {
+    "type": "cart",
+    "id": "8162423b-934b-4bdc-b48b-df8e1026547b",
+    "attributes": {
+      "createdAt": "2026-07-26T05:47:42.467Z",
+      "updatedAt": "2026-07-26T05:47:42.467Z",
+      "deletedAt": null,
+      "status": "active"
+    },
+    "relationships": {
+      "items": {
+        "data": [
+          {
+            "type": "items",
+            "id": "865a1647-f021-4121-b756-be44ff4be177"
+          },
+          {
+            "type": "items",
+            "id": "81208bb8-8bd8-4777-b651-dc5206b571be"
+          },
+          {
+            "type": "items",
+            "id": "c8fac485-1093-474c-b51c-ef120308cedc"
+          }
+        ],
+        "links": {
+          "self": "http://localhost:3001/api/v1/cart/user/relationships/items",
+          "related": "http://localhost:3001/api/v1"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": "http://localhost:3001/api/v1/cart/user"
+  },
+  "included": [
+    {
+      "type": "items",
+      "id": "865a1647-f021-4121-b756-be44ff4be177",
+      "attributes": {
+        "createdAt": "2026-07-26T05:48:36.425Z",
+        "updatedAt": "2026-07-26T05:51:01.517Z",
+        "deletedAt": null,
+        "quantity": 3,
+        "unitPrice": "325.00"
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/865a1647-f021-4121-b756-be44ff4be177"
+      },
+      "relationships": {
+        "product": {
+          "data": {
+            "type": "product",
+            "id": "9fdac793-fe83-48b3-82ab-c32681ed8276"
+          },
+          "links": {
+            "self": "http://localhost:3001/api/v1/cart/user/865a1647-f021-4121-b756-be44ff4be177/relationships/product",
+            "related": "http://localhost:3001/api/v1"
+          }
+        }
+      }
+    },
+    {
+      "type": "items",
+      "id": "81208bb8-8bd8-4777-b651-dc5206b571be",
+      "attributes": {
+        "createdAt": "2026-07-26T05:49:57.364Z",
+        "updatedAt": "2026-07-26T05:51:02.168Z",
+        "deletedAt": null,
+        "quantity": 2,
+        "unitPrice": "154.65"
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/81208bb8-8bd8-4777-b651-dc5206b571be"
+      },
+      "relationships": {
+        "product": {
+          "data": {
+            "type": "product",
+            "id": "729707ce-cf94-4bbd-a753-f92933ede6c2"
+          },
+          "links": {
+            "self": "http://localhost:3001/api/v1/cart/user/81208bb8-8bd8-4777-b651-dc5206b571be/relationships/product",
+            "related": "http://localhost:3001/api/v1"
+          }
+        }
+      }
+    },
+    {
+      "type": "items",
+      "id": "c8fac485-1093-474c-b51c-ef120308cedc",
+      "attributes": {
+        "createdAt": "2026-07-26T05:50:55.170Z",
+        "updatedAt": "2026-07-26T05:50:55.170Z",
+        "deletedAt": null,
+        "quantity": 1,
+        "unitPrice": "90.00"
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/c8fac485-1093-474c-b51c-ef120308cedc"
+      },
+      "relationships": {
+        "product": {
+          "data": {
+            "type": "product",
+            "id": "db9d7784-04d6-4b6a-83a6-aa8d9dffc700"
+          },
+          "links": {
+            "self": "http://localhost:3001/api/v1/cart/user/c8fac485-1093-474c-b51c-ef120308cedc/relationships/product",
+            "related": "http://localhost:3001/api/v1"
+          }
+        }
+      }
+    },
+    {
+      "type": "product",
+      "id": "9fdac793-fe83-48b3-82ab-c32681ed8276",
+      "attributes": {
+        "createdAt": "2026-06-10T06:47:10.778Z",
+        "updatedAt": "2026-07-01T00:30:31.648Z",
+        "deletedAt": null,
+        "name": "XYZ Console",
+        "price": "325.00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/9fdac793-fe83-48b3-82ab-c32681ed8276"
+      },
+      "relationships": {
+        "upload": {
+          "data": [
+            {
+              "type": "upload",
+              "id": "625fed19-98bf-4201-b93c-a25f4c957b12"
+            }
+          ],
+          "links": {
+            "self": "http://localhost:3001/api/v1/cart/user/9fdac793-fe83-48b3-82ab-c32681ed8276/relationships/upload",
+            "related": "http://localhost:3001/api/v1"
+          }
+        }
+      }
+    },
+    {
+      "type": "upload",
+      "id": "625fed19-98bf-4201-b93c-a25f4c957b12",
+      "attributes": {
+        "createdAt": "2026-06-10T06:47:10.788Z",
+        "updatedAt": "2026-06-10T06:47:10.788Z",
+        "deletedAt": null,
+        "key": "product/70ee357b-38ca-470a-abe6-ee9cdcc8d685.jpeg",
+        "url": "http://localhost:4566/test-bucket/product/70ee357b-38ca-470a-abe6-ee9cdcc8d685.jpeg"
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/625fed19-98bf-4201-b93c-a25f4c957b12"
+      }
+    },
+    {
+      "type": "product",
+      "id": "729707ce-cf94-4bbd-a753-f92933ede6c2",
+      "attributes": {
+        "createdAt": "2026-06-10T06:36:43.068Z",
+        "updatedAt": "2026-06-10T06:42:25.161Z",
+        "deletedAt": null,
+        "name": "XYZ Product",
+        "price": "154.65",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/729707ce-cf94-4bbd-a753-f92933ede6c2"
+      },
+      "relationships": {
+        "upload": {
+          "data": [
+            {
+              "type": "upload",
+              "id": "8f5d26ed-86dd-4158-9111-829fb8d30481"
+            }
+          ],
+          "links": {
+            "self": "http://localhost:3001/api/v1/cart/user/729707ce-cf94-4bbd-a753-f92933ede6c2/relationships/upload",
+            "related": "http://localhost:3001/api/v1"
+          }
+        }
+      }
+    },
+    {
+      "type": "upload",
+      "id": "8f5d26ed-86dd-4158-9111-829fb8d30481",
+      "attributes": {
+        "createdAt": "2026-06-10T06:36:43.120Z",
+        "updatedAt": "2026-06-10T06:36:43.120Z",
+        "deletedAt": null,
+        "key": "product/48325cf2-95cc-4abb-b0e6-7b445837549a.jpeg",
+        "url": "http://localhost:4566/test-bucket/product/48325cf2-95cc-4abb-b0e6-7b445837549a.jpeg"
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/8f5d26ed-86dd-4158-9111-829fb8d30481"
+      }
+    },
+    {
+      "type": "product",
+      "id": "db9d7784-04d6-4b6a-83a6-aa8d9dffc700",
+      "attributes": {
+        "createdAt": "2026-06-10T06:44:36.366Z",
+        "updatedAt": "2026-06-10T06:44:36.366Z",
+        "deletedAt": null,
+        "name": "XYZ Console",
+        "price": "90.00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/db9d7784-04d6-4b6a-83a6-aa8d9dffc700"
+      },
+      "relationships": {
+        "upload": {
+          "data": [
+            {
+              "type": "upload",
+              "id": "e073e9a2-9e7b-441c-b360-fe5d428d623c"
+            }
+          ],
+          "links": {
+            "self": "http://localhost:3001/api/v1/cart/user/db9d7784-04d6-4b6a-83a6-aa8d9dffc700/relationships/upload",
+            "related": "http://localhost:3001/api/v1"
+          }
+        }
+      }
+    },
+    {
+      "type": "upload",
+      "id": "e073e9a2-9e7b-441c-b360-fe5d428d623c",
+      "attributes": {
+        "createdAt": "2026-06-10T06:44:36.419Z",
+        "updatedAt": "2026-06-10T06:44:36.419Z",
+        "deletedAt": null,
+        "key": "product/cd16a67c-4fd2-4b62-a9a3-c7df40477edc.jpeg",
+        "url": "http://localhost:4566/test-bucket/product/cd16a67c-4fd2-4b62-a9a3-c7df40477edc.jpeg"
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/e073e9a2-9e7b-441c-b360-fe5d428d623c"
+      }
+    }
+  ]
+}
