@@ -37,7 +37,9 @@ const CategoriesModal = ({
       <VStack>
         <SectionHeader
           title={'Categories'}
-          action={<CloseButton onClose={onClose} />}
+          action={
+            <CloseButton onClose={onClose} dataTest="close-categories-modal" />
+          }
         />
         <CategorySelectorContainer
           categories={filteredResources}

@@ -30,6 +30,7 @@ const ProductActions = ({
         innerText="Agregar al carrito"
         onClick={addItem}
         isLoading={isLoading}
+        data-test="add-to-cart-button"
       />
       <Button colorFill={true} innerText="Comprar ahora" onClick={openCart} />
     </div>

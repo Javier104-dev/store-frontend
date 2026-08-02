@@ -19,8 +19,11 @@ const CartDrawerContent = ({ cartItems, closeCart }: PropTypes) => {
   return (
     <div className="w-87.5">
       <div className="flex justify-between items-center py-5 px-6 border-b border-gray-200">
-        <h1 className="font-bold">{`Tu carrito (${totalItems})`}</h1>
-        <CloseButton onClose={closeCart} />
+        <h1
+          className="font-bold"
+          data-test="cart-drawer-title"
+        >{`Tu carrito (${totalItems})`}</h1>
+        <CloseButton onClose={closeCart} dataTest="close-cart-drawer-content" />
       </div>
       <div className="divide-y divide-gray-200 px-6">
         {cartItems.map((item) => (
