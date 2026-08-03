@@ -120,7 +120,7 @@ test.describe('Cart drawer page', () => {
 
     await expect(cartItem).toHaveCount(0);
     await expect(getBySel('cart-drawer-subtotal')).toHaveText('$ 1374.30');
-    await getBySel('cart-drawer-overlay').click();
+    await getBySel('cart-drawer-overlay').click({ position: { x: 10, y: 10 } });
     await expect(getBySel('cart-icon-count')).toHaveText('6');
   });
 
@@ -177,7 +177,7 @@ test.describe('Cart drawer page', () => {
     ).toHaveText('4');
     await expect(getBySel('cart-drawer-subtotal')).toHaveText('$ 1776.30');
 
-    await getBySel('cart-drawer-overlay').click();
+    await getBySel('cart-drawer-overlay').click({ position: { x: 10, y: 10 } });
     await expect(getBySel('cart-icon-count')).toHaveText('10');
   });
 
@@ -234,7 +234,7 @@ test.describe('Cart drawer page', () => {
     ).toHaveText('4');
     await expect(getBySel('cart-drawer-subtotal')).toHaveText('$ 1776.30');
 
-    await getBySel('cart-drawer-overlay').click();
+    await getBySel('cart-drawer-overlay').click({ position: { x: 10, y: 10 } });
     await expect(getBySel('cart-icon-count')).toHaveText('10');
   });
 
@@ -285,7 +285,7 @@ test.describe('Cart drawer page', () => {
     await expect(cartItem).toHaveCount(1);
     await expect(getBySel('cart-drawer-subtotal')).toHaveText('$ 1776.30');
 
-    await getBySel('cart-drawer-overlay').click();
+    await getBySel('cart-drawer-overlay').click({ position: { x: 10, y: 10 } });
     await expect(getBySel('cart-icon-count')).toHaveText('10');
   });
 });

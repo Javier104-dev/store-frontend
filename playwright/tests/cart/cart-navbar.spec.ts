@@ -68,7 +68,7 @@ test.describe('Cart navbar', () => {
       'data-state',
       'open',
     );
-    await getBySel('cart-drawer-overlay').click();
+    await getBySel('cart-drawer-overlay').click({ position: { x: 10, y: 10 } });
     await expect(getBySel('cart-drawer-content')).toHaveAttribute(
       'data-state',
       'closed',
