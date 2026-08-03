@@ -8,24 +8,25 @@ import useGet from '@/hooks/query/useGet';
 const useLoadCart = (connected: boolean) => {
   const setItems = useCartStore((state) => state.setItems);
 
-  const { data } = useGet({
+  const { data, isFetching } = useGet({
     queryKey: [CartQueryKeys.getActiveCart],
     queryFn: () => cartService.getActiveCart(),
     enabled: connected,
   });
 
   useEffect(() => {
-    if (data) {
-      const mappedItems = data?.items?.map((item) => ({
-        id: item.id,
-        name: item.product.name,
-        quantity: item.quantity,
-        price: item.unitPrice,
-        img: item.product.upload[0]?.url,
-      }));
-      setItems(mappedItems);
-    }
-  }, [data, setItems]);
+    if (!data || isFetching) return;
+
+    const mappedItems = data.items.map((item) => ({
+      id: item.id,
+      name: item.product.name,
+      quantity: item.quantity,
+      price: item.unitPrice,
+      img: item.product.upload[0]?.url,
+    }));
+
+    setItems(mappedItems);
+  }, [data, isFetching, setItems]);
 };
 
 export default useLoadCart;

@@ -1,0 +1,100 @@
+{
+  "data": {
+    "type": "cart",
+    "id": "18c3b639-8d44-412b-a06c-016028d91232",
+    "attributes": {
+      "createdAt": "2026-07-28T02:16:36.640Z",
+      "updatedAt": "2026-07-28T02:16:36.640Z",
+      "deletedAt": null,
+      "status": "active"
+    },
+    "relationships": {
+      "items": {
+        "data": [
+          {
+            "type": "items",
+            "id": "8c781229-a176-4135-a039-b18dbcc2bbf5"
+          }
+        ],
+        "links": {
+          "self": "http://localhost:3001/api/v1/cart/user/relationships/items",
+          "related": "http://localhost:3001/api/v1"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": "http://localhost:3001/api/v1/cart/user"
+  },
+  "included": [
+    {
+      "type": "items",
+      "id": "8c781229-a176-4135-a039-b18dbcc2bbf5",
+      "attributes": {
+        "createdAt": "2026-07-28T02:16:36.645Z",
+        "updatedAt": "2026-07-28T02:16:36.645Z",
+        "deletedAt": null,
+        "quantity": 4,
+        "unitPrice": "100.50"
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/8c781229-a176-4135-a039-b18dbcc2bbf5"
+      },
+      "relationships": {
+        "product": {
+          "data": {
+            "type": "product",
+            "id": "9df03d81-70d1-408e-a00d-9d78962cf306"
+          },
+          "links": {
+            "self": "http://localhost:3001/api/v1/cart/user/8c781229-a176-4135-a039-b18dbcc2bbf5/relationships/product",
+            "related": "http://localhost:3001/api/v1"
+          }
+        }
+      }
+    },
+    {
+      "type": "product",
+      "id": "9df03d81-70d1-408e-a00d-9d78962cf306",
+      "attributes": {
+        "createdAt": "2026-06-10T06:45:00.421Z",
+        "updatedAt": "2026-07-02T07:27:23.661Z",
+        "deletedAt": null,
+        "name": "XYZ Controller",
+        "price": "100.50",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/9df03d81-70d1-408e-a00d-9d78962cf306"
+      },
+      "relationships": {
+        "upload": {
+          "data": [
+            {
+              "type": "upload",
+              "id": "b045428c-fc47-4221-b21d-7ff96f5f9485"
+            }
+          ],
+          "links": {
+            "self": "http://localhost:3001/api/v1/cart/user/9df03d81-70d1-408e-a00d-9d78962cf306/relationships/upload",
+            "related": "http://localhost:3001/api/v1"
+          }
+        }
+      }
+    },
+    {
+      "type": "upload",
+      "id": "b045428c-fc47-4221-b21d-7ff96f5f9485",
+      "attributes": {
+        "createdAt": "2026-06-10T06:45:00.473Z",
+        "updatedAt": "2026-06-10T06:45:00.473Z",
+        "deletedAt": null,
+        "key": "product/a0ae53e5-1166-4783-ac12-393b4bba8e9e.png",
+        "url": "http://localhost:4566/test-bucket/product/a0ae53e5-1166-4783-ac12-393b4bba8e9e.png"
+      },
+      "links": {
+        "self": "http://localhost:3001/api/v1/b045428c-fc47-4221-b21d-7ff96f5f9485"
+      }
+    }
+  ]
+}

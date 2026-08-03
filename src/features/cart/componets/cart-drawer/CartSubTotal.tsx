@@ -9,9 +9,9 @@ const CartSubTotal = ({ subTotal }: PropTypes) => {
     <div className="border-t border-gray-200 py-5 px-6">
       <div className="flex justify-between mb-4">
         <span>Subtotal</span>
-        <span>$ {subTotal.toFixed(2)}</span>
+        <span data-test="cart-drawer-subtotal">$ {subTotal.toFixed(2)}</span>
       </div>
-      <Button innerText={'Ir al checkout'} colorFill={true} />
+      <Button innerText={'Checkout'} colorFill={true} />
     </div>
   );
 };

@@ -14,15 +14,20 @@ const QuantityStepper = ({
       <button
         className="py-0.2 px-4 hover:bg-gray-200 cursor-pointer"
         onClick={handleDecreaseQuantity}
+        data-test="decrease-quantity-button"
       >
         -
       </button>
-      <span className="min-w-[3ch] text-center inline-block">
+      <span
+        className="min-w-[3ch] text-center inline-block"
+        data-test="cart-item-quantity"
+      >
         {itemQuantity}
       </span>
       <button
         className="py-0.2 px-4 hover:bg-gray-200 cursor-pointer"
         onClick={handleIncreaseQuantity}
+        data-test="increase-quantity-button"
       >
         +
       </button>

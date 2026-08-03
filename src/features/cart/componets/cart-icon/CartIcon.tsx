@@ -14,14 +14,21 @@ const CartIcon = ({ isSticky }: PropTypes) => {
   );
 
   return (
-    <button onClick={openCart} className="relative w-fit cursor-pointer">
+    <button
+      onClick={openCart}
+      className="relative w-fit cursor-pointer"
+      data-test="cart-icon"
+    >
       <div
         className={`transition-all duration-500 ${isSticky ? 'w-6 h-6' : 'w-7 h-7'}`}
       >
         <FiShoppingCart className="w-full h-full" />
       </div>
       {items.length > 0 && (
-        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+        <span
+          className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+          data-test="cart-icon-count"
+        >
           {calculateTotalItems(items)}
         </span>
       )}

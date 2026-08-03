@@ -18,7 +18,7 @@ const ProductImage = ({ width, height, url }: PropTypes) => {
       <img
         src={url ?? PRODUCT_IMAGES.NO_IMAGE}
         alt="img product"
-        className="h-full w-full object-cover object-center"
+        className="h-full w-full object-contain object-center"
       />
     </div>
   );

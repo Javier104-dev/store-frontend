@@ -18,7 +18,7 @@ export default function NavBar() {
 
   return (
     <div
-      className={`sticky top-0 shadow-md transition-all duration-500 ${isSticky ? 'bg-white/80 backdrop-blur-md' : ' bg-white'}`}
+      className={`sticky top-0 z-10 shadow-md transition-all duration-500 ${isSticky ? 'bg-white/80 backdrop-blur-md' : 'bg-white'}`}
       data-test="navbar"
     >
       <PageLayout>

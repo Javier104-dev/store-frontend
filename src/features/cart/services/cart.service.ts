@@ -37,7 +37,7 @@ class CartService implements ICartService {
     config?: ApiRequestConfig,
   ): Promise<void> {
     await apiService.patch<ISingleResponse<ICartAttributes>>(
-      `/cart/${cartId}`,
+      `/cart/item/${cartId}`,
       updateCartItem,
       config,
     );

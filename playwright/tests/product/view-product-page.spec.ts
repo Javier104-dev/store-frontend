@@ -17,7 +17,6 @@ test.describe('View product page', () => {
     await page.route(
       `**/product?filter%5Bcategories%5D%5Bid%5D=${categoryId}`,
       async (route) => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
         await route.fulfill({
           json: loadMock('product/product-by-category-id.json'),
         });

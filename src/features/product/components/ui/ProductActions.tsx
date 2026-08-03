@@ -27,11 +27,12 @@ const ProductActions = ({
       />
       <Button
         colorFill={true}
-        innerText="Agregar al carrito"
+        innerText="Add to cart"
         onClick={addItem}
         isLoading={isLoading}
+        data-test="add-to-cart-button"
       />
-      <Button colorFill={true} innerText="Comprar ahora" onClick={openCart} />
+      <Button colorFill={true} innerText="Buy now" onClick={openCart} />
     </div>
   );
 };
