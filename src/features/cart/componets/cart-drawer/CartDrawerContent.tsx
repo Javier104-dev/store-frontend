@@ -22,7 +22,7 @@ const CartDrawerContent = ({ cartItems, closeCart }: PropTypes) => {
         <h1
           className="font-bold"
           data-test="cart-drawer-title"
-        >{`Tu carrito (${totalItems})`}</h1>
+        >{`Your Cart (${totalItems})`}</h1>
         <CloseButton onClose={closeCart} dataTest="close-cart-drawer-content" />
       </div>
       <div className="divide-y divide-gray-200 px-6">

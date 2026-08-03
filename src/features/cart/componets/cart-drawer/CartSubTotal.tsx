@@ -11,7 +11,7 @@ const CartSubTotal = ({ subTotal }: PropTypes) => {
         <span>Subtotal</span>
         <span data-test="cart-drawer-subtotal">$ {subTotal.toFixed(2)}</span>
       </div>
-      <Button innerText={'Ir al checkout'} colorFill={true} />
+      <Button innerText={'Checkout'} colorFill={true} />
     </div>
   );
 };
