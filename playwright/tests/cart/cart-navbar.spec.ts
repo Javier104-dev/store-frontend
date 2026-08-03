@@ -88,7 +88,7 @@ test.describe('Cart navbar', () => {
     await expect(getBySel('cart-icon-count')).toHaveText('10');
     await getBySel('cart-icon').click();
 
-    await expect(getBySel('cart-drawer-title')).toHaveText('Tu carrito (10)');
+    await expect(getBySel('cart-drawer-title')).toHaveText('Your Cart (10)');
 
     const cartItem1 = getBySel(
       'cart-item-72f5cecc-f428-48f0-af69-5ca12dcc5da4',
