@@ -1,7 +1,7 @@
 # Geek Shop
 
-Frontend for a geek products store. Customers can browse products by category and view
-product details. Store owners have a dedicated dashboard to manage their store and products.
+Frontend for a geek products store. Customers can browse products by category, view
+product details and manage a shopping cart. Store owners have a dedicated dashboard to manage their store and products.
 Includes a complete authentication flow with login, password recovery, and email verification.
 Fully responsive design for mobile and desktop.
 
@@ -22,6 +22,8 @@ Fully responsive design for mobile and desktop.
 - **HTTP Client:** Axios
 - **Testing:** Playwright
 - **Notifications:** React Toastify
+- **State Management:** Zustand
+- **Decimal Arithmetic:** Decimal.js
 
 ## ⚙️ Setup
 
@@ -91,13 +93,14 @@ The `dev:prepare` script generates the `.env` file automatically. Key variables:
 | ![Home](./docs/screenshots/home.png)                 | ![Product Detail](./docs/screenshots/product-detail.png)                  |
 | ![Login](./docs/screenshots/login.png)               | ![Admin Dashboard](./docs/screenshots/admin-dashboard.png)                |
 | ![Product Form](./docs/screenshots/product-form.png) | ![Product Form Modal](./docs/screenshots/product-form-category-modal.png) |
+| ![Cart Drawer](./docs/screenshots/cart-drawer.png)   |
 
 ### Mobile
 
-|                                                                          |                                                                        |
-| ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| ![Home Mobile](./docs/screenshots/home-mobile.png)                       | ![Product Detail Mobile](./docs/screenshots/product-detail-mobile.png) |
-| ![Admin Dashboard Mobile](./docs/screenshots/admin-dashboard-mobile.png) |                                                                        |
+|                                                                  |                                                                          |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| ![Home Mobile](./docs/screenshots/home-mobile.png)               | ![Product Detail Mobile](./docs/screenshots/product-detail-mobile.png)   |
+| ![Cart Drawer Mobile](./docs/screenshots/cart-drawer-mobile.png) | ![Admin Dashboard Mobile](./docs/screenshots/admin-dashboard-mobile.png) |
 
 ## 📁 Project Structure
 
@@ -126,6 +129,7 @@ Each feature follows this structure:
     ├── 📁constants/      # Feature-specific constants
     ├── 📁hooks/          # Feature-specific hooks (optional)
     ├── 📁interfaces/     # Feature-specific interfaces
+    ├── 📁mappers/        # Feature-specific mappers (optional)
     ├── 📁services/       # Feature-specific services
     └── 📁utils/          # Feature-specific utilities (optional)
 ```

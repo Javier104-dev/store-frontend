@@ -1,4 +1,5 @@
 import Button from '@/components/ui/buttons/Button';
+import { toFixedDecimal } from '@/utils/price-format';
 
 type PropTypes = {
   subTotal: number;
@@ -9,7 +10,9 @@ const CartSubTotal = ({ subTotal }: PropTypes) => {
     <div className="border-t border-gray-200 py-5 px-6">
       <div className="flex justify-between mb-4">
         <span>Subtotal</span>
-        <span data-test="cart-drawer-subtotal">$ {subTotal.toFixed(2)}</span>
+        <span data-test="cart-drawer-subtotal">
+          $ {toFixedDecimal(subTotal)}
+        </span>
       </div>
       <Button innerText={'Checkout'} colorFill={true} />
     </div>

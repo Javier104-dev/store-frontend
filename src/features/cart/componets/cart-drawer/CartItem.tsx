@@ -4,6 +4,7 @@ import QuantityStepper from '@/components/ui/buttons/QuantityStepper';
 import useCartItemActions from '@/features/cart/hooks/useCartItemActions';
 import type { ICartItem } from '@/features/cart/interfaces/types/ICartItem';
 import ProductImage from '@/features/product/components/ui/ProductImage';
+import { toFixedDecimal } from '@/utils/price-format';
 
 type PropTypes = {
   item: ICartItem;
@@ -22,7 +23,9 @@ const CartItem = ({ item }: PropTypes) => {
       <div className="flex-1">
         <div className="mb-4">
           <h1 className="font-bold">{item.name}</h1>
-          <span data-test="cart-item-price">$ {item.price.toFixed(2)}</span>
+          <span data-test="cart-item-price">
+            $ {toFixedDecimal(item.price)}
+          </span>
         </div>
         <div className="flex justify-between">
           <QuantityStepper

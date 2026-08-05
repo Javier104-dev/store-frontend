@@ -1,5 +1,6 @@
 import ProductImageWithActions from '@/features/product/components/ui/ProductImageWithActions ';
 import type { IProduct } from '@/features/product/interfaces/types/IProduct';
+import { toFixedDecimal } from '@/utils/price-format';
 
 type PropTypes = {
   height: number;
@@ -30,7 +31,9 @@ const AdminProductCard = ({
       />
       <div className="mt-2">
         <h1 className="text-[14px]">{product.name}</h1>
-        <p className="font-bold text-[16px]">$ {product.price.toFixed(2)}</p>
+        <p className="font-bold text-[16px]">
+          $ {toFixedDecimal(product.price)}
+        </p>
         <p className="text-[14px]">#{product.id}</p>
       </div>
     </div>
