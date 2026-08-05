@@ -1,3 +1,5 @@
+import { toFixedDecimal } from '@/utils/price-format';
+
 type PropTypes = {
   name: string;
   price: number;
@@ -11,7 +13,7 @@ const ProductInfo = ({ name, price, description }: PropTypes) => {
         {name}
       </h1>
       <p className="font-bold" data-test="product-price">
-        $ {price.toFixed(2)}
+        $ {toFixedDecimal(price)}
       </p>
       <p className="text-[14px] lg:text-[16px]" data-test="product-description">
         {description}
