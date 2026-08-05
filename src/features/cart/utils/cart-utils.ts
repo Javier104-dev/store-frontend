@@ -1,10 +1,7 @@
 import Decimal from 'decimal.js';
 
 import type { ICartItem } from '@/features/cart/interfaces/types/ICartItem';
-
-const sanitizeNumber = (value: number): number => {
-  return Number.isFinite(value) ? value : 0;
-};
+import { sanitizeNumber } from '@/utils/price-format';
 
 const calculateLineTotal = (quantity: number, price: number): number => {
   return new Decimal(sanitizeNumber(price))
