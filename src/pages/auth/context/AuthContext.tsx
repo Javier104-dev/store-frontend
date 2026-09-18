@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthRoutes } from '@/configs/router/AuthRoutes';
 import { HomeRoutes } from '@/configs/router/HomeRoutes';
 import { StoreRoutes } from '@/configs/router/StoreRoutes';
+import { useCartStore } from '@/features/cart/hooks/useCart';
 import { UserQueryKeys } from '@/features/user/constants/user.queryKeys';
 import { userService } from '@/features/user/services/user.service';
 import { StoredCookies } from '@/interfaces/auth/cookies.constants';
@@ -27,6 +28,7 @@ export const AuthProvider = ({ children }: PropTypes) => {
   const { loadingState, setLoadingState } = useLoadingState();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const resetCart = useCartStore((state) => state.resetCart);
   const handleSignIn = useCallback(
     (username: string, password: string) => {
       async function signIn(username: string, password: string) {
@@ -118,8 +120,10 @@ export const AuthProvider = ({ children }: PropTypes) => {
 
   const handleSignOut = useCallback(() => {
     cookieService.removeAll();
+    queryClient.clear();
+    resetCart();
     notificationService.success(SIGN_OUT_SUCCESS_MESSAGE);
-  }, []);
+  }, [queryClient, resetCart]);
 
   const handleForgotPassword = useCallback(
     (username: string) => {
@@ -221,21 +225,16 @@ export const AuthProvider = ({ children }: PropTypes) => {
             username,
             refreshToken,
           );
-          cookieService.setAccessTokenCookie(accessToken);
+          cookieService.setAccessTokenCookie(data.attributes.accessToken);
           apiService.setAuthentication(data.attributes.accessToken);
         }
         setLoadingState('refreshSession', false);
-      } catch (error) {
-        navigate(AuthRoutes.SIGN_IN);
-        if (error instanceof Error) notificationService.error(error.message);
-        else
-          notificationService.error(
-            'Unexpected error while refreshing your session.\nPlease sign in again.',
-          );
+      } catch {
+        setLoadingState('refreshSession', false);
       }
     }
     return refreshSession();
-  }, [setLoadingState, navigate]);
+  }, [setLoadingState]);
 
   const contextValue = {
     loadingState,
