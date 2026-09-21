@@ -4,8 +4,9 @@ import { AuthRoutes } from '@/configs/router/AuthRoutes';
 import { HomeRoutes } from '@/configs/router/HomeRoutes';
 import { ProductRoutes } from '@/configs/router/ProductRoutes';
 import { StoreRoutes } from '@/configs/router/StoreRoutes';
+import { USER_ROLES } from '@/features/user/interfaces/types/UserRole';
 import AuthLayout from '@/layouts/AuthLayout';
-import PrivateLayout from '@/layouts/PrivateLayout';
+import RouteGuard from '@/layouts/RouteGuard';
 import StoreLayout from '@/layouts/StoreLayout';
 import About from '@/pages/about/About';
 import ConfirmPassword from '@/pages/auth/ConfirmPassword';
@@ -82,19 +83,6 @@ const storeRoutes: RouteObject[] = [
   },
 ];
 
-export const privateRoutes: RouteObject[] = [
-  {
-    element: <PrivateLayout />,
-    children: [
-      ...storeRoutes,
-      {
-        path: '/about',
-        element: <About />,
-      },
-    ],
-  },
-];
-
 export const homeRoutes: RouteObject[] = [
   {
     index: true,
@@ -107,5 +95,32 @@ export const productRoutes: RouteObject[] = [
   {
     path: ProductRoutes.VIEW_PRODUCT,
     element: <ViewProduct />,
+  },
+];
+
+export const universalRoutes: RouteObject[] = [
+  {
+    element: (
+      <RouteGuard allowUnauthenticated allowedRoles={[USER_ROLES.REGULAR]} />
+    ),
+    children: [...homeRoutes, ...productRoutes],
+  },
+];
+
+export const privateRoutes: RouteObject[] = [
+  {
+    element: (
+      <RouteGuard allowedRoles={[USER_ROLES.ADMIN, USER_ROLES.SUPERADMIN]} />
+    ),
+    children: storeRoutes,
+  },
+  {
+    element: <RouteGuard />,
+    children: [
+      {
+        path: '/about',
+        element: <About />,
+      },
+    ],
   },
 ];
