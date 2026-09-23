@@ -18,6 +18,7 @@ const CartIcon = ({ isSticky }: PropTypes) => {
       onClick={openCart}
       className="relative w-fit cursor-pointer"
       data-test="cart-icon"
+      type="button"
     >
       <div
         className={`transition-all duration-500 ${isSticky ? 'w-6 h-6' : 'w-7 h-7'}`}

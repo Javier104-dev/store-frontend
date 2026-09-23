@@ -5,11 +5,12 @@ import storeSvg from '@assets/store.svg';
 type PropTypes = {
   width: number;
   height: number;
+  to: string;
 };
 
-const Logo = ({ width, height }: PropTypes) => {
+const Logo = ({ width, height, to }: PropTypes) => {
   return (
-    <Link to="/">
+    <Link to={to} data-test="store-logo">
       <img
         className="transition-all duration-300"
         src={storeSvg}

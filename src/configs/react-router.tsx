@@ -1,12 +1,7 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 
 import { HomeRoutes } from '@/configs/router/HomeRoutes';
-import {
-  authRoutes,
-  homeRoutes,
-  privateRoutes,
-  productRoutes,
-} from '@/configs/routes';
+import { authRoutes, privateRoutes, universalRoutes } from '@/configs/routes';
 import Root from '@/pages/Root';
 
 const router = createBrowserRouter([
@@ -14,9 +9,8 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     children: [
-      ...homeRoutes,
       ...authRoutes,
-      ...productRoutes,
+      ...universalRoutes,
       ...privateRoutes,
       {
         path: '*',

@@ -11,6 +11,7 @@ type CartStore = {
   updateItemQuantity: (id: string, quantity: number) => void;
   openCart: () => void;
   closeCart: () => void;
+  resetCart: () => void;
 };
 
 export const useCartStore = create<CartStore>((set) => ({
@@ -49,4 +50,6 @@ export const useCartStore = create<CartStore>((set) => ({
   openCart: () => set({ isOpen: true }),
 
   closeCart: () => set({ isOpen: false }),
+
+  resetCart: () => set({ items: [] }),
 }));

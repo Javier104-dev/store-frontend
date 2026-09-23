@@ -3,6 +3,7 @@ import React from 'react';
 import { CookiesProvider } from 'react-cookie';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import './index.css';
 
@@ -18,6 +19,9 @@ ReactDOM.createRoot(root).render(
     <CookiesProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <div data-test="toast-container">
+          <ToastContainer />
+        </div>
       </QueryClientProvider>
     </CookiesProvider>
   </React.StrictMode>,
