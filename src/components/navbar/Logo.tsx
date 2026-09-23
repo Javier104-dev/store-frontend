@@ -10,7 +10,7 @@ type PropTypes = {
 
 const Logo = ({ width, height, to }: PropTypes) => {
   return (
-    <Link to={to}>
+    <Link to={to} data-test="store-logo">
       <img
         className="transition-all duration-300"
         src={storeSvg}

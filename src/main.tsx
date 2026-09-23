@@ -19,7 +19,9 @@ ReactDOM.createRoot(root).render(
     <CookiesProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
-        <ToastContainer data-test="toast-container" />
+        <div data-test="toast-container">
+          <ToastContainer />
+        </div>
       </QueryClientProvider>
     </CookiesProvider>
   </React.StrictMode>,
